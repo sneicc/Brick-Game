@@ -9,8 +9,9 @@ public class BallB : MonoBehaviour
 	float Threashold = 1.0f;
 	int XCounterStuck;
 	int YCounterStuck;
+	public int ReboundLimit = 5;
 
-	private Rigidbody rb;
+    private Rigidbody rb;
 
 	public float MaxSpeed = 30f;
 	public float BounceSpeed = 15f;
@@ -47,12 +48,12 @@ public class BallB : MonoBehaviour
             rb.velocity = rb.velocity.normalized * BounceSpeed;
         }
 
-		if (XCounterStuck >= 2)
+		if (XCounterStuck >= ReboundLimit)
 		{
 			rb.velocity = new Vector3(rb.velocity.x + rand, rb.velocity.y , rb.velocity.z);
 			XCounterStuck = 0;
         }
-		else if (YCounterStuck >= 2)
+		else if (YCounterStuck >= ReboundLimit)
 		{
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + rand, rb.velocity.z);
 			YCounterStuck = 0;

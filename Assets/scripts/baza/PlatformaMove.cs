@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class PlatformaMove : MonoBehaviour
 {
+    public Rigidbody Rigidbody { get; private set; }
 
-    private Vector3 newPosition;
-    public double FieldLeftBorder;
-    public double FieldRightBorder;
+    public Vector3 Direction { get; private set; }
+    public float Speed = 10;
 
     void Start()
     {
-        FieldLeftBorder = 16.1;
-        FieldRightBorder = 19.3;
-        newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Rigidbody = GetComponent<Rigidbody>();
+        Direction = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     void Update()
     {
-        if(transform.position.x >= FieldLeftBorder)
-            if (Input.GetKey(KeyCode.A))
-            {
-                newPosition = new Vector3(transform.position.x - 0.05f, transform.position.y, transform.position.z);
-            }
-        if(transform.position.x <= FieldRightBorder)
-            if (Input.GetKey(KeyCode.D))
-            {
-                newPosition = new Vector3(transform.position.x + 0.05f, transform.position.y, transform.position.z);
-            }
-        
-        transform.position = newPosition;
+        if (Input.GetKey(KeyCode.A))
+        {
+            Direction = Vector3.left;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            Direction = Vector3.right;
+        }
+        else
+        {
+            Direction = Vector3.zero;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Rigidbody.AddForce(Direction * Speed);
     }
 
     private void OnCollisionEnter(Collision collision)
