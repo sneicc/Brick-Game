@@ -6,7 +6,7 @@ public class Bricks : MonoBehaviour
 {
     public int HP = 1;
     public Material[] Materials;
-    public Renderer Renderer;
+    private Renderer Renderer;
 
     public bool Unbreakable;
     void Start()
@@ -42,4 +42,6 @@ public class Bricks : MonoBehaviour
         if(HP <= 0) gameObject.SetActive(false);
         else Renderer.material = Materials[HP - 1];
     }
+  
+
 }
