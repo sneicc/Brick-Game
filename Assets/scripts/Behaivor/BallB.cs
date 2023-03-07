@@ -18,6 +18,8 @@ public class BallB : MonoBehaviour
 
 	private Vector3 StartPos;
 
+	public Vector3[] PrevVelocity;
+
 	void Start()
 	{
 		XCounterStuck = 0;
@@ -26,13 +28,22 @@ public class BallB : MonoBehaviour
 
         StartPos = new Vector3
 			(
-				StartPos.x = 18,
-				StartPos.y = 7,
-				StartPos.z = -4
-			);
+				StartPos.x = 17.63f,
+				StartPos.y = 6.96f,
+				StartPos.z = -4.24f
+            );
 
         rb = GetComponent<Rigidbody>();
 		ResetBall();
+
+		PrevVelocity = new Vector3[2] { rb.velocity, rb.velocity };
+
+    }
+
+	private void Update()
+	{		
+			PrevVelocity[1] = PrevVelocity[0];
+			PrevVelocity[0] = rb.velocity;			
 	}
 
 	private void OnCollisionEnter(Collision collision)
