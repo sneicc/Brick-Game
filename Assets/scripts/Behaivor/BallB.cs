@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class BallB : MonoBehaviour
 {
+	public float MainSpeed { get; private set; }
+
 	Vector3 LastPos;
 	public Transform Ball;
 	float Threashold = 1.0f;
@@ -12,7 +15,7 @@ public class BallB : MonoBehaviour
 	int YCounterStuck;
 	public int ReboundLimit = 5;
 
-    private Rigidbody rb;
+    public Rigidbody RB;
 
 	public float MaxSpeed = 10f;
 	public float BounceSpeed = 7f;
@@ -23,7 +26,9 @@ public class BallB : MonoBehaviour
 
 	void Start()
 	{
-		XCounterStuck = 0;
+		MainSpeed = BounceSpeed;
+
+        XCounterStuck = 0;
 		YCounterStuck = 0;
 		LastPos = Ball.position;
 
@@ -34,18 +39,19 @@ public class BallB : MonoBehaviour
 				StartPos.z = -4.24f
             );
 
-        rb = GetComponent<Rigidbody>();
+        RB = GetComponent<Rigidbody>();
 		Invoke(nameof(ResetBall), 2f);
 
-		PrevVelocity = new Vector3[2] { rb.velocity, rb.velocity };
+		PrevVelocity = new Vector3[2] { RB.velocity, RB.velocity };
 
     }
 
 	private void Update()
-	{		
-			PrevVelocity[1] = PrevVelocity[0];
-			PrevVelocity[0] = rb.velocity;			
-	}
+	{
+		PrevVelocity[1] = PrevVelocity[0];
+		PrevVelocity[0] = RB.velocity;
+        RB.velocity = RB.velocity.normalized * BounceSpeed;
+    }
 
 	private void OnCollisionEnter(Collision collision)
 	{
@@ -54,11 +60,7 @@ public class BallB : MonoBehaviour
 		{
 			gameObject.SetActive(false);
             Invoke(nameof(ResetBall), 1f);
-        }
-		else
-		{
-			rb.velocity = rb.velocity.normalized * BounceSpeed;
-		}		
+        }	
 		StuckHandle();
 	}
 
@@ -68,12 +70,12 @@ public class BallB : MonoBehaviour
 
         if (XCounterStuck >= ReboundLimit)
 		{
-			rb.velocity = new Vector3(rb.velocity.x + rand, rb.velocity.y, rb.velocity.z);
+			RB.velocity = new Vector3(RB.velocity.x + rand, RB.velocity.y, RB.velocity.z);
 			XCounterStuck = 0;
 		}
 		else if (YCounterStuck >= ReboundLimit)
 		{
-			rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + rand, rb.velocity.z);
+			RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y + rand, RB.velocity.z);
 			YCounterStuck = 0;
 		}
 
@@ -92,9 +94,9 @@ public class BallB : MonoBehaviour
 	private void FixedUpdate()
 	{
 
-		if (rb.velocity.magnitude > MaxSpeed)
+		if (RB.velocity.magnitude > MaxSpeed)
 		{
-			rb.velocity = rb.velocity.normalized * MaxSpeed;
+			RB.velocity = RB.velocity.normalized * MaxSpeed;
 		}		
 
 	}
@@ -103,10 +105,10 @@ public class BallB : MonoBehaviour
 	{
         gameObject.SetActive(true);
         gameObject.transform.position = StartPos;
-		rb.velocity = Vector3.zero;
+		RB.velocity = Vector3.zero;
 
         Vector3 force = new Vector3(Random.Range(-1f, 1f), -1f,0);
-        rb.velocity = force.normalized * BounceSpeed;
+        RB.velocity = force.normalized * BounceSpeed;
     }
 
 
