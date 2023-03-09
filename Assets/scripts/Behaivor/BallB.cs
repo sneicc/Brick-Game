@@ -10,12 +10,13 @@ public class BallB : MonoBehaviour
 
 	Vector3 LastPos;
 	public Transform Ball;
-	float Threashold = 1.0f;
-	int XCounterStuck;
-	int YCounterStuck;
+	public float Threashold = 1.0f;
+	private int XCounterStuck;
+	private int YCounterStuck;
 	public int ReboundLimit = 5;
 
     public Rigidbody RB;
+	public Material CloneMaterial;
 
 	public float MaxSpeed = 10f;
 	public float BounceSpeed = 7f;
@@ -23,6 +24,8 @@ public class BallB : MonoBehaviour
 	private Vector3 StartPos;
 
 	public Vector3[] PrevVelocity;
+
+	public bool IsClone = false;
 
 	void Start()
 	{
@@ -40,9 +43,10 @@ public class BallB : MonoBehaviour
             );
 
         RB = GetComponent<Rigidbody>();
-		Invoke(nameof(ResetBall), 2f);
+		if (!IsClone) Invoke(nameof(ResetBall), 2f);
+		else gameObject.GetComponent<Renderer>().material = CloneMaterial;
 
-		PrevVelocity = new Vector3[2] { RB.velocity, RB.velocity };
+        PrevVelocity = new Vector3[2] { RB.velocity, RB.velocity };
 
     }
 
@@ -103,6 +107,13 @@ public class BallB : MonoBehaviour
 
 	private void ResetBall()
 	{
+		if (IsClone)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		BounceSpeed = MainSpeed;
         gameObject.SetActive(true);
         gameObject.transform.position = StartPos;
 		RB.velocity = Vector3.zero;

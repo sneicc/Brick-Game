@@ -8,8 +8,15 @@ public class SpeedMod : MonoBehaviour
     public float Duration = 3;
     private float ObjectMainSpeed;
 
-    BallB BallB;
+    private BallB BallB;
+    private Renderer Renderer;
+    private Collider Collider;
 
+    private void Start()
+    {
+        Renderer = GetComponent<Renderer>();
+        Collider = GetComponent<Collider>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("GameBall"))
@@ -22,28 +29,31 @@ public class SpeedMod : MonoBehaviour
             BallB.RB.velocity = BallB.RB.velocity.normalized * Speed;
 
             Invoke(nameof(RemoveMod), Duration);
-            gameObject.SetActive(false); //отключать рендерер
+            Collider.enabled = false;
+            Renderer.enabled = false;
+
         }
     }
 
     private void RemoveMod()
     {      
         BallB.BounceSpeed = ObjectMainSpeed;
+        BallB.RB.velocity = BallB.RB.velocity.normalized * ObjectMainSpeed;
         Destroy(gameObject);
     }
 
     public void PreventRemoveMod()
     {
         CancelInvoke(nameof(RemoveMod));
-        if(!gameObject.active) Destroy(gameObject); //проверять на наличие рендерера ???
+        if(!Renderer.enabled) Destroy(gameObject); 
     }
 
     private void PreventAllRemoveMod()
     {
-        var speedMods = Resources.FindObjectsOfTypeAll<SpeedMod>(); //на теги
+        var speedMods = GameObject.FindGameObjectsWithTag("SpeedMod");
         foreach (var speedMod in speedMods)
         {
-            speedMod.PreventRemoveMod();
+            speedMod.gameObject.GetComponent<SpeedMod>().PreventRemoveMod();
         }
     }
 

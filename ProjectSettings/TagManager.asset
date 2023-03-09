@@ -7,11 +7,12 @@ TagManager:
   - Brick
   - GameBall
   - SpeedMod
+  - DoublingMod
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Projectile
   - Water
   - UI
   - 
