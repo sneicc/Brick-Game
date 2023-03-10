@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI%20Toolkit/pizdec/testbutton.uss?fileID=7433441132597879392&amp;guid=2c8619626d9b5ff41a1cd64120444cdf&amp;type=3#testbutton" />
+    <ui:IMGUIContainer style="background-image: url(&apos;project://database/Assets/UI/UI%20Toolkit/pizdec/imageButt.jpg?fileID=2800000&amp;guid=d3604e507cec38a4a8d803272d065b52&amp;type=3#imageButt&apos;);">
+        <ui:Label text="Label" display-tooltip-when-elided="true" style="width: 106px; height: 40px;" />
+    </ui:IMGUIContainer>
+    <ui:VisualElement name="MenuContainer" style="flex-direction: column; flex-wrap: nowrap; align-items: flex-end;">
+        <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="MainButton" class="testbutton textbutton" />
+        <ui:VisualElement name="SettingsContainer" style="flex-direction: row-reverse; height: auto; width: auto; flex-basis: auto;">
+            <ui:Button display-tooltip-when-elided="true" name="SettingsButton" class="testbutton textbutton" />
+            <ui:Button display-tooltip-when-elided="true" name="MusicButton" class="testbutton textbutton" />
+            <ui:Button display-tooltip-when-elided="true" name="SoundButton" enable-rich-text="false" class="testbutton textbutton" />
+        </ui:VisualElement>
+        <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="ExitButton" class="testbutton textbutton" />
+    </ui:VisualElement>
+</ui:UXML>

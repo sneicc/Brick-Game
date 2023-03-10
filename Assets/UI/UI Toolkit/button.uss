@@ -1,0 +1,46 @@
+.button {
+    justify-content: space-between;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    width: 20%;
+    height: 17%;
+    border-left-color: rgb(255, 248, 150);
+    border-right-color: rgb(255, 248, 150);
+    border-top-color: rgb(255, 248, 150);
+    border-bottom-color: rgb(255, 248, 150);
+    background-color: rgb(82, 147, 62);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    overflow: visible;
+    opacity: 1;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-basis: auto;
+}
+
+.button:hover {
+    opacity: 1;
+    transition-property: border-color, background-color;
+    transition-duration: 2s, 1s;
+    scale: 1 1;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    transition-timing-function: ease-out-elastic, ease;
+    background-color: rgba(217, 140, 21, 255);
+}
