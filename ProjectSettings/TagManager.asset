@@ -8,6 +8,7 @@ TagManager:
   - GameBall
   - SpeedMod
   - DoublingMod
+  - GameManager
   layers:
   - Default
   - TransparentFX

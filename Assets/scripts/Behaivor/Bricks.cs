@@ -39,7 +39,7 @@ public class Bricks : MonoBehaviour
     {
         if(Unbreakable) return;
 
-        HP--;
+        HP -= collision.gameObject.GetComponent<BallB>().Damage;
         if (Fragile || HP <= 0) 
         {
             gameObject.SetActive(false);

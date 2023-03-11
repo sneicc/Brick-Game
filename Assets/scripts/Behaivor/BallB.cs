@@ -1,12 +1,16 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BallB : MonoBehaviour
 {
+	private SpeedMod speedMod;
 	public float MainSpeed { get; private set; }
+	public int Damage;
 
 	Vector3 LastPos;
 	public Transform Ball;
@@ -29,7 +33,8 @@ public class BallB : MonoBehaviour
 
 	void Start()
 	{
-		MainSpeed = BounceSpeed;
+		MainSpeed = BounceSpeed = GameManager.Speed;
+		Damage = GameManager.Damage;
 
         XCounterStuck = 0;
 		YCounterStuck = 0;
@@ -54,18 +59,38 @@ public class BallB : MonoBehaviour
 	{
 		PrevVelocity[1] = PrevVelocity[0];
 		PrevVelocity[0] = RB.velocity;
-        RB.velocity = RB.velocity.normalized * BounceSpeed;
+        SetMainSpeed();
     }
 
 	private void OnCollisionEnter(Collision collision)
-	{
-		
+	{	
 		if (collision.gameObject.name == "ball_deadzone")
 		{
 			gameObject.SetActive(false);
             Invoke(nameof(ResetBall), 1f);
-        }	
-		StuckHandle();
+        }		
+        StuckHandle();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("SpeedMod"))
+		{
+            UnsubscribeOnSpeedModEnd();
+            speedMod = other.GetComponent<SpeedMod>();
+			speedMod.OnSpeedModEnd += BallB_OnSpeedModEnd;
+        }
+	}
+
+	private void BallB_OnSpeedModEnd()
+	{
+		BounceSpeed = MainSpeed;
+		SetMainSpeed();
+	}
+
+	private void SetMainSpeed()
+	{
+		RB.velocity = RB.velocity.normalized * BounceSpeed;
 	}
 
 	private void StuckHandle()
@@ -97,19 +122,17 @@ public class BallB : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-
 		if (RB.velocity.magnitude > MaxSpeed)
 		{
 			RB.velocity = RB.velocity.normalized * MaxSpeed;
 		}		
-
 	}
 
 	private void ResetBall()
 	{
 		if (IsClone)
 		{
-			Destroy(gameObject);
+            Destroy(gameObject);
 			return;
 		}
 
@@ -122,5 +145,16 @@ public class BallB : MonoBehaviour
         RB.velocity = force.normalized * BounceSpeed;
     }
 
+	private void OnDestroy()
+	{
+		UnsubscribeOnSpeedModEnd();
+	}
 
+	private void UnsubscribeOnSpeedModEnd()
+	{
+		if (speedMod is not null)
+		{
+			speedMod.OnSpeedModEnd -= BallB_OnSpeedModEnd;
+		}
+	}
 }
