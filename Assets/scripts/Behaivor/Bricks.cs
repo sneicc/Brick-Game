@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +12,28 @@ public class Bricks : MonoBehaviour
 
     public bool Unbreakable;
     public bool Fragile;
+
+    public Color FirstColor;
+    public Color SecondColor;
+
+    public bool Gradient;
+    private float RangeMaxBorder;
     void Start()
     {
         Renderer = GetComponent<Renderer>();
         if(!Unbreakable && !Fragile)
         {
-            HP = Materials.Length;
-            Renderer.material = Materials[HP - 1];
-        }       
+            if (Gradient) 
+            {
+                Renderer.material.color = FirstColor; 
+            }
+            else
+            {
+                HP = Materials.Length;
+                Renderer.material = Materials[HP - 1];
+            }                        
+        }
+        RangeMaxBorder = HP;
     }
 
     // Update is called once per frame
@@ -45,6 +60,11 @@ public class Bricks : MonoBehaviour
             gameObject.SetActive(false);
             ShowVFX(collision);
         }
+        else if (Gradient)
+        {
+            float range = ConvertRange(0, RangeMaxBorder, 0, 1, HP);
+            Renderer.material.color = Color.Lerp(SecondColor, FirstColor, range); ;
+        }  
         else Renderer.material = Materials[HP - 1];
     }
 
@@ -56,6 +76,11 @@ public class Bricks : MonoBehaviour
         Vector3 rotation = quaternion.eulerAngles;
         shape.rotation = rotation;// * -1f;
         Instantiate(VFX.gameObject, transform.position,transform.rotation);
+    }
+
+    private float ConvertRange(float oldMinBorder, float oldMaxBorder, float newMinBorder,float newMaxBorder, float value)
+    {       
+        return (value - oldMinBorder) / (oldMaxBorder - oldMinBorder) * (newMaxBorder - newMinBorder) + newMinBorder;
     }
 
 

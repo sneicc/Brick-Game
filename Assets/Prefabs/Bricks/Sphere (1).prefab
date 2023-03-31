@@ -110,10 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fabf6315bbc8b8448ef53fce2521bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 2
+  HP: 40
   Materials:
   - {fileID: 2100000, guid: ad230b364c707d04b9b4dd85ace36ebc, type: 2}
   - {fileID: 2100000, guid: 239936a789efca74e8cd8bce01459266, type: 2}
   VFX: {fileID: 4431557799201808170, guid: 12e01904836581246891419d67a3012f, type: 3}
   Unbreakable: 0
   Fragile: 0
+  FirstColor: {r: 0.09455085, g: 1, b: 0, a: 0}
+  SecondColor: {r: 1, g: 0, b: 0, a: 0}

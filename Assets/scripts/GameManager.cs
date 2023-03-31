@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static float Speed = 7; //установка через параметры уровная
     public static Vector3 SpawnPoint;
-    public static int Damage = 1;
+    public static int Damage = 10;
     public static int Coins;
 
     //public static event Action On;
