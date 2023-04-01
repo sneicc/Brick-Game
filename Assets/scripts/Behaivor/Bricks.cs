@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Bricks : MonoBehaviour
@@ -18,6 +19,8 @@ public class Bricks : MonoBehaviour
 
     public bool Gradient;
     private float RangeMaxBorder;
+
+    public TextMeshProUGUI HPText;
     void Start()
     {
         Renderer = GetComponent<Renderer>();
@@ -33,6 +36,7 @@ public class Bricks : MonoBehaviour
                 Renderer.material = Materials[HP - 1];
             }                        
         }
+        SetHPText();
         RangeMaxBorder = HP;
     }
 
@@ -52,10 +56,11 @@ public class Bricks : MonoBehaviour
 
     public void Hit(Collision collision)
     {
-        if(Unbreakable) return;
+        if (Unbreakable) return;
 
         HP -= collision.gameObject.GetComponent<BallB>().Damage;
-        if (Fragile || HP <= 0) 
+
+        if (Fragile || HP <= 0)
         {
             gameObject.SetActive(false);
             ShowVFX(collision);
@@ -64,8 +69,18 @@ public class Bricks : MonoBehaviour
         {
             float range = ConvertRange(0, RangeMaxBorder, 0, 1, HP);
             Renderer.material.color = Color.Lerp(SecondColor, FirstColor, range); ;
-        }  
-        else Renderer.material = Materials[HP - 1];
+        }
+        else
+        {
+            Renderer.material = Materials[HP - 1];
+        }
+
+        SetHPText();
+    }
+
+    private void SetHPText()
+    {
+        if (HPText is not null) HPText.text = HP.ToString();
     }
 
     private void ShowVFX(Collision collision)
@@ -82,6 +97,8 @@ public class Bricks : MonoBehaviour
     {       
         return (value - oldMinBorder) / (oldMaxBorder - oldMinBorder) * (newMaxBorder - newMinBorder) + newMinBorder;
     }
+
+    
 
 
 }
