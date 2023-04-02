@@ -46,7 +46,6 @@ public class PlatformaMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("GameBall"))
         {
-
             Vector3 platformPosition = transform.position;
             Vector3 contactPoint = collision.GetContact(0).point;
 

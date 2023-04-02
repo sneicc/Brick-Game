@@ -9,6 +9,7 @@ TagManager:
   - SpeedMod
   - DoublingMod
   - GameManager
+  - Platform
   layers:
   - Default
   - TransparentFX
