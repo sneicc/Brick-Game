@@ -43,7 +43,7 @@ public class PlatformaMove : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {        
+    {
         if (collision.gameObject.CompareTag("GameBall"))
         {
 
@@ -53,7 +53,7 @@ public class PlatformaMove : MonoBehaviour
             float offset = platformPosition.x - contactPoint.x;
             float width = Collider.bounds.size.x / 2;
 
-            float currentAngle = Vector3.SignedAngle(Vector3.up, collision.rigidbody.velocity, Vector3.up);
+            float currentAngle = Vector3.SignedAngle(Vector3.up, collision.rigidbody.velocity, Vector3.forward);
             float bounceAngle = (offset / width) * MaxBounceAngle;
             float newAngle = Mathf.Clamp(currentAngle + bounceAngle, -MaxBounceAngle, MaxBounceAngle);
 
