@@ -9,10 +9,16 @@ public class PlatformaMove : MonoBehaviour
     public Vector3 Direction { get; private set; }
     public float Speed = 10;
 
+    private Collider Collider;
+
+    public float MaxBounceAngle = 80;
+
     void Start()
     {
         Rigidbody = GetComponent<Rigidbody>();
-        Direction = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Direction = Vector3.zero;
+
+        Collider = GetComponent<Collider>();
     }
 
     void Update()
@@ -37,8 +43,23 @@ public class PlatformaMove : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
-        //Ball ball = collision.gameObject.GetComponent<Ball>;
+    {        
+        if (collision.gameObject.CompareTag("GameBall"))
+        {
+
+            Vector3 platformPosition = transform.position;
+            Vector3 contactPoint = collision.GetContact(0).point;
+
+            float offset = platformPosition.x - contactPoint.x;
+            float width = Collider.bounds.size.x / 2;
+
+            float currentAngle = Vector3.SignedAngle(Vector3.up, collision.rigidbody.velocity, Vector3.up);
+            float bounceAngle = (offset / width) * MaxBounceAngle;
+            float newAngle = Mathf.Clamp(currentAngle + bounceAngle, -MaxBounceAngle, MaxBounceAngle);
+
+            Quaternion rotation = Quaternion.AngleAxis(newAngle, Vector3.forward);
+            collision.rigidbody.velocity = rotation * Vector3.up * collision.rigidbody.velocity.magnitude;
+        }
     }
 
 }
