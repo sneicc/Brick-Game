@@ -115,5 +115,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 239936a789efca74e8cd8bce01459266, type: 2}
   - {fileID: 2100000, guid: 6af1724ce62ea7d4e817b393d53a5002, type: 2}
   - {fileID: 2100000, guid: ad230b364c707d04b9b4dd85ace36ebc, type: 2}
-  Renderer: {fileID: 0}
+  VFX: {fileID: 4431557799201808170, guid: 12e01904836581246891419d67a3012f, type: 3}
   Unbreakable: 0
+  Fragile: 0
