@@ -4,13 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Brick
+  - Brick 
+  - GameBall
+  - SpeedMod
+  - DoublingMod
+  - GameManager
+  - Platform
   - LevelMap
+ 
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Projectile
   - Water
   - UI
   - 
