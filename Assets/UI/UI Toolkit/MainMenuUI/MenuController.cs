@@ -40,12 +40,12 @@ public class MenuController : MonoBehaviour
         Button SoundButton = SettingsVisualElement.Q<Button>("SoundButton");
 
 
-        MainButton.clicked += delegate { OnClick(); };
-        MagazineButton.clicked += delegate { OnMagazineClick(); };
-        SettingsButton.clicked += delegate { OnSettingClick(); };
-        MusicButton.clicked += delegate { { OnMusicClick(); } };
-        SoundButton.clicked += delegate { { OnSoundClick(); } };
-        ExitButton.clicked += delegate { { OnExitClick(); } };
+        MainButton.clicked += () => OnClick();
+        MagazineButton.clicked += () => OnMagazineClick();
+        SettingsButton.clicked += () => OnSettingClick();
+        MusicButton.clicked += () => OnMusicClick();
+        SoundButton.clicked += () => OnSoundClick();
+        ExitButton.clicked += () => OnExitClick();
 
         MenuContainer.Q("SettingsButton").style.display = DisplayStyle.None;
         MenuContainer.Q("ExitButton").style.display = DisplayStyle.None;
@@ -101,22 +101,22 @@ public class MenuController : MonoBehaviour
 
     private void OnMagazineClick()
     {
-        throw new NotImplementedException();
+        Debug.Log("Clicked!");
     }
 
     private void OnSoundClick()
     {
-        throw new NotImplementedException();
+        Debug.Log("Clicked!");
     }
 
     private void OnMusicClick()
     {
-        throw new NotImplementedException();
+        Debug.Log("Clicked!");
     }
 
     private void OnExitClick()
     {
-        throw new NotImplementedException();
+        Debug.Log("Clicked!");
     }
 
 }

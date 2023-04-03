@@ -26,21 +26,21 @@ public class LowerContainerController : MonoBehaviour
 
     private void OnButtonFourClick()
     {
-        throw new NotImplementedException();
+        Debug.Log("Clicked!");
     }
 
     private void OnButtonThreeClick()
     {
-        throw new NotImplementedException();
+        Debug.Log("Clicked!");
     }
 
     private void OnButtonTwoClick()
     {
-        throw new NotImplementedException();
+        Debug.Log("Clicked!");
     }
 
     private void OnButtonOneClick()
     {
-        throw new NotImplementedException();
+        Debug.Log("Clicked!");
     }
 }
