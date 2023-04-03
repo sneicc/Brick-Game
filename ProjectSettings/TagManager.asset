@@ -9,10 +9,6 @@ TagManager:
   - SpeedMod
   - DoublingMod
   - GameManager
-  - Platform
-  - LevelMap
- 
-
   layers:
   - Default
   - TransparentFX
