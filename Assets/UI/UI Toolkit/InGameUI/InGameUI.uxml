@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI%20Toolkit/InGameUI/InGameUIStyles.uss?fileID=7433441132597879392&amp;guid=219ccb5b26285ca429e17ed756e70546&amp;type=3#InGameUIStyles" />
+    <ui:VisualElement name="LowerContainer" style="flex-direction: row; align-items: stretch; -unity-text-align: upper-left; bottom: auto; top: 95%;">
+        <ui:Button text="Button" display-tooltip-when-elided="true" name="ButtonOne" class="button" />
+        <ui:Button text="Button" display-tooltip-when-elided="true" name="ButtonTwo" class="button" />
+        <ui:Button text="Button" display-tooltip-when-elided="true" name="ButtonThree" class="button" />
+        <ui:Button text="Button" display-tooltip-when-elided="true" name="ButtonFour" class="button" />
+    </ui:VisualElement>
+</ui:UXML>

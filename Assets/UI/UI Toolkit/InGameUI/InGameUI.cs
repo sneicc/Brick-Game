@@ -4,13 +4,13 @@ using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 
 
-public class MainMenu : EditorWindow
+public class InGameUI : EditorWindow
 {
-    [MenuItem("Window/UI Toolkit/MainMenu")]
+    [MenuItem("Window/UI Toolkit/InGameUI")]
     public static void ShowExample()
     {
-        MainMenu wnd = GetWindow<MainMenu>();
-        wnd.titleContent = new GUIContent("MainMenu");
+        InGameUI wnd = GetWindow<InGameUI>();
+        wnd.titleContent = new GUIContent("InGameUI");
     }
 
     public void CreateGUI()
@@ -23,13 +23,13 @@ public class MainMenu : EditorWindow
         root.Add(label);
 
         // Import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UI/UI Toolkit/MainMenu.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UI/UI Toolkit/InGameUI/InGameUI.uxml");
         VisualElement labelFromUXML = visualTree.Instantiate();
         root.Add(labelFromUXML);
 
         // A stylesheet can be added to a VisualElement.
         // The style will be applied to the VisualElement and all of its children.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/UI/UI Toolkit/MainMenu.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/UI/UI Toolkit/InGameUI/InGameUI.uss");
         VisualElement labelWithStyle = new Label("Hello World! With Style");
         labelWithStyle.styleSheets.Add(styleSheet);
         root.Add(labelWithStyle);

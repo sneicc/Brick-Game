@@ -12,8 +12,9 @@ using UnityEngine.UIElements;
 public class MenuController : MonoBehaviour
 {
 
-    private VisualElement VisualElement;
+    private VisualElement TopBarVisElement;
     private VisualElement SettingsVisualElement;
+    private VisualElement MenuContainer;
 
 
 
@@ -24,29 +25,38 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VisualElement = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("MenuContainer");
+        TopBarVisElement = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("TopBarContainer");
+        MenuContainer = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("MenuContainer");
         SettingsVisualElement = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("SettingsContainer");
 
 
+        Button MainButton = TopBarVisElement.Q<Button>("MainButton");
+
+        Button ExitButton = MenuContainer.Q<Button>("ExitButton");
+        Button MagazineButton = MenuContainer.Q<Button>("MagazineButton");
 
         Button SettingsButton = SettingsVisualElement.Q<Button>("SettingsButton");
         Button MusicButton = SettingsVisualElement.Q<Button>("MusicButton");
         Button SoundButton = SettingsVisualElement.Q<Button>("SoundButton");
 
 
-
-        SettingsButton.clicked += delegate { OnSettingClick(); };
-
-        Button MainButton = VisualElement.Q<Button>("MainButton");
         MainButton.clicked += delegate { OnClick(); };
+        MagazineButton.clicked += delegate { OnMagazineClick(); };
+        SettingsButton.clicked += delegate { OnSettingClick(); };
+        MusicButton.clicked += delegate { { OnMusicClick(); } };
+        SoundButton.clicked += delegate { { OnSoundClick(); } };
+        ExitButton.clicked += delegate { { OnExitClick(); } };
 
-        SettingsVisualElement.Q("SettingsButton").style.display = DisplayStyle.None;
-        VisualElement.Q("ExitButton").style.display = DisplayStyle.None;
+        MenuContainer.Q("SettingsButton").style.display = DisplayStyle.None;
+        MenuContainer.Q("ExitButton").style.display = DisplayStyle.None;
+        MenuContainer.Q("MagazineButton").style.display = DisplayStyle.None;
         MusicButton.style.display= DisplayStyle.None;
         SoundButton.style.display = DisplayStyle.None;
 
+        Debug.Log("TopBarVE / SettingsVE child count");
+        Debug.Log(TopBarVisElement.childCount);
+        Debug.Log(SettingsVisualElement.childCount);
 
-        Debug.Log(VisualElement.childCount);
 
     }
 
@@ -57,13 +67,15 @@ public class MenuController : MonoBehaviour
         if (!IsOpen)
         {
             SettingsVisualElement.Q("SettingsButton").style.display = DisplayStyle.Flex;
-            VisualElement.Q("ExitButton").style.display = DisplayStyle.Flex;
+            MenuContainer.Q("ExitButton").style.display = DisplayStyle.Flex;
+            MenuContainer.Q("MagazineButton").style.display = DisplayStyle.Flex;
             IsOpen = true;
         }
         else
         {
             SettingsVisualElement.Q("SettingsButton").style.display = DisplayStyle.None;
-            VisualElement.Q("ExitButton").style.display = DisplayStyle.None;
+            MenuContainer.Q("ExitButton").style.display = DisplayStyle.None;
+            MenuContainer.Q("MagazineButton").style.display = DisplayStyle.None;
             IsOpen = false;
             IsSettingsOpen= true;
             OnSettingClick();
@@ -85,9 +97,26 @@ public class MenuController : MonoBehaviour
             SettingsVisualElement.Q("SoundButton").style.display = DisplayStyle.None;
             IsSettingsOpen = false;
         }
+    }
 
+    private void OnMagazineClick()
+    {
+        throw new NotImplementedException();
+    }
 
+    private void OnSoundClick()
+    {
+        throw new NotImplementedException();
+    }
 
+    private void OnMusicClick()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnExitClick()
+    {
+        throw new NotImplementedException();
     }
 
 }
