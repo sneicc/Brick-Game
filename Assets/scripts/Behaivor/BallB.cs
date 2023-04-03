@@ -68,8 +68,7 @@ public class BallB : MonoBehaviour
 		{
 			gameObject.SetActive(false);
             Invoke(nameof(ResetBall), 1f);
-        }
-
+        }		
         StuckHandle();
 	}
 

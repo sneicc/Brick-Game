@@ -10,10 +10,7 @@ public class GameManager : MonoBehaviour
     public static float Speed = 7; //установка через параметры уровная
     public static Vector3 SpawnPoint;
     public static int Damage = 10;
-    private static int Coins;
-    private static int Daimonds;
-    public static float Luck {get; private set; }
-
+    public static int Coins;
 
     //public static event Action On;
 
@@ -33,10 +30,5 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public static void AddCoins(int cost)
-    {
-        Coins += cost;
     }
 }
