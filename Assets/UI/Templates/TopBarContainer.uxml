@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenuUI/testbutton.uss?fileID=7433441132597879392&amp;guid=2c8619626d9b5ff41a1cd64120444cdf&amp;type=3#testbutton" />
+    <ui:VisualElement name="TopBarContainer" style="align-items: center; flex-direction: row-reverse; justify-content: flex-start; width: auto; height: 10%;">
+        <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="MainButton" class="testbutton textbutton" style="align-items: flex-end;" />
+        <ui:VisualElement />
+    </ui:VisualElement>
+</ui:UXML>

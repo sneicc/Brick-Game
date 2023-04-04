@@ -16,9 +16,6 @@ public class MenuController : MonoBehaviour
     private VisualElement SettingsVisualElement;
     private VisualElement MenuContainer;
 
-
-
-
     private bool IsOpen = false;
     private bool IsSettingsOpen = false;
 
@@ -39,6 +36,7 @@ public class MenuController : MonoBehaviour
         Button MusicButton = SettingsVisualElement.Q<Button>("MusicButton");
         Button SoundButton = SettingsVisualElement.Q<Button>("SoundButton");
 
+<<<<<<< Updated upstream:Assets/UI/UI Toolkit/MainMenuUI/MenuController.cs
 
         MainButton.clicked += delegate { OnClick(); };
         MagazineButton.clicked += delegate { OnMagazineClick(); };
@@ -46,6 +44,14 @@ public class MenuController : MonoBehaviour
         MusicButton.clicked += delegate { { OnMusicClick(); } };
         SoundButton.clicked += delegate { { OnSoundClick(); } };
         ExitButton.clicked += delegate { { OnExitClick(); } };
+=======
+        MainButton.clicked += OnClick;
+        MagazineButton.clicked += OnMagazineClick;
+        SettingsButton.clicked += OnSettingClick;
+        MusicButton.clicked += OnMusicClick;
+        SoundButton.clicked += OnSoundClick;
+        ExitButton.clicked += OnExitClick;
+>>>>>>> Stashed changes:Assets/UI/MainMenuUI/MenuController.cs
 
         MenuContainer.Q("SettingsButton").style.display = DisplayStyle.None;
         MenuContainer.Q("ExitButton").style.display = DisplayStyle.None;
@@ -101,22 +107,38 @@ public class MenuController : MonoBehaviour
 
     private void OnMagazineClick()
     {
+<<<<<<< Updated upstream:Assets/UI/UI Toolkit/MainMenuUI/MenuController.cs
         throw new NotImplementedException();
+=======
+        Debug.Log("OnMagazineClick");
+>>>>>>> Stashed changes:Assets/UI/MainMenuUI/MenuController.cs
     }
 
     private void OnSoundClick()
     {
+<<<<<<< Updated upstream:Assets/UI/UI Toolkit/MainMenuUI/MenuController.cs
         throw new NotImplementedException();
+=======
+        Debug.Log("OnSoundClick");
+>>>>>>> Stashed changes:Assets/UI/MainMenuUI/MenuController.cs
     }
 
     private void OnMusicClick()
     {
+<<<<<<< Updated upstream:Assets/UI/UI Toolkit/MainMenuUI/MenuController.cs
         throw new NotImplementedException();
+=======
+        Debug.Log("OnMusicClick");
+>>>>>>> Stashed changes:Assets/UI/MainMenuUI/MenuController.cs
     }
 
     private void OnExitClick()
     {
+<<<<<<< Updated upstream:Assets/UI/UI Toolkit/MainMenuUI/MenuController.cs
         throw new NotImplementedException();
+=======
+        Debug.Log("OnExitClick");
+>>>>>>> Stashed changes:Assets/UI/MainMenuUI/MenuController.cs
     }
 
 }

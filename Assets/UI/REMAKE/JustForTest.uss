@@ -1,0 +1,17 @@
+.test_borders {
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-color: rgba(204, 41, 41, 255);
+    border-right-color: rgba(204, 41, 41, 255);
+    border-top-color: rgba(204, 41, 41, 255);
+    border-bottom-color: rgba(204, 41, 41, 255);
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+}

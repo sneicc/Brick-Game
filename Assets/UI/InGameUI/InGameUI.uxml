@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="TopBarContainer" src="project://database/Assets/UI/Templates/TopBarContainer.uxml?fileID=9197481963319205126&amp;guid=15b42858be85f4143915f7c51ccdc9c9&amp;type=3#TopBarContainer" />
+    <Style src="project://database/Assets/UI/InGameUI/InGameUIStyles.uss?fileID=7433441132597879392&amp;guid=219ccb5b26285ca429e17ed756e70546&amp;type=3#InGameUIStyles" />
+    <Style src="project://database/Assets/UI/MainMenuUI/testbutton.uss?fileID=7433441132597879392&amp;guid=2c8619626d9b5ff41a1cd64120444cdf&amp;type=3#testbutton" />
+    <ui:VisualElement name="LowerContainer" style="flex-direction: row; align-items: stretch; -unity-text-align: upper-left; bottom: auto; top: 93%; height: 3%; right: 2px; width: 17%;">
+        <ui:Button display-tooltip-when-elided="true" name="ButtonOne" class="button" style="width: auto;" />
+        <ui:Button display-tooltip-when-elided="true" name="ButtonTwo" class="button" style="width: auto;" />
+        <ui:Button display-tooltip-when-elided="true" name="ButtonThree" class="button" style="width: auto;" />
+        <ui:Button display-tooltip-when-elided="true" name="ButtonFour" class="button" />
+    </ui:VisualElement>
+    <ui:Instance template="TopBarContainer" name="TopBarContainer" />
+</ui:UXML>

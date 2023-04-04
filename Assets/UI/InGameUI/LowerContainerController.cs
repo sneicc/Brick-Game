@@ -18,29 +18,45 @@ public class LowerContainerController : MonoBehaviour
         Button ButtonThree = LowerContainer.Q<Button>("ButtonThree");
         Button ButtonFour = LowerContainer.Q<Button>("ButtonFour");
 
-        ButtonOne.clicked += delegate { { OnButtonOneClick(); } };
-        ButtonTwo.clicked += delegate { { OnButtonTwoClick(); } };
-        ButtonThree.clicked += delegate { { OnButtonThreeClick(); } };
-        ButtonFour.clicked += delegate { { OnButtonFourClick(); } };
+        ButtonOne.clicked += OnButtonOneClick;
+        ButtonTwo.clicked += OnButtonTwoClick;
+        ButtonThree.clicked += OnButtonThreeClick;
+        ButtonFour.clicked += OnButtonFourClick;
     }
 
     private void OnButtonFourClick()
     {
+<<<<<<< Updated upstream:Assets/UI/UI Toolkit/InGameUI/LowerContainerController.cs
         throw new NotImplementedException();
+=======
+        Debug.Log("OnButtonFourClick");
+>>>>>>> Stashed changes:Assets/UI/InGameUI/LowerContainerController.cs
     }
 
     private void OnButtonThreeClick()
     {
+<<<<<<< Updated upstream:Assets/UI/UI Toolkit/InGameUI/LowerContainerController.cs
         throw new NotImplementedException();
+=======
+        Debug.Log("OnButtonThreeClick");
+>>>>>>> Stashed changes:Assets/UI/InGameUI/LowerContainerController.cs
     }
 
     private void OnButtonTwoClick()
     {
+<<<<<<< Updated upstream:Assets/UI/UI Toolkit/InGameUI/LowerContainerController.cs
         throw new NotImplementedException();
+=======
+        Debug.Log("OnButtonTwoClick");
+>>>>>>> Stashed changes:Assets/UI/InGameUI/LowerContainerController.cs
     }
 
     private void OnButtonOneClick()
     {
+<<<<<<< Updated upstream:Assets/UI/UI Toolkit/InGameUI/LowerContainerController.cs
         throw new NotImplementedException();
+=======
+        Debug.Log("OnButtonOneClick");
+>>>>>>> Stashed changes:Assets/UI/InGameUI/LowerContainerController.cs
     }
 }
