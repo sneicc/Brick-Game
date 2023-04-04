@@ -31,6 +31,11 @@ public class BallB : MonoBehaviour
 
 	public bool IsClone = false;
 
+	private void Awake()
+	{
+		GameManager.Balls.Add(this);
+	}
+
 	void Start()
 	{
 		MainSpeed = BounceSpeed = GameManager.Speed;
@@ -148,6 +153,7 @@ public class BallB : MonoBehaviour
 
 	private void OnDestroy()
 	{
+		GameManager.Balls.Remove(this);
 		UnsubscribeOnSpeedModEnd();
 	}
 

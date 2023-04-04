@@ -7,11 +7,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public static List<BallB> Balls = new List<BallB>();
+
     public static float Speed = 7; //установка через параметры уровная
     public static Vector3 SpawnPoint;
     public static int Damage = 10;
-    private static int Coins;
-    private static int Daimonds;
+    public static int Coins { get; private set; }
+    public static int Daimonds { get; private set; }
+
+
+    //private static int Time
     public static float Luck {get; private set; }
 
 
@@ -37,6 +42,17 @@ public class GameManager : MonoBehaviour
 
     public static void AddCoins(int cost)
     {
-        Coins += cost;
+        if(cost >= 0) Coins += cost;
     }
+
+    public static void RemoveCoins(int cost) 
+    {
+        if(cost >= 0) Coins -= cost;
+    }
+
+   
+
+
+
+
 }
