@@ -30,6 +30,7 @@ public class BallB : MonoBehaviour
 	public Vector3[] PrevVelocity;
 
 	public bool IsClone = false;
+	public bool Immortal = false;
 
 	private void Awake()
 	{
@@ -69,7 +70,7 @@ public class BallB : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{	
-		if (collision.gameObject.name == "ball_deadzone")
+		if (collision.gameObject.name == "ball_deadzone" && !Immortal)
 		{
 			gameObject.SetActive(false);
             Invoke(nameof(ResetBall), 1f);

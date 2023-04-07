@@ -4,30 +4,38 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class DamageModifier : Modifier, IModifier
-{
-    private const int DamageWorkingTime = 5;
+{  
     public DamageModifier Instance;
 
-    private static float[] DamageMltiplier = { 2, 2.5f, 3, 3.5f, 4 };
-    private static int[] DamageMltiplierPrice = { 100, 350, 700, 1200, 1900 };
-    private static int DamageMltiplierIndex = 0;
-    private static int DamageMltiplierAmount = 0;
-    
+    private const int DamageWorkingTime = 5;
+    private static int DamageMltiplierAmount = 10;
+    private static int DamageMltiplierPrice = 10;
+
+    private static float[] DamageMultiplier = { 2, 2.5f, 3, 3.5f, 4 };
+    private static int[] DamageMultiplierUpgradePrice = { 100, 350, 700, 1200, 1900 };
+    private static int DamageMultiplierIndex = 0;
+
+
+    private DamageModifier() : base(DamageWorkingTime, DamageMltiplierAmount, DamageMltiplierPrice)
+    {
+
+    }
+
+
     // Start is called before the first frame update
     void Awake()
     {
-        Instance = this;
-        this.WorkingTime = DamageWorkingTime;
+        Instance = new DamageModifier();
     }
 
-    public void Upgrade()
+    public void Upgrade() //перенести в базовый класс
     {
-        if (DamageMltiplier.Length <= DamageMltiplierIndex)
+        if (DamageMultiplier.Length <= DamageMultiplierIndex)
         {
-            int currentPrice = DamageMltiplierPrice[DamageMltiplierIndex];
+            int currentPrice = DamageMultiplierUpgradePrice[DamageMultiplierIndex];
             if (currentPrice <= GameManager.Coins)
             {
-                DamageMltiplierIndex++;
+                DamageMultiplierIndex++;
                 GameManager.RemoveCoins(currentPrice);
             }
         }
@@ -39,7 +47,7 @@ public class DamageModifier : Modifier, IModifier
         {
             DamageMltiplierAmount--;
 
-            int tempDamage = (int)(GameManager.Damage * DamageMltiplier[DamageMltiplierIndex]);
+            int tempDamage = (int)(GameManager.Damage * DamageMultiplier[DamageMultiplierIndex]);
             foreach (var ball in GameManager.Balls)
             {
                 ball.Damage = tempDamage;

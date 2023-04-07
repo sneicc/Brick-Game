@@ -45,9 +45,17 @@ public class GameManager : MonoBehaviour
         if(cost >= 0) Coins += cost;
     }
 
-    public static void RemoveCoins(int cost) 
+    public static bool RemoveCoins(int cost) 
     {
-        if(cost >= 0) Coins -= cost;
+        if(Coins >= cost)
+        {
+            if (cost >= 0)
+            {
+                Coins -= cost;
+                return true;
+            }
+        }
+        return false;
     }
 
    
