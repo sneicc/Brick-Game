@@ -15,7 +15,9 @@ public class DoublingMod : MonoBehaviour
             var clone = Instantiate(other.gameObject, position, other.gameObject.transform.rotation);
 
             clone.gameObject.GetComponent<Rigidbody>().velocity = other.gameObject.GetComponent<Rigidbody>().velocity;
-            clone.gameObject.GetComponent<BallB>().IsClone = true;     
+            var ballB = clone.gameObject.GetComponent<BallB>();   
+            ballB.IsClone = true;
+            ballB.IsImmortal = false;
         }
     }
 

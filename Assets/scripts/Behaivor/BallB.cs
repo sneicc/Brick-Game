@@ -8,8 +8,6 @@ using Random = UnityEngine.Random;
 
 public class BallB : MonoBehaviour
 {
-	private SpeedMod speedMod;
-	public float MainSpeed { get; private set; }
 	public int Damage;
 
 	Vector3 LastPos;
@@ -21,27 +19,27 @@ public class BallB : MonoBehaviour
 
     public Rigidbody RB;
 	public Material CloneMaterial;
-
-	public float MaxSpeed = 10f;
-	public float BounceSpeed = 7f;
+    public float MainSpeed { get; private set; }
+    public float MaxSpeed = 50f;
+	public float BounceSpeed;
 
 	private Vector3 StartPos;
 
 	public Vector3[] PrevVelocity;
 
 	public bool IsClone = false;
-	public bool Immortal = false;
+	public bool IsImmortal = false;
 
 	private void Awake()
 	{
-		GameManager.Balls.Add(this);
+        MainSpeed = BounceSpeed = GameManager.Speed;
+        Damage = GameManager.Damage;
+
+        GameManager.Balls.Add(this);
 	}
 
 	void Start()
 	{
-		MainSpeed = BounceSpeed = GameManager.Speed;
-		Damage = GameManager.Damage;
-
         XCounterStuck = 0;
 		YCounterStuck = 0;
 		LastPos = Ball.position;
@@ -70,7 +68,7 @@ public class BallB : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{	
-		if (collision.gameObject.name == "ball_deadzone" && !Immortal)
+		if (collision.gameObject.name == "ball_deadzone" && !IsImmortal)
 		{
 			gameObject.SetActive(false);
             Invoke(nameof(ResetBall), 1f);
@@ -78,17 +76,6 @@ public class BallB : MonoBehaviour
 
         StuckHandle();
 	}
-
-	private void OnTriggerEnter(Collider other)
-	{
-		if (other.CompareTag("SpeedMod"))
-		{
-            UnsubscribeOnSpeedModEnd();
-            speedMod = other.GetComponent<SpeedMod>();
-			speedMod.OnSpeedModEnd += BallB_OnSpeedModEnd;
-        }
-	}
-
 	private void BallB_OnSpeedModEnd()
 	{
 		BounceSpeed = MainSpeed;
@@ -129,10 +116,10 @@ public class BallB : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (RB.velocity.magnitude > MaxSpeed)
-		{
-			RB.velocity = RB.velocity.normalized * MaxSpeed;
-		}		
+		//if (RB.velocity.magnitude > MaxSpeed)
+		//{
+		//	RB.velocity = RB.velocity.normalized * MaxSpeed; // возможно вызывает проблемы
+		//}		
 	}
 
 	private void ResetBall()
@@ -146,8 +133,8 @@ public class BallB : MonoBehaviour
 		BounceSpeed = MainSpeed;
         gameObject.SetActive(true);
         gameObject.transform.position = StartPos;
-		RB.velocity = Vector3.zero;
 
+		RB.velocity = Vector3.zero;
         Vector3 force = new Vector3(Random.Range(-1f, 1f), -1f,0);
         RB.velocity = force.normalized * BounceSpeed;
     }
@@ -155,14 +142,6 @@ public class BallB : MonoBehaviour
 	private void OnDestroy()
 	{
 		GameManager.Balls.Remove(this);
-		UnsubscribeOnSpeedModEnd();
 	}
 
-	private void UnsubscribeOnSpeedModEnd()
-	{
-		if (speedMod is not null)
-		{
-			speedMod.OnSpeedModEnd -= BallB_OnSpeedModEnd;
-		}
-	}
 }

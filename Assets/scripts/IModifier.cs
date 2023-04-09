@@ -6,6 +6,5 @@ using UnityEngine.WSA;
 public interface IModifier 
 {
     void Activate();
-    void Upgrade();
     void Disable();
 }

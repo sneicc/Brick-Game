@@ -5,23 +5,47 @@ using UnityEngine;
 
 public abstract class Modifier : MonoBehaviour
 {
-    protected int WorkingTime;
-    protected int Amount;
-    protected int Price;
+    internal int WorkingTime;
+    internal int Amount;
+    internal int Price;
+
+    internal float[] UpgradeBonus;
+    internal int[] UpgradePrice;
+    internal int UpgradeIndex;
 
 
-    protected Modifier(int workingTime, int amount, int price)
-    {
-        WorkingTime = workingTime;
-        Amount = amount;
-        Price = price;
-    }
-
-    protected void Buy()
+    /// <summary>
+    /// Добавляет 1 еденицу модификатора, при условии налачия нужной суммы монет
+    /// </summary>
+    /// <returns>Булевский результат выполнения операции</returns>
+    protected bool Buy()
     {
         if (GameManager.RemoveCoins(Price))
+        {
             Amount++;
-        else
-            throw new NotImplementedException(); //высплывающее окно нехватки монет
+            return true;
+        }
+        return false;
     }
+
+    protected bool Spend()
+    {
+        if(Amount >= 1)
+        {
+            Amount--;
+            return true;
+        }
+        return false;
+    }
+
+    protected virtual void Upgrade()
+    {
+        if (UpgradeBonus.Length <= UpgradeIndex)
+        {
+            int currentPrice = UpgradePrice[UpgradeIndex];
+            if (GameManager.RemoveCoins(currentPrice)) UpgradeIndex++;
+        }
+    }
+
+
 }

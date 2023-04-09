@@ -6,38 +6,39 @@ public class SpeedAndImmortalModifier : Modifier, IModifier
 {
     public SpeedAndImmortalModifier Instance;
 
-    private const int SpeedWorkingTime = 5;
-    private static int SpeedAmount = 10;
-    private static int SpeedPrice = 10;
+    public static int SpeedWorkingTime = 5;
+    public static int SpeedAmount = 10;
+    public static int SpeedPrice = 10;
 
-    private static float[] SpeedMultiplier = { 1.5f, 2f, 2.5f, 3f, 3.5f };
-    private static int[] SpeedUpgradePrice = { 100, 350, 700, 1200, 1900 };
-    private static int SpeedUpgradeIndex = 0;
-    
+    public static float[] SpeedUpgrade = { 1.5f, 2f, 2.5f, 3f, 3.5f };
+    public static int[] SpeedUpgradePrice = { 100, 350, 700, 1200, 1900 };
+    public static int SpeedUpgradeIndex = 0;
 
-
-    private SpeedAndImmortalModifier() : base(SpeedWorkingTime, SpeedAmount, SpeedPrice)
-    {
-
-    }
+    private static List<BallB> BallsCopy;
 
     void Awake()
     {
-        Instance = new SpeedAndImmortalModifier();
+        WorkingTime = SpeedWorkingTime;
+        Amount = SpeedAmount;
+        Price = SpeedPrice;
+
+        UpgradeBonus = SpeedUpgrade;
+        UpgradePrice = SpeedUpgradePrice;
+        UpgradeIndex = SpeedUpgradeIndex;
+
+        Instance = this;
     }
     
     public void Activate()
     {
-        if (SpeedAmount >= 1)
+        if (Spend())
         {
-            SpeedAmount--;
+            BallsCopy = new List<BallB>(GameManager.Balls);
 
             foreach (var ball in GameManager.Balls)
             {
-                ball.Immortal = true;
-                float currentSpeed = ball.BounceSpeed * SpeedMultiplier[SpeedUpgradeIndex];
-                ball.BounceSpeed = currentSpeed;
-                ball.RB.velocity = ball.RB.velocity.normalized * currentSpeed;
+                ball.IsImmortal = true;
+                ball.BounceSpeed +=  UpgradeBonus[UpgradeIndex];
             }
             Invoke(nameof(Disable), WorkingTime);
         }
@@ -45,23 +46,12 @@ public class SpeedAndImmortalModifier : Modifier, IModifier
 
     public void Disable()
     {
-        foreach (var ball in GameManager.Balls)
+        foreach (var ball in BallsCopy)
         {
-            ball.Immortal = false;
-            ball.BounceSpeed = ball.MainSpeed;
-            ball.RB.velocity = ball.RB.velocity.normalized * ball.MainSpeed;
-        }
-    }
-
-    public void Upgrade() //перенести в базовый класс
-    {
-        if (SpeedMultiplier.Length <= SpeedUpgradeIndex)
-        {
-            int currentPrice = SpeedUpgradePrice[SpeedUpgradeIndex];
-            if (currentPrice <= GameManager.Coins)
+            if (!ReferenceEquals(ball, null))
             {
-                SpeedUpgradeIndex++;
-                GameManager.RemoveCoins(currentPrice);
+                ball.IsImmortal = false;
+                ball.BounceSpeed -= UpgradeBonus[UpgradeIndex];
             }
         }
     }

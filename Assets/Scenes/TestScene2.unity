@@ -4666,7 +4666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ed2537e82a16441a8d8ab09e0dd877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Instance: {fileID: 0}
 --- !u!114 &1234902413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7533,7 +7532,7 @@ MonoBehaviour:
   RB: {fileID: 0}
   CloneMaterial: {fileID: 2100000, guid: 4aac98aef254ecf429643db51adb8f72, type: 2}
   MaxSpeed: 10
-  BounceSpeed: 7
+  BounceSpeed: 0
   PrevVelocity: []
   IsClone: 0
   Immortal: 0
@@ -7863,6 +7862,10 @@ PrefabInstance:
     - target: {fileID: 1813609196163289917, guid: 71a9e25b279c0ee4cb50f7c85b9fb19e, type: 3}
       propertyPath: m_Name
       value: Speed15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123931569516719521, guid: 71a9e25b279c0ee4cb50f7c85b9fb19e, type: 3}
+      propertyPath: Speed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2123931569516719521, guid: 71a9e25b279c0ee4cb50f7c85b9fb19e, type: 3}
       propertyPath: Duration

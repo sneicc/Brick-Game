@@ -1,53 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class DamageModifier : Modifier, IModifier
 {  
-    public DamageModifier Instance;
+    public static DamageModifier Instance;
 
-    private const int DamageWorkingTime = 5;
-    private static int DamageMltiplierAmount = 10;
-    private static int DamageMltiplierPrice = 10;
+    public static int DamageWorkingTime = 5;
+    public static int DamageModifierAmount = 10;
+    public static int DamageModifierPrice = 10;
 
-    private static float[] DamageMultiplier = { 2, 2.5f, 3, 3.5f, 4 };
-    private static int[] DamageMultiplierUpgradePrice = { 100, 350, 700, 1200, 1900 };
-    private static int DamageMultiplierIndex = 0;
+    public static float[] DamageModifierUpgrade = { 2, 2.5f, 3, 3.5f, 4 };
+    public static int[] DamageModifierUpgradePrice = { 100, 350, 700, 1200, 1900 };
+    public static int DamageModifierIndex = 0;
 
+    private static List<BallB> BallsCopy; 
 
-    private DamageModifier() : base(DamageWorkingTime, DamageMltiplierAmount, DamageMltiplierPrice)
-    {
-
-    }
-
-
-    // Start is called before the first frame update
     void Awake()
     {
-        Instance = new DamageModifier();
-    }
+        WorkingTime = DamageWorkingTime;
+        Amount = DamageModifierAmount;
+        Price = DamageModifierPrice;
 
-    public void Upgrade() //перенести в базовый класс
-    {
-        if (DamageMultiplier.Length <= DamageMultiplierIndex)
-        {
-            int currentPrice = DamageMultiplierUpgradePrice[DamageMultiplierIndex];
-            if (currentPrice <= GameManager.Coins)
-            {
-                DamageMultiplierIndex++;
-                GameManager.RemoveCoins(currentPrice);
-            }
-        }
+        UpgradeBonus = DamageModifierUpgrade;
+        UpgradePrice = DamageModifierUpgradePrice;
+        UpgradeIndex = DamageModifierIndex;
+
+        Instance = this;
     }
 
     public void Activate()
     {
-        if (DamageMltiplierAmount >= 1)
+        if (Spend()) 
         {
-            DamageMltiplierAmount--;
+            BallsCopy = new List<BallB>(GameManager.Balls); 
 
-            int tempDamage = (int)(GameManager.Damage * DamageMultiplier[DamageMultiplierIndex]);
+            int tempDamage = (int)(GameManager.Damage * UpgradeBonus[UpgradeIndex]);
             foreach (var ball in GameManager.Balls)
             {
                 ball.Damage = tempDamage;
@@ -58,9 +48,18 @@ public class DamageModifier : Modifier, IModifier
 
     public void Disable()
     {
-        foreach (var ball in GameManager.Balls)
+        foreach (var ball in BallsCopy)
         {
-            ball.Damage = GameManager.Damage;
+            if (!ReferenceEquals(ball, null)) ball.Damage = GameManager.Damage;
         }
     }
+
+    //public void Disable()
+    //{
+    //    var intersect = GameManager.Balls.Intersect(BallsCopy);
+    //    foreach (var ball in intersect)
+    //    {
+    //        if (!ReferenceEquals(ball, null)) ball.Damage = GameManager.Damage; // протестировать скорость
+    //    }
+    //}
 }
