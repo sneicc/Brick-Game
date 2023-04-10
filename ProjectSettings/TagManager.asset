@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Brick
   - LevelMap
+  - GameManager
+  - Platform
+  - GameBall
+  - DoublingMod
+  - SpeedMod
+  - ButtonUL
   layers:
   - Default
   - TransparentFX
