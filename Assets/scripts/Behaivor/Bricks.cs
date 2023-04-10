@@ -59,11 +59,16 @@ public class Bricks : MonoBehaviour
         if (Unbreakable) return;
 
         HP -= collision.gameObject.GetComponent<BallB>().Damage;
+        CheckHP(collision);
+        SetHPText();
+    }
 
+    private void CheckHP(Collision collision = null)
+    {
         if (Fragile || HP <= 0)
         {
             gameObject.SetActive(false);
-            ShowVFX(collision);
+            if(collision is not null) ShowVFX(collision);
         }
         else if (Gradient)
         {
@@ -74,7 +79,14 @@ public class Bricks : MonoBehaviour
         {
             Renderer.material = Materials[HP - 1];
         }
+    }
 
+    public void Hit(int Damage)
+    {
+        if (Unbreakable) return;
+
+        HP -= Damage;
+        CheckHP();
         SetHPText();
     }
 
@@ -90,15 +102,11 @@ public class Bricks : MonoBehaviour
         Quaternion quaternion = Quaternion.LookRotation(collision.gameObject.GetComponent<BallB>().PrevVelocity[1]);
         Vector3 rotation = quaternion.eulerAngles;
         shape.rotation = rotation;// * -1f;
-        Instantiate(VFX.gameObject, transform.position,transform.rotation);
+        Instantiate(VFX.gameObject, transform.position, transform.rotation);
     }
 
     private float ConvertRange(float oldMinBorder, float oldMaxBorder, float newMinBorder,float newMaxBorder, float value)
     {       
         return (value - oldMinBorder) / (oldMaxBorder - oldMinBorder) * (newMaxBorder - newMinBorder) + newMinBorder;
     }
-
-    
-
-
 }

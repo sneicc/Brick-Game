@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7325667267704433049}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,3 +118,7 @@ MonoBehaviour:
   VFX: {fileID: 4431557799201808170, guid: 12e01904836581246891419d67a3012f, type: 3}
   Unbreakable: 0
   Fragile: 0
+  FirstColor: {r: 0, g: 0, b: 0, a: 0}
+  SecondColor: {r: 0, g: 0, b: 0, a: 0}
+  Gradient: 0
+  HPText: {fileID: 0}

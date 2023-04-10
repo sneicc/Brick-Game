@@ -18,6 +18,7 @@ public class SpeedMod : MonoBehaviour
         {
             Ball = other.gameObject.GetComponent<BallB>();
 
+            Ball.SpeedModCounter++;
             Ball.IsImmortal = true;
             Ball.BounceSpeed += Speed;              
 
@@ -30,7 +31,8 @@ public class SpeedMod : MonoBehaviour
     {
         if (!ReferenceEquals(Ball, null))
         {
-            Ball.IsImmortal = false;
+            if(Ball.SpeedModCounter == 1) Ball.IsImmortal = false;
+            Ball.SpeedModCounter--;
             Ball.BounceSpeed -= Speed;
         }
 

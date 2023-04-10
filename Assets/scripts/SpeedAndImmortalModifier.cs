@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SpeedAndImmortalModifier : Modifier, IModifier
 {
-    public SpeedAndImmortalModifier Instance;
+    public static SpeedAndImmortalModifier Instance;
 
-    public static int SpeedWorkingTime = 5;
-    public static int SpeedAmount = 10;
-    public static int SpeedPrice = 10;
+    public int SpeedWorkingTime = 5;
+    public int SpeedAmount = 10;
+    public int SpeedPrice = 10;
 
-    public static float[] SpeedUpgrade = { 1.5f, 2f, 2.5f, 3f, 3.5f };
-    public static int[] SpeedUpgradePrice = { 100, 350, 700, 1200, 1900 };
-    public static int SpeedUpgradeIndex = 0;
+    public float[] SpeedUpgrade = { 1.5f, 2f, 2.5f, 3f, 3.5f };
+    public int[] SpeedUpgradePrice = { 100, 350, 700, 1200, 1900 };
+    public int SpeedUpgradeIndex = 0;
 
     private static List<BallB> BallsCopy;
 
@@ -37,6 +37,7 @@ public class SpeedAndImmortalModifier : Modifier, IModifier
 
             foreach (var ball in GameManager.Balls)
             {
+                ball.SpeedModCounter++;
                 ball.IsImmortal = true;
                 ball.BounceSpeed +=  UpgradeBonus[UpgradeIndex];
             }
@@ -50,7 +51,8 @@ public class SpeedAndImmortalModifier : Modifier, IModifier
         {
             if (!ReferenceEquals(ball, null))
             {
-                ball.IsImmortal = false;
+                if(ball.SpeedModCounter == 1)ball.IsImmortal = false;
+                ball.SpeedModCounter--;
                 ball.BounceSpeed -= UpgradeBonus[UpgradeIndex];
             }
         }

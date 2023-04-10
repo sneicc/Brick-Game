@@ -9,9 +9,12 @@ using Random = UnityEngine.Random;
 public class BallB : MonoBehaviour
 {
 	public int Damage;
+    public float MainSpeed { get; private set; }
+    public float MaxSpeed = 50f;
+    public float BounceSpeed;
 
-	Vector3 LastPos;
-	public Transform Ball;
+    Vector3 LastPos;
+	//public Transform Ball;
 	public float Threashold = 1.0f;
 	private int XCounterStuck;
 	private int YCounterStuck;
@@ -19,9 +22,7 @@ public class BallB : MonoBehaviour
 
     public Rigidbody RB;
 	public Material CloneMaterial;
-    public float MainSpeed { get; private set; }
-    public float MaxSpeed = 50f;
-	public float BounceSpeed;
+
 
 	private Vector3 StartPos;
 
@@ -29,6 +30,11 @@ public class BallB : MonoBehaviour
 
 	public bool IsClone = false;
 	public bool IsImmortal = false;
+
+	/// <summary>
+	/// Количество действующих модификаторов скорости
+	/// </summary>
+	public int SpeedModCounter = 0;
 
 	private void Awake()
 	{
@@ -42,7 +48,7 @@ public class BallB : MonoBehaviour
 	{
         XCounterStuck = 0;
 		YCounterStuck = 0;
-		LastPos = Ball.position;
+		LastPos = transform.position;
 
         StartPos = new Vector3
 			(
@@ -102,7 +108,7 @@ public class BallB : MonoBehaviour
 			YCounterStuck = 0;
 		}
 
-		Vector3 offset = Ball.position - LastPos;
+		Vector3 offset = transform.position - LastPos;
 		float xOffset = Mathf.Abs(offset.x);
 		float yOffset = Mathf.Abs(offset.y);
 
@@ -111,7 +117,7 @@ public class BallB : MonoBehaviour
 		if (xOffset <= Threashold) XCounterStuck++;
 		if (yOffset <= Threashold) YCounterStuck++;
 
-		LastPos = Ball.position;
+		LastPos = transform.position;
 	}
 
 	private void FixedUpdate()

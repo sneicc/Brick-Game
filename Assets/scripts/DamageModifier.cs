@@ -8,13 +8,13 @@ public class DamageModifier : Modifier, IModifier
 {  
     public static DamageModifier Instance;
 
-    public static int DamageWorkingTime = 5;
-    public static int DamageModifierAmount = 10;
-    public static int DamageModifierPrice = 10;
+    public int DamageWorkingTime = 5;
+    public int DamageModifierAmount = 10;
+    public int DamageModifierPrice = 10;
 
-    public static float[] DamageModifierUpgrade = { 2, 2.5f, 3, 3.5f, 4 };
-    public static int[] DamageModifierUpgradePrice = { 100, 350, 700, 1200, 1900 };
-    public static int DamageModifierIndex = 0;
+    public float[] DamageModifierUpgrade = { 2, 2.5f, 3, 3.5f, 4 };
+    public int[] DamageModifierUpgradePrice = { 100, 350, 700, 1200, 1900 };
+    public int DamageModifierIndex = 0;
 
     private static List<BallB> BallsCopy; 
 
