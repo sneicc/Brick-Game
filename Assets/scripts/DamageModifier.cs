@@ -4,7 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DamageModifier : Modifier, IModifier
+public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм менеджере или создать отедльный менеджер модов, получать необходимую кнопку из загруженной сцены по тегу или имени
 {  
     public static DamageModifier Instance;
 

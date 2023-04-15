@@ -76,7 +76,13 @@ public class BallB : MonoBehaviour
 	{	
 		if (collision.gameObject.name == "ball_deadzone" && !IsImmortal)
 		{
-			gameObject.SetActive(false);
+            if (IsClone)
+            {
+                Destroy(gameObject);
+                return;
+            }
+			GameManager.RemoveLive();
+            gameObject.SetActive(false);
             Invoke(nameof(ResetBall), 1f);
         }
 
@@ -130,12 +136,6 @@ public class BallB : MonoBehaviour
 
 	private void ResetBall()
 	{
-		if (IsClone)
-		{
-            Destroy(gameObject);
-			return;
-		}
-
 		BounceSpeed = MainSpeed;
         gameObject.SetActive(true);
         gameObject.transform.position = StartPos;

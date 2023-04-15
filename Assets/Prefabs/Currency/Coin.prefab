@@ -384,8 +384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cost: 6
-  CoinText: {fileID: 5451244298768370436}
-  CoinModel: {fileID: 5766912915273604736}
+  Text: {fileID: 5451244298768370436}
+  Model: {fileID: 5766912915273604736}
 --- !u!135 &5234671932082753650
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 4684399166127604243}
   - component: {fileID: 4684399166127604242}
   - component: {fileID: 6326333416008049392}
+  - component: {fileID: 9020395351154704338}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Brick
@@ -257,6 +258,24 @@ MonoBehaviour:
   SecondColor: {r: 1, g: 0, b: 0, a: 0}
   Gradient: 0
   HPText: {fileID: 7202003622204702733}
+--- !u!114 &9020395351154704338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684399166127604240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eaf2c8e28b7cbd49b09608eb97316db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Chance: 45
+  OutlineWidth: 0.5
+  OutlineColor: {r: 1, g: 0, b: 1, a: 1}
+  CoinPrefab: {fileID: 6900923454043349292, guid: 9aa1e8ea1b66b954b8dd3ddd2342f049, type: 3}
+  DaimondPrefab: {fileID: 8507318651328057593, guid: 45930336201342a4088d38631f503d53, type: 3}
+  shader: {fileID: -6465566751694194690, guid: e19e1d52696df7e4f9610197c0713970, type: 3}
 --- !u!1 &5166010024915367062
 GameObject:
   m_ObjectHideFlags: 0

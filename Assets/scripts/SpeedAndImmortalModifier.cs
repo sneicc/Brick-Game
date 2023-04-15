@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedAndImmortalModifier : Modifier, IModifier
+public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорения до запуска шара
 {
     public static SpeedAndImmortalModifier Instance;
 

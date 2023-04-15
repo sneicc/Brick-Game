@@ -68,8 +68,6 @@ public class Explosion : Modifier
 
     private void Update()
     {
-
-
         if (!waitingForClick) return;
         if (!Input.GetMouseButtonDown(0)) return;
         if (EventSystem.current.IsPointerOverGameObject() &&
