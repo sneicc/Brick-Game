@@ -15,6 +15,8 @@ public class LootBox : MonoBehaviour
 
     public Shader shader;
 
+    private bool _isQuitting;
+
     void Start()
     {
         if (Random.Range(1, 100) <= Chance) 
@@ -29,11 +31,18 @@ public class LootBox : MonoBehaviour
             renderer.material = material;
         } 
     }
+    private void OnApplicationQuit()
+    {
+        _isQuitting = true;
+    }
 
-    private void OnCollisionEnter(Collision collision) // оперделить вероятности и добавить спавн модификаторов
+    private void OnDisable()
     {
         if (!IsLootBox) return;
         if (Brick.HP > 0) return;
+
+        if (!gameObject.scene.isLoaded) return;
+        if (_isQuitting) return;
 
         int value = Random.Range(1, 100);
 
@@ -49,6 +58,5 @@ public class LootBox : MonoBehaviour
         {
             //придумать что-то
         }
-
     }
 }

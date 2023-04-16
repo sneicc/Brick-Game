@@ -8,7 +8,7 @@ public class Explosion : Modifier
 {
     public static Explosion Instance;
 
-    public int ExplosionTime = 0;
+    public int ExplosionTime = 5; //Отличное от 0 значение приведёт к блокировке кнопки на X секунд после её нажатия 
     public int ExplosionAmount = 10;
     public int ExplosionPrice = 10;
 
@@ -16,13 +16,13 @@ public class Explosion : Modifier
     public int[] ExplosionUpgradePrice = { 100, 350, 700, 1200, 1900 };
     public int ExplosionUpgradeIndex = 0;
 
-    private float ExplosionRadius = 0.7f;
+    public float ExplosionRadius = 0.7f;
 
     private bool waitingForClick = false;
 
+    private ColorBlock _colorBuffer;
+
     public GameObject ExplosionVFX;
-    public Button Button;
-    private Color ColorBuffer;
     void Awake()
     {
         WorkingTime = ExplosionTime;
@@ -36,11 +36,11 @@ public class Explosion : Modifier
         Instance = this;
     }
 
-    private void Start()
+    protected override void Start()
     {
-        Button = gameObject.GetComponent<Button>();
+        base.Start();
+        _colorBuffer = _Button.colors;  
     }
-
 
     public void OnButtonClick()
     {
@@ -49,21 +49,19 @@ public class Explosion : Modifier
 
     private void ChangeState()
     {
-        var colors = Button.colors;
+        var colors = _Button.colors;
 
         if (waitingForClick)
         {
-            colors.normalColor = colors.selectedColor = colors.highlightedColor = ColorBuffer;
-            ColorBuffer = colors.pressedColor;
+            _Button.colors = _colorBuffer;
             waitingForClick = false;
         }
         else
-        {           
-            ColorBuffer = colors.normalColor;
+        {                       
             colors.normalColor = colors.selectedColor = colors.highlightedColor = colors.pressedColor;
+            _Button.colors = colors;
             waitingForClick = true;
-        }
-        Button.colors = colors;
+        }       
     }
 
     private void Update()

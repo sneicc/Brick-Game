@@ -89,6 +89,9 @@ public sealed class GameManager : MonoBehaviour
 
     private void Awake()
     {
+#if DEBUG
+        Lives = 3;
+#endif
         DontDestroyOnLoad(gameObject);
         Instance = this;
     }

@@ -2,22 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Modifier : MonoBehaviour
 {
-    internal int WorkingTime;
-    internal int Amount;
-    internal int Price;
+    protected int WorkingTime;
+    protected int Amount;
+    protected int Price;
 
-    internal float[] UpgradeBonus;
-    internal int[] UpgradePrice;
-    internal int UpgradeIndex;
+    protected float[] UpgradeBonus;
+    protected int[] UpgradePrice;
+    protected int UpgradeIndex;
 
+    protected Button _Button;
+    protected virtual void  Start()
+    {
+        _Button = gameObject.GetComponent<Button>();
+    }
 
     /// <summary>
-    /// Добавляет 1 еденицу модификатора, при условии налачия нужной суммы монет
+    /// Добавляет 1 еденицу модификатора, при условии налачия нужной суммы монет 
     /// </summary>
-    /// <returns>Булевский результат выполнения операции</returns>
     protected bool Buy()
     {
         if (GameManager.RemoveCoins(Price))
@@ -30,9 +35,10 @@ public abstract class Modifier : MonoBehaviour
 
     protected bool Spend()
     {
-        if(Amount >= 1)
+        if(Amount > 0)
         {
             Amount--;
+            StartCoroutine(StartCooldown(WorkingTime));
             return true;
         }
         return false;
@@ -44,8 +50,15 @@ public abstract class Modifier : MonoBehaviour
         {
             int currentPrice = UpgradePrice[UpgradeIndex];
             if (GameManager.RemoveCoins(currentPrice)) UpgradeIndex++;
-        }
+        }     
     }
+    
+    protected IEnumerator StartCooldown(int workingTime)
+    {
+        if (workingTime <= 0) yield break; 
 
-
+        _Button.interactable = false;
+        yield return new WaitForSeconds(workingTime);
+        _Button.interactable = true;
+    }
 }
