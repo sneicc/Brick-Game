@@ -271,11 +271,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chance: 45
-  OutlineWidth: 0.5
-  OutlineColor: {r: 1, g: 0, b: 1, a: 1}
   CoinPrefab: {fileID: 6900923454043349292, guid: 9aa1e8ea1b66b954b8dd3ddd2342f049, type: 3}
   DaimondPrefab: {fileID: 8507318651328057593, guid: 45930336201342a4088d38631f503d53, type: 3}
-  shader: {fileID: -6465566751694194690, guid: e19e1d52696df7e4f9610197c0713970, type: 3}
+  SpeedPrefab: {fileID: 0}
+  DoublingPrefab: {fileID: 0}
+  Shader: {fileID: -6465566751694194690, guid: e19e1d52696df7e4f9610197c0713970, type: 3}
 --- !u!1 &5166010024915367062
 GameObject:
   m_ObjectHideFlags: 0

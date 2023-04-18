@@ -97,6 +97,8 @@ public class Bricks : MonoBehaviour
 
     private void ShowVFX(Collision collision)
     {
+        if (VFX is null) return;
+
         var shape = VFX.shape;
         //Vector3 rotation = new Vector3(collision.transform.eulerAngles.x, 90, 0);
         Quaternion quaternion = Quaternion.LookRotation(collision.gameObject.GetComponent<BallB>().PrevVelocity[1]);

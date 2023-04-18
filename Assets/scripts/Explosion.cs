@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class Explosion : Modifier
 {
     public static Explosion Instance;
-
-    public int ExplosionTime = 5; //Отличное от 0 значение приведёт к блокировке кнопки на X секунд после её нажатия 
+    /// <summary>
+    /// Отличное от 0 значение приведёт к блокировке кнопки на X секунд после её нажатия
+    /// </summary>
+    public int ExplosionTime = 5; 
     public int ExplosionAmount = 10;
     public int ExplosionPrice = 10;
 
