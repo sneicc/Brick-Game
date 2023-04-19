@@ -11,12 +11,21 @@ public class DoublingMod : MonoBehaviour
         {
             gameObject.SetActive(false);
 
-            Vector3 position = GetClonePosition(other.transform.position, other.gameObject.GetComponent<SphereCollider>().radius, other.gameObject.transform.localScale);
-            var clone = Instantiate(other.gameObject, position, other.gameObject.transform.rotation);
-
-            clone.gameObject.GetComponent<Rigidbody>().velocity = other.gameObject.GetComponent<Rigidbody>().velocity;
-            clone.gameObject.GetComponent<BallB>().IsClone = true;     
+            CreateClone(other.gameObject);
         }
+    }
+
+    private void CreateClone(GameObject gameObject)
+    {
+        Vector3 position = GetClonePosition(gameObject.transform.position, gameObject.GetComponent<SphereCollider>().radius, gameObject.transform.localScale);
+        var clone = Instantiate(gameObject, position, gameObject.transform.rotation);
+
+        clone.gameObject.GetComponent<Rigidbody>().velocity = gameObject.GetComponent<Rigidbody>().velocity;
+        var ballB = clone.gameObject.GetComponent<BallB>();
+        ballB.BounceSpeed = GameManager.Speed;
+        ballB.SpeedModCounter = 0;
+        ballB.IsClone = true;
+        ballB.IsImmortal = false;
     }
 
     private Vector3 GetClonePosition(Vector3 originalPosition, float radius, Vector3 scale)
@@ -34,6 +43,5 @@ public class DoublingMod : MonoBehaviour
         else if (!Physics.CheckSphere(down, trueRadius)) return down;
         else if (!Physics.CheckSphere(up, trueRadius)) return up;
         else return originalPosition;
-
     }
 }
