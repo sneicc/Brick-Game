@@ -6,15 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/LevelMap.unity
     guid: 8db7c5373d8eec843b824924ca34edeb
   - enabled: 1
-    path: Assets/Scenes/Magazine/Magazine.unity
+    path: Assets/Scenes/Magazine.unity
     guid: e556027cbf89807419252b544692bba0
   - enabled: 1
-    path: Assets/Scenes/Magazine/SKINS.unity
-    guid: a180014a541de7a4f9c7bafa45af3636
+    path: Assets/Scenes/GAME_LOSE.unity
+    guid: 1e830e21935d12f4298dcf2261277833
   - enabled: 1
-    path: Assets/Scenes/Magazine/TopLeft.unity
-    guid: f96776ac8441f5a4d846a48b87ac9c54
+    path: Assets/Scenes/GAME_WIN.unity
+    guid: 6e0ccc4a81fb19e48b26907477a34d68
+  - enabled: 1
+    path: Assets/Scenes/TOPBAR/IN-GAME TOPBAR.unity
+    guid: 0a734596e430684458308fbe6385a8ab
+  - enabled: 1
+    path: Assets/Scenes/TOPBAR/TOPBAR.unity
+    guid: d526a90b5dfa97a46ba5ff042d73c9d9
   m_configObjects: {}
