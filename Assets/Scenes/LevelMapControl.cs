@@ -9,7 +9,7 @@ public class LevelMapControl : MonoBehaviour
 
     private void Awake()
     {
-        SceneManager.LoadScene(5, LoadSceneMode.Additive);
+        SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
     }
     void Start()
     {

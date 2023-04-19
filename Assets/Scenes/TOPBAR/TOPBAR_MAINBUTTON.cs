@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class TOPBAR_MAINBUTTON : MonoBehaviour
 {
 
+    public Animator animation;
+
     public Button MainButton;
 
     public Sprite MainButtonSpriteMENU;
@@ -17,17 +19,9 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
 
     private static bool ButtonSprite = true;
 
-
-    private void Awake()
-    {
-
-        DontDestroyOnLoad(this);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-
         if (ButtonSprite == true)
         {
             MainButton.image.sprite = MainButtonSpriteMENU;
@@ -45,11 +39,13 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
     {
         // 1 - magazine, 0 - levelmap
 
+        animation.SetTrigger("StartAnimation");
+        StartCoroutine(AnimationCourutine());
 
         if (DATA_HOLDER.currentScene.buildIndex == 1 && DATA_HOLDER.IsMagazineMain == false)
         {
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
-            SceneManager.LoadScene(5, LoadSceneMode.Additive);
+            SceneManager.LoadScene("MAGAZINE", LoadSceneMode.Single);
+            SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
         }
         else if (DATA_HOLDER.currentScene.buildIndex == 1)
         {
@@ -58,13 +54,16 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
         }
         else if(DATA_HOLDER.currentScene.buildIndex == 0)
         {
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
-            SceneManager.LoadScene(5, LoadSceneMode.Additive);
+            SceneManager.LoadScene("MAGAZINE", LoadSceneMode.Single);
+            SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
             ButtonSprite = false;
         }
     }
 
-
+    IEnumerator AnimationCourutine()
+    {
+        yield return new WaitForSeconds(10);
+    }
 
     // Update is called once per frame
     void Update()

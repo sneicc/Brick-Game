@@ -1,17 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MagazineManager : MonoBehaviour
 {
     public Canvas Skins;
     public Canvas Updates;
+    public Canvas ValueStore;
     public Canvas main;
 
     public GameObject modifier1;
@@ -34,7 +29,7 @@ public class MagazineManager : MonoBehaviour
     public Button ButtonUL;
     public Button ButtonMid;
     public Button ButtonLow;
-   // public Button ButtonMAIN;
+    // public Button ButtonMAIN;
 
     //public TextMeshProUGUI COINS_COUNT;
     //public TextMeshProUGUI DIAMOND_COUNT;
@@ -67,15 +62,16 @@ public class MagazineManager : MonoBehaviour
         //Canvases
         Skins.enabled = false;
         Updates.enabled = false;
+        ValueStore.enabled = false;
         main.enabled = true;
 
-            for (int i = 0; i < ModifierSprites1.Length; i++)
-            {
-                ModifierSprites1[i].enabled = false;
-                ModifierSprites2[i].enabled = false;
-                ModifierSprites3[i].enabled = false;
-                ModifierSprites4[i].enabled = false;
-                ModifierSprites5[i].enabled = false;
+        for (int i = 0; i < ModifierSprites1.Length; i++)
+        {
+            ModifierSprites1[i].enabled = false;
+            ModifierSprites2[i].enabled = false;
+            ModifierSprites3[i].enabled = false;
+            ModifierSprites4[i].enabled = false;
+            ModifierSprites5[i].enabled = false;
         }
 
 
@@ -85,12 +81,12 @@ public class MagazineManager : MonoBehaviour
         ButtonUL.onClick.AddListener(UL);
         ButtonMid.onClick.AddListener(Mid);
         ButtonLow.onClick.AddListener(Low);
-       // ButtonMAIN.onClick.AddListener(Main);
+        // ButtonMAIN.onClick.AddListener(Main);
 
         PowerUPButton.onClick.AddListener(PowerUP);
 
         DATA_HOLDER.IsMagazineMain = true;
-        
+
 
         //COINS_COUNT.text = "9999";
         //DIAMOND_COUNT.text = "9999";
@@ -100,7 +96,7 @@ public class MagazineManager : MonoBehaviour
     private void OnTestClickedModifier()
     {
         Debug.Log("PASSED");
-        
+
     }
 
     public void PowerUP()
@@ -121,7 +117,7 @@ public class MagazineManager : MonoBehaviour
     {
         main.enabled = false;
         Skins.enabled = true;
-       // ButtonMAIN.image.sprite = MainButtonSpriteCROSS;
+        // ButtonMAIN.image.sprite = MainButtonSpriteCROSS;
         DATA_HOLDER.IsMagazineMain = false;
 
     }
@@ -129,11 +125,14 @@ public class MagazineManager : MonoBehaviour
     public void Mid()
     {
         Debug.Log("as;lkdjsa;ldk");
+        DATA_HOLDER.IsMagazineMain = false;
     }
 
     public void Low()
     {
-        Debug.Log("as;lkdjsa;ldk");
+        main.enabled = false;
+        ValueStore.enabled = true;
+        DATA_HOLDER.IsMagazineMain = false;
     }
 
     public void BackToMainMagazine()
@@ -141,7 +140,7 @@ public class MagazineManager : MonoBehaviour
         main.enabled = true;
         Updates.enabled = false;
         Skins.enabled = false;
-       // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
+        // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
         DATA_HOLDER.IsMagazineMain = true;
     }
 
@@ -153,7 +152,7 @@ public class MagazineManager : MonoBehaviour
             main.enabled = true;
             Updates.enabled = false;
             Skins.enabled = false;
-           // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
+            // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
             DATA_HOLDER.IsMagazineMain = true;
         }
 

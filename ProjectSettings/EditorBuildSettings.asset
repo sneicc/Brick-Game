@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/LevelMap.unity
-    guid: d24d17ffb6ad11343902884a43d2437a
+    guid: 547a0311b5836c34398c3fdb56303b2a
   - enabled: 1
     path: Assets/Scenes/Magazine.unity
     guid: e556027cbf89807419252b544692bba0
