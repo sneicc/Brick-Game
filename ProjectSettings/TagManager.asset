@@ -6,14 +6,20 @@ TagManager:
   tags:
   - Brick
   - LevelMap
+  - GameManager
+  - Platform
+  - GameBall
+  - DoublingMod
+  - SpeedMod
+  - UI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Balls
   - Water
   - UI
-  - 
+  - IngameUI
   - 
   - 
   - 
