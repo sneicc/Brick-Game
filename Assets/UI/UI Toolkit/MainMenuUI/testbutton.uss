@@ -1,0 +1,91 @@
+.testbutton {
+    background-color: rgb(115, 177, 204);
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    border-left-color: rgb(0, 255, 200);
+    border-right-color: rgb(0, 255, 200);
+    border-top-color: rgb(0, 217, 255);
+    border-bottom-color: rgb(0, 217, 255);
+}
+
+.textbutton:hover {
+    background-color: rgb(224, 199, 130);
+    border-left-color: rgb(233, 209, 34);
+    border-right-color: rgb(233, 209, 34);
+    border-top-color: rgb(197, 146, 0);
+    border-bottom-color: rgb(197, 146, 0);
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    transition-duration: 350ms;
+}
+
+.testbutton:active {
+    border-left-color: rgb(0, 188, 78);
+    border-right-color: rgb(0, 188, 78);
+    border-top-color: rgb(0, 209, 135);
+    border-bottom-color: rgb(0, 209, 135);
+    background-color: rgb(62, 183, 47);
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    opacity: 1;
+    transition-duration: 350ms;
+}
+
+.text1 {
+    font-size: 28px;
+}
+
+.MoneyIMG {
+    width: 50px;
+    height: 50px;
+}
+
+.MGButtton {
+    width: 49%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.MGButttonBig {
+    height: 50%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.MG_IMG {
+    background-image: url('project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/d_expertbuhochristmas.png?fileID=2800000&guid=c887ed2a931c29040bc544cd8c546e9f&type=3#d_expertbuhochristmas');
+    width: 70%;
+    height: 60%;
+    margin-left: initial;
+    margin-top: initial;
+    left: 13%;
+    top: 8%;
+}
+
+.VE_correct {
+    width: 128px;
+}
