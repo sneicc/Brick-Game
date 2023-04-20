@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Cinemachine.DocumentationSortingAttribute;
@@ -25,6 +26,12 @@ public sealed class GameManager : MonoBehaviour
 
     public static float LevelStartTime { get; private set; }
     private static bool[] LevelStatus = new bool[NumberOfLevels];
+
+
+    //==========
+    public static event EventHandler CoinsChanged;
+    public static event EventHandler DiamondChanged;
+    //==========
 
     public static void AddLive()
     {
@@ -62,7 +69,8 @@ public sealed class GameManager : MonoBehaviour
 
     private static void LoadLevel(int level)
     {
-       SceneManager.LoadScene("Level " + level);
+       SceneManager.LoadScene($"Level{level}", LoadSceneMode.Single);
+       SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);
     }
 
     public static void OpenPauseMenu()
@@ -104,6 +112,7 @@ public sealed class GameManager : MonoBehaviour
     public static void AddCoins(int cost)
     {
         if(cost >= 0) Coins += cost;
+        CoinsChanged?.Invoke(null, EventArgs.Empty);
     }
 
     public static bool RemoveCoins(int cost) 
@@ -113,6 +122,7 @@ public sealed class GameManager : MonoBehaviour
             if (cost >= 0)
             {
                 Coins -= cost;
+                CoinsChanged?.Invoke(null, EventArgs.Empty);
                 return true;
             }
         }
@@ -122,6 +132,7 @@ public sealed class GameManager : MonoBehaviour
     public static void AddDaimonds(int cost)
     {
         if (cost >= 0) Daimonds += cost;
+        DiamondChanged?.Invoke(null, EventArgs.Empty);
     }
 
     public static bool RemoveDaimonds(int cost)
@@ -131,6 +142,7 @@ public sealed class GameManager : MonoBehaviour
             if (cost >= 0)
             {
                 Coins -= cost;
+                DiamondChanged?.Invoke(null, EventArgs.Empty);
                 return true;
             }
         }

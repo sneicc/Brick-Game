@@ -1316,6 +1316,8 @@ MonoBehaviour:
   MainButton: {fileID: 740334015}
   MainButtonSpriteMENU: {fileID: 21300000, guid: 2b3bbd75315598c44bf8bab6b4b15293, type: 3}
   MainButtonSpriteCROSS: {fileID: 21300000, guid: 039e728f4d8909f4d8cd9bc34f0cfa54, type: 3}
+  COINS_COUNT: {fileID: 298516251}
+  DIAMOND_COUNT: {fileID: 2112344429}
 --- !u!4 &959954715
 Transform:
   m_ObjectHideFlags: 0

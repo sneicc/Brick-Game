@@ -1,24 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelMapControl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Button[] buttons;
 
-    private void Awake()
-    {
-        SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
-    }
+
     void Start()
     {
-        
+
+        SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
+        ButtonInitialize();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ButtonInitialize()
     {
-        
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            Button button = buttons[i];
+
+            int level = i;
+            button.onClick.AddListener(() => GameManager.NewGame(level));
+        }
     }
 }
