@@ -23,9 +23,6 @@ public class BallB : MonoBehaviour
     public Rigidbody RB;
 	public Material CloneMaterial;
 
-
-	private Vector3 StartPos;
-
 	public Vector3[] PrevVelocity;
 
 	public bool IsClone = false;
@@ -35,9 +32,11 @@ public class BallB : MonoBehaviour
 	/// Количество действующих модификаторов скорости
 	/// </summary>
 	public int SpeedModCounter = 0;
+	private Vector3 _spawn;
 
 	private void Awake()
 	{
+        _spawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
         MainSpeed = BounceSpeed = GameManager.Speed;
         Damage = GameManager.Damage;
 
@@ -49,13 +48,6 @@ public class BallB : MonoBehaviour
         XCounterStuck = 0;
 		YCounterStuck = 0;
 		LastPos = transform.position;
-
-        StartPos = new Vector3
-			(
-				StartPos.x = 17.63f,
-				StartPos.y = 6.56f,
-				StartPos.z = -4.24f
-            );
 
         RB = GetComponent<Rigidbody>();
 		if (!IsClone) Invoke(nameof(ResetBall), 2f);
@@ -126,19 +118,11 @@ public class BallB : MonoBehaviour
 		LastPos = transform.position;
 	}
 
-	private void FixedUpdate()
-	{
-		//if (RB.velocity.magnitude > MaxSpeed)
-		//{
-		//	RB.velocity = RB.velocity.normalized * MaxSpeed; // возможно вызывает проблемы
-		//}		
-	}
-
 	private void ResetBall()
 	{
 		BounceSpeed = MainSpeed;
         gameObject.SetActive(true);
-        gameObject.transform.position = StartPos;
+        gameObject.transform.position = _spawn;
 
 		RB.velocity = Vector3.zero;
         Vector3 force = new Vector3(Random.Range(-1f, 1f), -1f,0);

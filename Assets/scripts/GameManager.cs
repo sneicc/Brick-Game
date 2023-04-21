@@ -25,13 +25,41 @@ public sealed class GameManager : MonoBehaviour
     public static int Score { get; private set; }
 
     public static float LevelStartTime { get; private set; }
+
     private static bool[] LevelStatus = new bool[NumberOfLevels];
+    private static int _bricksOnLevel;
 
 
     //==========
     public static event EventHandler CoinsChanged;
     public static event EventHandler DiamondChanged;
     //==========
+
+    private void Awake()
+    {
+#if DEBUG
+        Lives = 3;
+#endif
+        DontDestroyOnLoad(gameObject);
+        Instance = this;
+        _bricksOnLevel = 0;
+    }
+
+    private void Start()
+    {
+
+    }
+
+    public static void AddBrick()
+    {
+        _bricksOnLevel++;
+    }
+
+    public static void RemoveBrick()
+    {
+        _bricksOnLevel--;
+        if (_bricksOnLevel == 0) EndGame();
+    }
 
     public static void AddLive()
     {
@@ -45,9 +73,18 @@ public sealed class GameManager : MonoBehaviour
 
     private static void EndGame()
     {
-        int stars = CalculateStart();
-        //endGameMenu.getcomponent<script>().StarsAmount()
-        //(Canvas) endGameMenu.SetActive(stars);
+        PauseGame();
+        if(Lives > 0)
+        {
+            //endGameMenu.getcomponent<script>().StarsAmount()
+            //(Canvas) endGameMenu.SetActive(true);
+            int stars = CalculateStart();
+        }
+        else
+        {
+            //(Canvas)losseGameMenu.SetActive(true);
+        }            
+        
         throw new NotImplementedException();
     }
 
@@ -75,13 +112,13 @@ public sealed class GameManager : MonoBehaviour
 
     public static void OpenPauseMenu()
     {
-        //(Canvas) pauseMenu.SetActive(true);;
+        //(Canvas) pauseMenu.SetActive(true);
         PauseGame();
     }
 
     public static void ClosePauseMenu()
     {
-        //(Canvas) pauseMenu.SetActive(false);;
+        //(Canvas) pauseMenu.SetActive(false);
         ResumeGame();
     }
 
@@ -93,20 +130,6 @@ public sealed class GameManager : MonoBehaviour
     private static void ResumeGame()
     {
         Time.timeScale = 1f; // возобновить время
-    }
-
-    private void Awake()
-    {
-#if DEBUG
-        Lives = 3;
-#endif
-        DontDestroyOnLoad(gameObject);
-        Instance = this;
-    }
-
-    private void Start()
-    {
-        
     }
 
     public static void AddCoins(int cost)

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class TOPBAR_MAINBUTTON : MonoBehaviour
 {
 
-    public Animator animation;
+    private Animator AnimatorBTN;
 
     public Button MainButton;
 
@@ -26,9 +26,16 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
 
     private static bool ButtonSprite = true;
 
+    private void Awake()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        AnimatorBTN = MainButton.GetComponent<Animator>();
+
         if (ButtonSprite == true)
         {
             MainButton.image.sprite = MainButtonSpriteMENU;
@@ -37,7 +44,6 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
         {
             MainButton.image.sprite = MainButtonSpriteCROSS;
         }
-
 
         GameManager.CoinsChanged += OnCoinsChanged;
         GameManager.DiamondChanged += OnDiamondChanged;
@@ -62,13 +68,20 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
     public void MainClick()
     {
         // 1 - magazine, 0 - levelmap
+        AnimatorBTN.SetTrigger("Test");
 
-        animation.SetTrigger("StartAnimation");
+        StartCoroutine(AnimationCourutine());      
+    }
 
-        //Не отрабатывает
+    IEnumerator AnimationCourutine()
+    {
+        yield return new WaitForSeconds(1.5f);
 
-        StartCoroutine(AnimationCourutine());
+        LoadScenes();
+    }
 
+    private static void LoadScenes()
+    {
         if (DATA_HOLDER.currentScene.buildIndex == 1 && DATA_HOLDER.IsMagazineMain == false)
         {
             SceneManager.LoadScene("MAGAZINE", LoadSceneMode.Single);
@@ -79,17 +92,12 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
             SceneManager.LoadScene(0, LoadSceneMode.Single);
             ButtonSprite = true;
         }
-        else if(DATA_HOLDER.currentScene.buildIndex == 0)
+        else if (DATA_HOLDER.currentScene.buildIndex == 0)
         {
             SceneManager.LoadScene("MAGAZINE", LoadSceneMode.Single);
             SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
             ButtonSprite = false;
         }
-    }
-
-    IEnumerator AnimationCourutine()
-    {
-        yield return new WaitForSeconds(10);
     }
 
     // Update is called once per frame

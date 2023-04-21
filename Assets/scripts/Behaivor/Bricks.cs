@@ -23,6 +23,8 @@ public class Bricks : MonoBehaviour
     public TextMeshProUGUI HPText;
     void Start()
     {
+        GameManager.AddBrick();
+
         Renderer = GetComponent<Renderer>();
         if(!Unbreakable && !Fragile)
         {
@@ -38,6 +40,11 @@ public class Bricks : MonoBehaviour
         }
         SetHPText();
         RangeMaxBorder = HP;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.RemoveBrick();
     }
 
     // Update is called once per frame
