@@ -12,6 +12,7 @@ TagManager:
   - DoublingMod
   - SpeedMod
   - UI
+  - StartTimer
   layers:
   - Default
   - TransparentFX

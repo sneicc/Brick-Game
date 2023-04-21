@@ -50,7 +50,7 @@ public class BallB : MonoBehaviour
 		LastPos = transform.position;
 
         RB = GetComponent<Rigidbody>();
-		if (!IsClone) Invoke(nameof(ResetBall), 2f);
+		if (!IsClone) ResetBall();
 		else gameObject.GetComponent<Renderer>().material = CloneMaterial;
 
         PrevVelocity = new Vector3[2] { RB.velocity, RB.velocity };

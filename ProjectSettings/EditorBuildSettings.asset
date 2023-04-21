@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level0.unity
     guid: 36227fae637cbea4b8988855b016a7c9
+  - enabled: 1
+    path: Assets/Scenes/StartTimer.unity
+    guid: 7a4e2f5d85e3e0647a0868a8fd32e44d
   m_configObjects: {}
