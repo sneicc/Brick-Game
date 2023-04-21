@@ -65,7 +65,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1843252842948316905, guid: 48f8d8ad77e0d0c4087e3f31047e60c5, type: 3}
       propertyPath: m_Name
-      value: TriangularBrick (8)
+      value: TriangularBrickFitSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 5301976765636383864, guid: 48f8d8ad77e0d0c4087e3f31047e60c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.560717
+      objectReference: {fileID: 0}
+    - target: {fileID: 5301976765636383864, guid: 48f8d8ad77e0d0c4087e3f31047e60c5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.560717
+      objectReference: {fileID: 0}
+    - target: {fileID: 5301976765636383864, guid: 48f8d8ad77e0d0c4087e3f31047e60c5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5607176
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f8d8ad77e0d0c4087e3f31047e60c5, type: 3}

@@ -106,7 +106,7 @@ public sealed class GameManager : MonoBehaviour
 
     private static void LoadLevel(int level)
     {
-       SceneManager.LoadScene($"Level{level}", LoadSceneMode.Single);
+       SceneManager.LoadScene($"Level {level}", LoadSceneMode.Single);
        SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);
     }
 
