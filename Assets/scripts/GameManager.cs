@@ -37,6 +37,12 @@ public sealed class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance is not null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
 #if DEBUG
         Lives = 3;
 #endif

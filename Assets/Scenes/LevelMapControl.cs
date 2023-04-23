@@ -16,17 +16,17 @@ public class LevelMapControl : MonoBehaviour
     {
 
         SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
-        ButtonInitialize();
+        //ButtonInitialize();
     }
 
-    private void ButtonInitialize()
-    {
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            Button button = buttons[i];
+    //private void ButtonInitialize()
+    //{
+    //    for (int i = 0; i < buttons.Length; i++)
+    //    {
+    //        Button button = buttons[i];
 
-            int level = i;
-            button.onClick.AddListener(() => GameManager.NewGame(level));
-        }
-    }
+    //        int level = i;
+    //        button.onClick.AddListener(() => GameManager.NewGame(level));
+    //    }
+    //}
 }

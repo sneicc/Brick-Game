@@ -48,7 +48,6 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
         GameManager.CoinsChanged += OnCoinsChanged;
         GameManager.DiamondChanged += OnDiamondChanged;
 
-
         COINS_COUNT.text = GameManager.Coins.ToString();
         DIAMOND_COUNT.text = GameManager.Daimonds.ToString();
 
@@ -57,7 +56,7 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
 
     private void OnDiamondChanged(object sender, EventArgs e)
     {
-        DIAMOND_COUNT.text = GameManager.Coins.ToString();
+        DIAMOND_COUNT.text = GameManager.Daimonds.ToString();
     }
 
     private void OnCoinsChanged(object sender, EventArgs e)
@@ -70,12 +69,12 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
         // 1 - magazine, 0 - levelmap
         AnimatorBTN.SetTrigger("Test");
 
-        StartCoroutine(AnimationCourutine());      
+        StartCoroutine(AnimationCourutine()); //может убрать ? или сделать анимацию раза в 2 быстрее, а то слишком долго жать надо или вообще поменять анимацию на увеличение размера кнопки а а а  а а а а а а а ???????? ?А?А??А ??А ?А? ?А??А ?А?А? ?А? А?А? ?А? ?А? А??А? А? ?А?А??А? ?А? ?А?А? ?А? ??А?А?А ??А ?А? А? А?? А??А? ?А ?А?А? ?А? А?А??А ?А? ?А? А? А??А? ?А? ?А?А ? А? А?А ?? А? А?А?А ? ?А?А ?? ?А?? А?А ?А?А?А?А?А?А??А?А??А?А?А?А??А?А?А??А?А?А??А?А??А?А?А??А?А?А??А?А?А??А?А?А??А?А??А?А?А?А??А?А??А?А?А?ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА  Мертвая змея не шипитНе щебечет дохлый щеголМертвый негр не идет играть в баскетбол Только мертвый негр не идет играть в баскетболАй - я - я - яй! Убили неграУбили негра. УбилиАй - я - я - яй! Ни за что ни про что, суки, замочилиАй - я - я - яй! Убили неграУбили негра. УбилиАй - я - я - яй! Ни за что ни про что, суки, замочилиРуки сложив на животТретий день не ест и не пьетНегр лежит и хип - хоп танцевать не идетТолько мертвый негр хип - хоп танцевать не идетАй - я - я - яй! Убили неграУбили негра. УбилиАй - я - я - яй! Ни за что ни про что,Ай-я - я - яй! Убили неграУбили негра. УбилиАй - я - я - яй! Ни за что ни про что, суки, замочилиА мама осталась однаМама привела колдунаОн ударил в тамтам и Билли встал и пошёлДаже мертвый негр услышал тамтам и пошёлНу и что, что зомбиЗато он встал и пошёлЗомби тоже могут, могут играть в баскетболАй - я - я - яй! Убили неграУбили негра. УбилиАй - я - я - яй! Ни за что ни про что, суки, замочилиАй - я - я - яй убили негра убили а потом отрешили и билиАй - я - я - яй убили негра ай - я - я - яй не за что не про чтоАй - я - я - яй убили негра убили негра убили а потом он встал и пошёл
     }
 
     IEnumerator AnimationCourutine()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
         LoadScenes();
     }
@@ -103,8 +102,6 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            GameManager.AddCoins(1);
-            GameManager.AddDaimonds(1);
 
     }
 }
