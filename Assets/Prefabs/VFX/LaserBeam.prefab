@@ -92,7 +92,7 @@ LineRenderer:
         inWeight: 0
         outWeight: 0.18188305
       - serializedVersion: 3
-        time: 1
+        time: 0.0738464
         value: 1
         inSlope: 0.035647154
         outSlope: 0.035647154

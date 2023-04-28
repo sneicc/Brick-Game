@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4431557799201808170}
   - component: {fileID: 4431557799201808171}
   m_Layer: 0
-  m_Name: DestroyVFX
+  m_Name: BasicDestroyVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -661,14 +661,14 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 0
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 352.604, y: 90, z: -0.00000043046828}
+    m_Rotation: {x: 338.25558, y: 270, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0

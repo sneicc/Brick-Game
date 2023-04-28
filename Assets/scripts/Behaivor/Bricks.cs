@@ -10,6 +10,7 @@ public class Bricks : MonoBehaviour
     public Material[] Materials;
     private Renderer Renderer;
     public ParticleSystem VFX;
+    public ParticleSystem BasicVFX;
 
     public bool Unbreakable;
     public bool Fragile;
@@ -75,7 +76,8 @@ public class Bricks : MonoBehaviour
         if (Fragile || HP <= 0)
         {
             gameObject.SetActive(false);
-            if(collision is not null) ShowVFX(collision);
+            if (collision is not null) ShowVFXBallBrick(collision);
+            else ShowVFXBasic();
         }
         else if (Gradient)
         {
@@ -86,6 +88,13 @@ public class Bricks : MonoBehaviour
         {
             Renderer.material = Materials[HP - 1];
         }
+    }
+
+    private void ShowVFXBasic()
+    {
+        if (BasicVFX is null) return;
+
+        Instantiate(BasicVFX.gameObject, transform.position, transform.rotation);
     }
 
     public void Hit(int Damage)
@@ -102,16 +111,23 @@ public class Bricks : MonoBehaviour
         if (HPText is not null) HPText.text = HP.ToString();
     }
 
-    private void ShowVFX(Collision collision)
+    private void ShowVFXBallBrick(Collision collision)
     {
         if (VFX is null) return;
 
         var shape = VFX.shape;
         //Vector3 rotation = new Vector3(collision.transform.eulerAngles.x, 90, 0);
-        Quaternion quaternion = Quaternion.LookRotation(collision.gameObject.GetComponent<BallB>().PrevVelocity[1]);
-        Vector3 rotation = quaternion.eulerAngles;
-        shape.rotation = rotation;// * -1f;
-        Instantiate(VFX.gameObject, transform.position, transform.rotation);
+        try 
+        {
+            Quaternion quaternion = Quaternion.LookRotation(collision.gameObject.GetComponent<BallB>().PrevVelocity[1]);
+            Vector3 rotation = quaternion.eulerAngles;
+            shape.rotation = rotation;// * -1f;
+            Instantiate(VFX.gameObject, transform.position, transform.rotation);
+        }
+        catch
+        {
+            Debug.Log($"{collision.gameObject.name} не имеет компонент BallB");
+        }       
     }
 
     private float ConvertRange(float oldMinBorder, float oldMaxBorder, float newMinBorder,float newMaxBorder, float value)
