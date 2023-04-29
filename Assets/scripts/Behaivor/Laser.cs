@@ -8,6 +8,10 @@ public class Laser : MonoBehaviour
 {
     public int WorkTime = 2;
     public int Dagame = 10;
+    /// <summary>
+    /// Размер части лазера наносящий урон
+    /// </summary>
+    public float LaserThickness = 0.2f;
 
     public bool ShootRight;
     public bool ShootLeft;
@@ -20,9 +24,12 @@ public class Laser : MonoBehaviour
 
     public LineRenderer LaserBeam;
     public GameObject LaserContactPoint;
+    public GameObject LaserShootPoint;
+
+    public GameObject LaserLens;
 
     private float _leftBound, _rightBound, _topBound, _bottomBound;
-    private bool _isActive;
+    private bool _isActive = false;
 
     private float _heightOffset;
     private float _raycastLength = 2000f;
@@ -42,8 +49,36 @@ public class Laser : MonoBehaviour
         _rightBound = cameraPosition.x + cameraWidth / 2f - BoundOffset;
         _bottomBound = FindBorder(Vector3.down, borderMask).y;
         _topBound = FindBorder(Vector3.up, borderMask).y;
+
+        InstantiateLenses();
     }
 
+    private void InstantiateLenses()
+    {
+        MeshCollider collider = GetComponent<MeshCollider>();
+        Bounds bounds = collider.bounds;
+        float lensOffset = LaserLens.GetComponent<Renderer>().bounds.size.x * 0.5f; // половина ширины линзы
+        if (ShootRight)
+        {
+            Vector3 rightBoundsCenter = new Vector3(bounds.max.x + lensOffset, bounds.center.y, bounds.center.z);
+            Instantiate(LaserLens, rightBoundsCenter, Quaternion.Euler(0, 0, -90)).transform.parent = transform;
+        }
+        if (ShootLeft)
+        {
+            Vector3 leftBoundsCenter = new Vector3(bounds.min.x - lensOffset, bounds.center.y, bounds.center.z);
+            Instantiate(LaserLens, leftBoundsCenter, Quaternion.Euler(0, 0, 90)).transform.parent = transform;
+        }
+        if (ShootUp)
+        {
+            Vector3 upperBoundsCenter = new Vector3(bounds.center.x, bounds.max.y + lensOffset, bounds.center.z);
+            Instantiate(LaserLens, upperBoundsCenter, Quaternion.Euler(0, 0, 0)).transform.parent = transform;
+        }
+        if (ShootDown)
+        {
+            Vector3 bottomBoundsCenter = new Vector3(bounds.center.x, bounds.min.y - lensOffset, bounds.center.z);
+            Instantiate(LaserLens, bottomBoundsCenter, Quaternion.Euler(0, 0, -180)).transform.parent = transform;
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -62,22 +97,22 @@ public class Laser : MonoBehaviour
         if (ShootRight)
         {
             ShootLaserRight();
-            MakeDamage(transform.right);
+            MakeDamage(Vector3.right);
         }
         if (ShootLeft)
         {
             ShootLaserLeft();
-            MakeDamage(-transform.right);
+            MakeDamage(Vector3.left);
         }
         if (ShootUp)
         {
             ShootLaserUp();
-            MakeDamage(transform.up);
+            MakeDamage(Vector3.up);
         }
         if (ShootDown)
         {
             ShootLaserDown();
-            MakeDamage(-transform.up);
+            MakeDamage(Vector3.down);
         }
 
         Destroy(gameObject, WorkTime);
@@ -140,10 +175,10 @@ public class Laser : MonoBehaviour
     private void MakeDamage(Vector3 direction)
     {
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, direction, _raycastLength);
-
+        hits = Physics.SphereCastAll(transform.position, LaserThickness, direction);
         foreach (var hit in hits)
         {
+            Debug.Log(hit.collider.name);
             if (hit.collider.CompareTag("Brick"))
             {
                 hit.collider.GetComponent<Bricks>().Hit(Dagame);
@@ -154,4 +189,13 @@ public class Laser : MonoBehaviour
             }
         }
     }
+
+#if DEBUG
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, LaserThickness);
+    }
+#endif
+
 }

@@ -13,6 +13,7 @@ TagManager:
   - SpeedMod
   - UI
   - StartTimer
+  - Laser
   layers:
   - Default
   - TransparentFX
