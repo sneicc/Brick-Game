@@ -10,6 +10,7 @@ public class Explosion : Modifier
     /// <summary>
     /// Отличное от 0 значение приведёт к блокировке кнопки на X секунд после её нажатия
     /// </summary>
+    /// 
     public int ExplosionTime = 5; 
     public int ExplosionAmount = 10;
     public int ExplosionPrice = 10;
@@ -19,6 +20,7 @@ public class Explosion : Modifier
     public int ExplosionUpgradeIndex = 0;
 
     public float ExplosionRadius = 0.7f;
+    public float ExplosionOffset = 0.1f;
 
     private bool waitingForClick = false;
 
@@ -46,7 +48,7 @@ public class Explosion : Modifier
 
     public void OnButtonClick()
     {
-        if(Amount > 0) ChangeState();
+        if (Amount > 0) ChangeState();      
     }
 
     private void ChangeState()
@@ -71,21 +73,28 @@ public class Explosion : Modifier
     private void Update()
     {
         if (!waitingForClick) return;
-        if (!Input.GetMouseButtonDown(0)) return;
-        if (EventSystem.current.IsPointerOverGameObject() &&
-            EventSystem.current.currentSelectedGameObject != null &&
-            EventSystem.current.currentSelectedGameObject.layer == LayerMask.NameToLayer("UI")) return;//Выход, если курсор над элементом UI НЕ РАБОТАЕТ !!!
-        if (!Spend()) return;
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;               
-        if (Physics.Raycast(ray, out hit))
+        if (Input.touchCount > 0)
         {
-            Instantiate(ExplosionVFX, new Vector3(hit.point.x, hit.point.y, hit.point.z - 1f), new Quaternion());
+            if (!(Input.GetTouch(0).phase == TouchPhase.Began)) return;
+        }
+        else return;
+        //if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) &&
+        //    EventSystem.current.currentSelectedGameObject != null &&
+        //    EventSystem.current.currentSelectedGameObject.layer == LayerMask.NameToLayer("UI")) return;//Выход, если курсор над элементом UI НЕ РАБОТАЕТ !!!
+        
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        RaycastHit hit;
+
+        int layerMask = LayerMask.GetMask("Background");
+        if (Physics.Raycast(ray, out hit, 1000f, layerMask))
+        {
+            if (!Spend()) return;
+            Instantiate(ExplosionVFX, new Vector3(hit.point.x, hit.point.y, hit.point.z - ExplosionOffset), Quaternion.Euler(0, 180, 0));
             Collider[] colliders = Physics.OverlapSphere(hit.point, ExplosionRadius);
             MakeDamage(colliders);
+            ChangeState();
         }
-        ChangeState();
     }
 
     private void MakeDamage(Collider[] colliders)

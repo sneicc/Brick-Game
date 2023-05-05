@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Platform : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Platform : MonoBehaviour
     public float Speed = 10;
 
     private Collider _collider;
+    private float _halfScreenWidth;
 
     public float MaxBounceAngle = 80;
 
@@ -19,35 +21,26 @@ public class Platform : MonoBehaviour
         _direction = Vector3.zero;
 
         _collider = GetComponent<Collider>();
+
+        _halfScreenWidth = Screen.width / 2;
     }
 
     void Update()
     {
         if (Input.touchCount > 0)
         {
+            bool uiElementSelected = EventSystem.current.currentSelectedGameObject != null;
+            if (uiElementSelected) return;
+  
             Touch touch = Input.GetTouch(0);
-
-            // Получаем позицию касания
             float touchX = touch.position.x;
 
-            // Получаем ширину экрана
-            float screenWidth = Screen.width;
+            if (touchX < _halfScreenWidth) _direction = Vector3.left;
+            else _direction = Vector3.right;
 
-            // Определяем, какую сторону экрана коснулись
-            if (touchX < screenWidth / 2)
-            {
-                // Нажатие на левую сторону экрана
-                _direction = Vector3.left;
-            }
-            else
-            {
-                // Нажатие на правую сторону экрана
-                _direction = Vector3.right;
-            }
         }
         else
         {
-            // Если нет касаний, останавливаем движение
             _direction = Vector3.zero;
         }
     }

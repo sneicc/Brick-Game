@@ -5259,7 +5259,7 @@ GameObject:
   - component: {fileID: 775720825}
   - component: {fileID: 775720824}
   - component: {fileID: 775720827}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5324,8 +5324,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775720822}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 17.8885, y: 3.2965, z: -3.85}
-  m_LocalScale: {x: 1.3400565, y: 50, z: 0.845849}
+  m_LocalPosition: {x: 17.8885, y: 3.5088, z: -3.85}
+  m_LocalScale: {x: 1.0628083, y: 50, z: 0.845849}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5409,6 +5409,7 @@ MonoBehaviour:
   ExplosionUpgradePrice: 640000005e010000bc020000b00400006c070000
   ExplosionUpgradeIndex: 4
   ExplosionRadius: 0.7
+  ExplosionOffset: 0.1
   ExplosionVFX: {fileID: 9068411099774099659, guid: c857e451574ac2848b6ad0996481359c, type: 3}
 --- !u!114 &776666847
 MonoBehaviour:
@@ -6726,6 +6727,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+--- !u!1 &1076508810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8775931608088090973, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+  m_PrefabInstance: {fileID: 1207193606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1076508811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076508810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a845e800d055a344b0866c54ef4fd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorkTime: 2
+  Dagame: 60
+  LaserThickness: 0.2
+  ShootRight: 0
+  ShootLeft: 1
+  ShootUp: 0
+  ShootDown: 1
+  LaserBeamHeightOffset: 0.2
+  StartPointOffset: 0.2
+  BoundOffset: 0.1
+  LaserBeam: {fileID: 970700431752624662, guid: aa79d7f8edb097641a233025d1cf5274, type: 3}
+  LaserContactPoint: {fileID: 2180956592273709428, guid: 68250f605fd0bfe4b81af7646957eeb1, type: 3}
+  LaserShootPoint: {fileID: 0}
+  LaserLens: {fileID: 6669914549623293785, guid: f8f6b0607adc1374eade4b7390b4fdeb, type: 3}
+--- !u!64 &1076508812
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076508810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 559941b33a2ea0242acf552b9daec853, type: 3}
 --- !u!4 &1094385745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3705199224070191766, guid: a428d2937f41a394290d3ee45686b572, type: 3}
@@ -7410,6 +7456,67 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 559941b33a2ea0242acf552b9daec853, type: 3}
+--- !u!1001 &1207193606
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.617
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.286
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251034186224681959, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775931608088090973, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_Name
+      value: lasers (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775931608088090973, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
+      propertyPath: m_TagString
+      value: Laser
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 706ed54b28d07ec4988490c2731a060a, type: 3}
 --- !u!1001 &1210207088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8472,7 +8579,7 @@ MonoBehaviour:
   LaserThickness: 0.2
   ShootRight: 0
   ShootLeft: 0
-  ShootUp: 0
+  ShootUp: 1
   ShootDown: 1
   LaserBeamHeightOffset: 0.2
   StartPointOffset: 0.2
@@ -12940,6 +13047,10 @@ PrefabInstance:
     - target: {fileID: 8239631813340713438, guid: 15bbfa79b676f5147979d668152cec35, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239631813340713438, guid: 15bbfa79b676f5147979d668152cec35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8401123897417989296, guid: 15bbfa79b676f5147979d668152cec35, type: 3}
       propertyPath: m_RootOrder
