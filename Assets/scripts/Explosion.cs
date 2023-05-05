@@ -57,12 +57,14 @@ public class Explosion : Modifier
         {
             _Button.colors = _colorBuffer;
             waitingForClick = false;
+            GameManager.ResumeGame();
         }
         else
         {                       
             colors.normalColor = colors.selectedColor = colors.highlightedColor = colors.pressedColor;
             _Button.colors = colors;
             waitingForClick = true;
+            GameManager.PauseGame();
         }       
     }
 
@@ -72,7 +74,7 @@ public class Explosion : Modifier
         if (!Input.GetMouseButtonDown(0)) return;
         if (EventSystem.current.IsPointerOverGameObject() &&
             EventSystem.current.currentSelectedGameObject != null &&
-            EventSystem.current.currentSelectedGameObject.layer == LayerMask.NameToLayer("UI")) return;//Выход, если курсор над элементом UI 
+            EventSystem.current.currentSelectedGameObject.layer == LayerMask.NameToLayer("UI")) return;//Выход, если курсор над элементом UI НЕ РАБОТАЕТ !!!
         if (!Spend()) return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

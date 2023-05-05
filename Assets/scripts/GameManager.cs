@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Cinemachine.DocumentationSortingAttribute;
 
 public sealed class GameManager : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public sealed class GameManager : MonoBehaviour
 
     public static List<BallB> Balls = new List<BallB>();
 
-    public static float Speed = 7; //установка через параметры уровная
+    public static float Speed = 6; //установка через параметры уровная
     public static Vector3 SpawnPoint;
     public static int Damage = 10;
     public static int Coins { get; private set; }
@@ -29,6 +27,7 @@ public sealed class GameManager : MonoBehaviour
     private static bool[] LevelStatus = new bool[NumberOfLevels];
     private static int _bricksOnLevel;
 
+    public static bool IsPause { get; private set; }
 
     //==========
     public static event EventHandler CoinsChanged;
@@ -36,7 +35,7 @@ public sealed class GameManager : MonoBehaviour
     //==========
 
     private void Awake()
-    {
+    {     
         if (Instance is not null)
         {
             Destroy(gameObject);
@@ -128,14 +127,16 @@ public sealed class GameManager : MonoBehaviour
         ResumeGame();
     }
 
-    private static void PauseGame()
+    public static void PauseGame()
     {
         Time.timeScale = 0f; // остановить время
+        IsPause = true;
     }
 
-    private static void ResumeGame()
+    public static void ResumeGame()
     {
         Time.timeScale = 1f; // возобновить время
+        IsPause = false;
     }
 
     public static void AddCoins(int cost)
