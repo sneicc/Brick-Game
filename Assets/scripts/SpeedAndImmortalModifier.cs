@@ -37,6 +37,8 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
 
             foreach (var ball in GameManager.Balls)
             {
+                if (!ball.enabled) continue;
+
                 ball.SpeedModCounter++;
                 ball.IsImmortal = true;
                 ball.BounceSpeed +=  UpgradeBonus[UpgradeIndex];

@@ -32,7 +32,9 @@ public class Laser : MonoBehaviour
     private bool _isActive = false;
 
     private float _heightOffset;
-    private float _raycastLength = 2000f;
+    private float _raycastLength = 5000f;
+
+    private int _borderMask;
 
     void Start()
     {
@@ -43,13 +45,10 @@ public class Laser : MonoBehaviour
         float cameraWidth = cameraHeight * mainCamera.aspect;
         Vector3 cameraPosition = mainCamera.transform.position;
 
-        int borderMask = LayerMask.GetMask("Border");
+         _borderMask = LayerMask.GetMask("Border");
 
         _leftBound = cameraPosition.x - cameraWidth / 2f + BoundOffset;
-        _rightBound = cameraPosition.x + cameraWidth / 2f - BoundOffset;
-        _bottomBound = FindBorder(Vector3.down, borderMask).y;
-        _topBound = FindBorder(Vector3.up, borderMask).y;
-
+        _rightBound = cameraPosition.x + cameraWidth / 2f - BoundOffset;        
         InstantiateLenses();
     }
 
@@ -93,6 +92,9 @@ public class Laser : MonoBehaviour
     {
         if (_isActive) return;
         _isActive = true;
+
+        _bottomBound = FindBorder(Vector3.down, _borderMask).y;
+        _topBound = FindBorder(Vector3.up, _borderMask).y;
 
         if (ShootRight)
         {
@@ -178,7 +180,9 @@ public class Laser : MonoBehaviour
         hits = Physics.SphereCastAll(transform.position, LaserThickness, direction);
         foreach (var hit in hits)
         {
+#if DEBUG
             Debug.Log(hit.collider.name);
+#endif
             if (hit.collider.CompareTag("Brick"))
             {
                 hit.collider.GetComponent<Bricks>().Hit(Dagame);
