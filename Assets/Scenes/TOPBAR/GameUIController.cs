@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TOPBAR_MAINBUTTON : MonoBehaviour
+public class GameUIController : MonoBehaviour
 {
 
     private Animator AnimatorBTN;
@@ -20,20 +20,11 @@ public class TOPBAR_MAINBUTTON : MonoBehaviour
     public TextMeshProUGUI COINS_COUNT;
     public TextMeshProUGUI DIAMOND_COUNT;
 
-
-
-    private Scene _currentScene;
-
     private static bool ButtonSprite = true;
-
-    private void Awake()
-    {
-        
-    }
 
     // Start is called before the first frame update
     void Start()
-    {
+    {       
         AnimatorBTN = MainButton.GetComponent<Animator>();
 
         if (ButtonSprite == true)

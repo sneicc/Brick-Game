@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорения до запуска шара
 {
@@ -18,6 +19,8 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
 
     void Awake()
     {
+        if (Instance is not null) Destroy(gameObject);
+
         WorkingTime = SpeedWorkingTime;
         Amount = SpeedAmount;
         Price = SpeedPrice;
@@ -58,5 +61,11 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
                 ball.BounceSpeed -= UpgradeBonus[UpgradeIndex];
             }
         }
+    }
+
+    public void Subscribe(Button button)
+    {
+        _button = button;
+        button.onClick.AddListener(Activate);
     }
 }

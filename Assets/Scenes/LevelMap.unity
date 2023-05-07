@@ -1509,6 +1509,136 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819073192}
   m_CullTransparentMesh: 1
+--- !u!1 &877411861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 877411866}
+  - component: {fileID: 877411865}
+  - component: {fileID: 877411864}
+  - component: {fileID: 877411863}
+  - component: {fileID: 877411862}
+  m_Layer: 0
+  m_Name: ModifierManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &877411862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877411861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e01e17cf85a92bb47b7691d933cb70fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionTime: 5
+  ExplosionAmount: 10
+  ExplosionPrice: 10
+  ExplosionUpgrade:
+  - 10
+  - 15
+  - 20
+  - 25
+  - 30
+  ExplosionUpgradePrice: 640000005e010000bc020000b00400006c070000
+  ExplosionUpgradeIndex: 0
+  ExplosionRadius: 0.7
+  ExplosionOffset: 0.1
+  ExplosionVFX: {fileID: 9068411099774099659, guid: c857e451574ac2848b6ad0996481359c, type: 3}
+--- !u!114 &877411863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877411861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11df9b55413680c469bed617b555de60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoublingTime: 5
+  DoublingAmount: 10
+  DoublingPrice: 10
+  DoublingUpgrade:
+  - 2
+  - 2.5
+  - 3
+  - 3.5
+  - 4
+  DoublingUpgradePrice: 640000005e010000bc020000b00400006c070000
+  DoublingIndex: 0
+--- !u!114 &877411864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877411861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56610bcd4976884cad723e75bf5d4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedWorkingTime: 5
+  SpeedAmount: 10
+  SpeedPrice: 10
+  SpeedUpgrade:
+  - 1.5
+  - 2
+  - 2.5
+  - 3
+  - 3.5
+  SpeedUpgradePrice: 640000005e010000bc020000b00400006c070000
+  SpeedUpgradeIndex: 0
+--- !u!114 &877411865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877411861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ed2537e82a16441a8d8ab09e0dd877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageWorkingTime: 5
+  DamageModifierAmount: 10
+  DamageModifierPrice: 10
+  DamageModifierUpgrade:
+  - 2
+  - 2.5
+  - 3
+  - 3.5
+  - 4
+  DamageModifierUpgradePrice: 640000005e010000bc020000b00400006c070000
+  DamageModifierIndex: 0
+--- !u!4 &877411866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877411861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 542.80206, y: 975.7355, z: -935.48755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1038278849
 GameObject:
   m_ObjectHideFlags: 0

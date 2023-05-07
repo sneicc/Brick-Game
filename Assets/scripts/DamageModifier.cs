@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм менеджере или создать отедльный менеджер модов, получать необходимую кнопку из загруженной сцены по тегу или имени
 {  
@@ -20,6 +23,8 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
 
     void Awake()
     {
+        if(Instance is not null) Destroy(gameObject);
+
         WorkingTime = DamageWorkingTime;
         Amount = DamageModifierAmount;
         Price = DamageModifierPrice;
@@ -52,6 +57,12 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
         {
             if (!ReferenceEquals(ball, null)) ball.Damage = GameManager.Damage;
         }
+    }
+
+    public void Subscribe(Button button)
+    {
+        _button = button;
+        button.onClick.AddListener(Activate);
     }
 
     //public void Disable()

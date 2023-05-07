@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DoublingAllBalls : Modifier, IModifier
 {
@@ -19,6 +20,8 @@ public class DoublingAllBalls : Modifier, IModifier
 
     void Awake()
     {
+        if(Instance is not null) Destroy(gameObject);
+
         WorkingTime = DoublingTime;
         Amount = DoublingAmount;
         Price = DoublingPrice;
@@ -80,5 +83,11 @@ public class DoublingAllBalls : Modifier, IModifier
         else if (!Physics.CheckSphere(down, trueRadius)) return down;
         else if (!Physics.CheckSphere(up, trueRadius)) return up;
         else return originalPosition;
+    }
+
+    public void Subscribe(Button button)
+    {
+        _button = button;
+        button.onClick.AddListener(Activate);
     }
 }

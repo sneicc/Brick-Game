@@ -38,14 +38,15 @@ public abstract class Modifier : MonoBehaviour
     /// <summary>
     /// Кнопка к которой привязан модификатор.
     /// </summary>
-    protected Button _Button;
+    protected Button _button;
 
     /// <summary>
     /// При запуске приложения получает ссылку на кнопку.
     /// </summary>
-    protected virtual void  Start()
+    /// 
+    protected virtual void Start()
     {
-        _Button = gameObject.GetComponent<Button>();
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
@@ -98,8 +99,8 @@ public abstract class Modifier : MonoBehaviour
     {
         if (workingTime <= 0) yield break; 
 
-        _Button.interactable = false;
+        _button.interactable = false;
         yield return new WaitForSeconds(workingTime);
-        _Button.interactable = true;
+        _button.interactable = true;
     }
 }

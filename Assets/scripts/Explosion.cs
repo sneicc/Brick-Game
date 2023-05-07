@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,8 @@ public class Explosion : Modifier
     public GameObject ExplosionVFX;
     void Awake()
     {
+        if (Instance is not null) Destroy(gameObject);
+
         WorkingTime = ExplosionTime;
         Amount = ExplosionAmount;
         Price = ExplosionPrice;
@@ -43,28 +46,27 @@ public class Explosion : Modifier
     protected override void Start()
     {
         base.Start();
-        _colorBuffer = _Button.colors;  
     }
 
-    public void OnButtonClick()
+    public void Activate()
     {
         if (Amount > 0) ChangeState();      
     }
 
     private void ChangeState()
     {
-        var colors = _Button.colors;
+        var colors = _button.colors;
 
         if (waitingForClick)
         {
-            _Button.colors = _colorBuffer;
+            _button.colors = _colorBuffer;
             waitingForClick = false;
             GameManager.ResumeGame();
         }
         else
         {                       
             colors.normalColor = colors.selectedColor = colors.highlightedColor = colors.pressedColor;
-            _Button.colors = colors;
+            _button.colors = colors;
             waitingForClick = true;
             GameManager.PauseGame();
         }       
@@ -108,5 +110,12 @@ public class Explosion : Modifier
                 item.GetComponent<Bricks>().Hit(currentDamage);
             }
         }
+    }
+
+    public void Subscribe(Button button)
+    {
+        _button = button;
+        _colorBuffer = _button.colors;
+        button.onClick.AddListener(Activate);
     }
 }
