@@ -41,7 +41,9 @@ public sealed class GameManager : MonoBehaviour
     //==========
 
     private void Awake()
-    {     
+    {
+        Application.targetFrameRate = 120;
+
         if (Instance is not null)
         {
             Destroy(gameObject);
