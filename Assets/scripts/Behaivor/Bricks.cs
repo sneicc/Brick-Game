@@ -47,13 +47,6 @@ public class Bricks : MonoBehaviour
     {
         GameManager.RemoveBrick();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("GameBall"))
@@ -96,7 +89,6 @@ public class Bricks : MonoBehaviour
 
         Instantiate(BasicVFX.gameObject, transform.position, transform.rotation);
     }
-
     public void Hit(int Damage)
     {
         if (Unbreakable) return;

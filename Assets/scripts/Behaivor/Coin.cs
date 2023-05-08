@@ -9,7 +9,7 @@ public class Coin : Currency
     {
         if (other.gameObject.CompareTag("GameBall"))
         {
-            GameManager.AddCoins(Cost);
+            LevelManager.Instance.AddCoins(Cost);
             DesplayCostAndDestroy();
         }       
     }  

@@ -8,7 +8,7 @@ public class Daimond : Currency
     {
         if (other.gameObject.CompareTag("GameBall"))
         {
-            GameManager.AddDaimonds(Cost);
+            LevelManager.Instance.AddDaimonds(Cost);
             DesplayCostAndDestroy();
         }
     }

@@ -30,7 +30,7 @@ public class Spawn : MonoBehaviour
         {
             _text.text = Time.ToString();
 
-            yield return new WaitForSeconds(Time);
+            yield return new WaitForSeconds(1);
 
             Time--;
         }

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class GameUIController : MonoBehaviour
 {
 
-    private Animator AnimatorBTN;
+    protected Animator AnimatorBTN;
 
     public Button MainButton;
 
@@ -20,7 +20,7 @@ public class GameUIController : MonoBehaviour
     public TextMeshProUGUI COINS_COUNT;
     public TextMeshProUGUI DIAMOND_COUNT;
 
-    private static bool ButtonSprite = true;
+    protected static bool ButtonSprite = true;
 
     // Start is called before the first frame update
     void Start()
@@ -45,12 +45,12 @@ public class GameUIController : MonoBehaviour
         DATA_HOLDER.currentScene = SceneManager.GetActiveScene();
     }
 
-    private void OnDiamondChanged(object sender, EventArgs e)
+    protected virtual void OnDiamondChanged()
     {
         DIAMOND_COUNT.text = GameManager.Daimonds.ToString();
     }
 
-    private void OnCoinsChanged(object sender, EventArgs e)
+    protected virtual void OnCoinsChanged()
     {
         COINS_COUNT.text = GameManager.Coins.ToString();
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public sealed class GameManager : MonoBehaviour
@@ -31,8 +32,10 @@ public sealed class GameManager : MonoBehaviour
 
     //Events
     //==========
-    public static event EventHandler CoinsChanged;
-    public static event EventHandler DiamondChanged;
+    public static event Action CoinsChanged;
+    public static event Action DiamondChanged;
+    public static event Action GameLoose;
+    public static event Action GameWin;
     //==========
 
     //Settings
@@ -86,7 +89,7 @@ public sealed class GameManager : MonoBehaviour
     }
 
     private static void EndGame()
-    {
+    {      
         PauseGame();
         if(Lives > 0)
         {
@@ -96,10 +99,9 @@ public sealed class GameManager : MonoBehaviour
         }
         else
         {
+            GameLoose?.Invoke();
             //(Canvas)losseGameMenu.SetActive(true);
         }            
-        
-        throw new NotImplementedException();
     }
 
     private static int CalculateStart()
@@ -118,10 +120,11 @@ public sealed class GameManager : MonoBehaviour
         LoadLevel(level);
     }
 
-    private static void LoadLevel(int level)
-    {
-       SceneManager.LoadScene($"Level {level}", LoadSceneMode.Single);
-       SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);
+    public static void LoadLevel(int level)
+    {       
+        SceneManager.LoadScene($"Level {level}", LoadSceneMode.Single);
+        SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);
+        SceneManager.LoadScene("GAME_LOOSE", LoadSceneMode.Additive);        
     }
 
     public static void OpenPauseMenu()
@@ -151,7 +154,7 @@ public sealed class GameManager : MonoBehaviour
     public static void AddCoins(int cost)
     {
         if(cost >= 0) Coins += cost;
-        CoinsChanged?.Invoke(null, EventArgs.Empty);
+        CoinsChanged?.Invoke();
     }
 
     public static bool RemoveCoins(int cost) 
@@ -161,7 +164,7 @@ public sealed class GameManager : MonoBehaviour
             if (cost >= 0)
             {
                 Coins -= cost;
-                CoinsChanged?.Invoke(null, EventArgs.Empty);
+                CoinsChanged?.Invoke();
                 return true;
             }
         }
@@ -171,7 +174,7 @@ public sealed class GameManager : MonoBehaviour
     public static void AddDaimonds(int cost)
     {
         if (cost >= 0) Daimonds += cost;
-        DiamondChanged?.Invoke(null, EventArgs.Empty);
+        DiamondChanged?.Invoke();
     }
 
     public static bool RemoveDaimonds(int cost)
@@ -181,7 +184,7 @@ public sealed class GameManager : MonoBehaviour
             if (cost >= 0)
             {
                 Coins -= cost;
-                DiamondChanged?.Invoke(null, EventArgs.Empty);
+                DiamondChanged?.Invoke();
                 return true;
             }
         }
