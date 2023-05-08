@@ -29,9 +29,15 @@ public sealed class GameManager : MonoBehaviour
 
     public static bool IsPause { get; private set; }
 
+    //Events
     //==========
     public static event EventHandler CoinsChanged;
     public static event EventHandler DiamondChanged;
+    //==========
+
+    //Settings
+    //==========
+
     //==========
 
     private void Awake()
@@ -70,6 +76,7 @@ public sealed class GameManager : MonoBehaviour
     {
         if (Lives < 6) Lives++;
     }
+
     public  static void RemoveLive()
     {
         Lives--;

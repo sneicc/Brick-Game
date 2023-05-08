@@ -45,7 +45,7 @@ public class Laser : MonoBehaviour
         float cameraWidth = cameraHeight * mainCamera.aspect;
         Vector3 cameraPosition = mainCamera.transform.position;
 
-         _borderMask = LayerMask.GetMask("Border");
+         _borderMask = LayerMask.GetMask("LaserBorder");
 
         _leftBound = cameraPosition.x - cameraWidth / 2f + BoundOffset;
         _rightBound = cameraPosition.x + cameraWidth / 2f - BoundOffset;        

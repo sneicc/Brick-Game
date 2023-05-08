@@ -7,7 +7,6 @@ public class Platform : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
-    private Vector3 _direction; 
     public float Speed = 10;
 
     private Collider _collider;
@@ -15,13 +14,13 @@ public class Platform : MonoBehaviour
 
     public float MaxBounceAngle = 80;
 
+    private Vector3 _targetPosition;
+    public bool _isMoving;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _direction = Vector3.zero;
-
         _collider = GetComponent<Collider>();
-
         _halfScreenWidth = Screen.width / 2;
     }
 
@@ -31,23 +30,44 @@ public class Platform : MonoBehaviour
         {
             bool uiElementSelected = EventSystem.current.currentSelectedGameObject != null;
             if (uiElementSelected) return;
-  
+
             Touch touch = Input.GetTouch(0);
-            float touchX = touch.position.x;
 
-            if (touchX < _halfScreenWidth) _direction = Vector3.left;
-            else _direction = Vector3.right;
+            _targetPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            _targetPosition = new Vector3(_targetPosition.x, transform.position.y, transform.position.z);
 
+            if (touch.phase == TouchPhase.Began) _isMoving = true;
+            else if (touch.phase == TouchPhase.Ended) _isMoving = false;       
         }
         else
         {
-            _direction = Vector3.zero;
+            _isMoving = false;
+            _rigidbody.velocity = Vector3.zero;
         }
     }
 
     private void FixedUpdate()
     {
-        _rigidbody.AddForce(_direction * Speed);
+
+        if (_isMoving)
+        {
+            Vector3 direction = (_targetPosition - transform.position).normalized;
+
+            if (Vector3.Distance(transform.position, _targetPosition) > 0.05f)
+            {
+                _rigidbody.AddForce(direction * Speed);
+            }
+            else
+            {
+                _rigidbody.velocity = Vector3.zero;
+            }
+        }
+        else
+        {
+            _rigidbody.velocity = Vector3.zero;
+        }
+
+        
     }
 
     private void OnCollisionEnter(Collision collision)
