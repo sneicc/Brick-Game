@@ -9,9 +9,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
 
-    private int _coins;
-    private  int _daimonds;
-
     private string _name;
 
     public int LevelCoins { get; private set; }
@@ -29,11 +26,8 @@ public class LevelManager : MonoBehaviour
 
         _name = SceneManager.GetActiveScene().name;
 
-        _coins = GameManager.Coins;
-        _daimonds = GameManager.Daimonds;
-
-        LevelCoins = _coins;
-        LevelDaimonds = _daimonds;
+        LevelCoins = 0;
+        LevelDaimonds = 0;
 
         GameManager.ResumeGame();
     }
@@ -56,8 +50,8 @@ public class LevelManager : MonoBehaviour
 
     private void SaveChanges(float coef)
     {
-        int collectedCoins = (int)Math.Ceiling((LevelCoins - _coins) * coef);
-        int collectedDaimonds = (int)Math.Ceiling((LevelDaimonds - _daimonds) * coef);
+        int collectedCoins = (int)Math.Ceiling(LevelCoins * coef);
+        int collectedDaimonds = (int)Math.Ceiling(LevelDaimonds * coef);
         GameManager.AddCoins(collectedCoins);
         GameManager.AddDaimonds(collectedDaimonds);
     }

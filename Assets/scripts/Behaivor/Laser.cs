@@ -32,7 +32,7 @@ public class Laser : MonoBehaviour
     private bool _isActive = false;
 
     private float _heightOffset;
-    private float _raycastLength = 5000f;
+    private float _raycastLength = 100f;
 
     private int _borderMask;
 
@@ -99,22 +99,22 @@ public class Laser : MonoBehaviour
         if (ShootRight)
         {
             ShootLaserRight();
-            MakeDamage(Vector3.right);
+            StartCoroutine(MakeDamage(Vector3.right));
         }
         if (ShootLeft)
         {
             ShootLaserLeft();
-            MakeDamage(Vector3.left);
+            StartCoroutine(MakeDamage(Vector3.left));
         }
         if (ShootUp)
         {
             ShootLaserUp();
-            MakeDamage(Vector3.up);
+            StartCoroutine(MakeDamage(Vector3.up));
         }
         if (ShootDown)
         {
             ShootLaserDown();
-            MakeDamage(Vector3.down);
+            StartCoroutine(MakeDamage(Vector3.down));
         }
 
         Destroy(gameObject, WorkTime);
@@ -174,7 +174,7 @@ public class Laser : MonoBehaviour
 
     }
 
-    private void MakeDamage(Vector3 direction) //оптимизировать
+    private IEnumerator MakeDamage(Vector3 direction) //оптимизировать
     {
         var lasers = new List<Laser>();
         RaycastHit[] hits;
@@ -193,13 +193,8 @@ public class Laser : MonoBehaviour
 
         foreach (var laser in lasers)
         {
-            StartCoroutine(WaitOneFrame());
+            yield return new WaitForEndOfFrame();
             laser.Activate();
-        }
-
-        IEnumerator WaitOneFrame()
-        {
-            yield return null;
         }
     }
 

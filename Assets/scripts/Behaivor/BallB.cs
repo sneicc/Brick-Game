@@ -20,7 +20,7 @@ public class BallB : MonoBehaviour
 	private int YCounterStuck;
 	public int ReboundLimit = 5;
 
-    public Rigidbody RB;
+    private Rigidbody RB;
 	public Material CloneMaterial;
 
 	public Vector3[] PrevVelocity;
@@ -39,6 +39,7 @@ public class BallB : MonoBehaviour
         _spawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
         MainSpeed = BounceSpeed = GameManager.Speed;
         Damage = GameManager.Damage;
+		RB = gameObject.GetComponent<Rigidbody>();
 
         GameManager.Balls.Add(this);
 	}
