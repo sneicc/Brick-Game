@@ -174,23 +174,32 @@ public class Laser : MonoBehaviour
 
     }
 
-    private void MakeDamage(Vector3 direction)
+    private void MakeDamage(Vector3 direction) //оптимизировать
     {
+        var lasers = new List<Laser>();
         RaycastHit[] hits;
         hits = Physics.SphereCastAll(transform.position, LaserThickness, direction);
         foreach (var hit in hits)
         {
-#if DEBUG
-            Debug.Log(hit.collider.name);
-#endif
             if (hit.collider.CompareTag("Brick"))
             {
                 hit.collider.GetComponent<Bricks>().Hit(Dagame);
             }
             else if (hit.collider.CompareTag("Laser"))
             {
-                hit.collider.GetComponent<Laser>().Activate();
+                lasers.Add(hit.collider.GetComponent<Laser>());
             }
+        }
+
+        foreach (var laser in lasers)
+        {
+            StartCoroutine(WaitOneFrame());
+            laser.Activate();
+        }
+
+        IEnumerator WaitOneFrame()
+        {
+            yield return null;
         }
     }
 

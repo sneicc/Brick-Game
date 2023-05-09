@@ -36,13 +36,11 @@ public class Platform : MonoBehaviour
             _targetPosition = Camera.main.ScreenToWorldPoint(touch.position);
             _targetPosition = new Vector3(_targetPosition.x, transform.position.y, transform.position.z);
 
-            if (touch.phase == TouchPhase.Began) _isMoving = true;
-            else if (touch.phase == TouchPhase.Ended) _isMoving = false;       
+            if (touch.phase == TouchPhase.Began) _isMoving = true;      
         }
         else
         {
             _isMoving = false;
-            _rigidbody.velocity = Vector3.zero;
         }
     }
 
