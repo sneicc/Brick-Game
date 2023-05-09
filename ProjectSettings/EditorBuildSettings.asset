@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Magazine.unity
     guid: e556027cbf89807419252b544692bba0
   - enabled: 1
-    path: Assets/Scenes/GAME_LOSE.unity
+    path: Assets/Scenes/GAME_LOOSE.unity
     guid: 1e830e21935d12f4298dcf2261277833
   - enabled: 1
     path: Assets/Scenes/GAME_WIN.unity
