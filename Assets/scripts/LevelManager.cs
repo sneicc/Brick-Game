@@ -66,7 +66,8 @@ public class LevelManager : MonoBehaviour
     public void Exit(float coef = 1f)
     {
         SaveChanges(coef);
-        SceneManager.LoadScene("LevelMap");
+        GameManager.ResumeGame();
+        SceneManager.LoadScene("LevelMap", LoadSceneMode.Single);
     }
 
     public void NextLevel(float coef = 1f)

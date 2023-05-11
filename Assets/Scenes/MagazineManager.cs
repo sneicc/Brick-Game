@@ -48,7 +48,7 @@ public class MagazineManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         modifier1 = new GameObject();
         modifier2 = new GameObject();
@@ -155,9 +155,15 @@ public class MagazineManager : MonoBehaviour
             // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
             DATA_HOLDER.IsMagazineMain = true;
         }
+    }
 
+    private void OnDestroy()
+    {
+        ButtonUR.onClick.RemoveAllListeners();
+        ButtonUL.onClick.RemoveAllListeners();
+        ButtonMid.onClick.RemoveAllListeners();
+        ButtonLow.onClick.RemoveAllListeners();
 
-
-
+        PowerUPButton.onClick.RemoveAllListeners();
     }
 }

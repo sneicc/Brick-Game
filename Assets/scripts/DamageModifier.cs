@@ -62,7 +62,7 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
     public void Subscribe(Button button)
     {
         _button = button;
-        button.onClick.AddListener(Activate);
+        _button.onClick.AddListener(Activate);
     }
 
     //public void Disable()

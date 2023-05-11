@@ -32,6 +32,7 @@ public sealed class GameManager : MonoBehaviour
 
     //Events
     //==========
+    public static event Action LivesChanged;
     public static event Action CoinsChanged;
     public static event Action DiamondChanged;
     public static event Action GameLoose;
@@ -79,12 +80,17 @@ public sealed class GameManager : MonoBehaviour
 
     public static void AddLive()
     {
-        if (Lives < 6) Lives++;
+        if (Lives < 6) 
+        {          
+            Lives++;
+            LivesChanged?.Invoke();
+        }
     }
 
     public  static void RemoveLive()
-    {
+    {      
         Lives--;
+        LivesChanged?.Invoke();
         if (Lives <= 0) EndGame();
     }
 
@@ -123,8 +129,8 @@ public sealed class GameManager : MonoBehaviour
     public static void LoadLevel(int level)
     {       
         SceneManager.LoadScene($"Level {level}", LoadSceneMode.Single);
-        SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);
-        SceneManager.LoadScene("GAME_LOOSE", LoadSceneMode.Additive);        
+        SceneManager.LoadScene("GAME_LOOSE", LoadSceneMode.Additive);
+        SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);            
     }
 
     public static void OpenPauseMenu()
