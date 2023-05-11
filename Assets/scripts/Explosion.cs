@@ -61,7 +61,7 @@ public class Explosion : Modifier
         {
             _button.colors = _colorBuffer;
             waitingForClick = false;
-            GameManager.ResumeGame();
+            if(!GameManager.IsGameWin) GameManager.ResumeGame();
         }
         else
         {                       
@@ -77,7 +77,7 @@ public class Explosion : Modifier
         if (!waitingForClick) return;
         if (Input.touchCount > 0)
         {
-            if (!(Input.GetTouch(0).phase == TouchPhase.Began)) return;
+            if (Input.GetTouch(0).phase != TouchPhase.Began) return;
         }
         else return;
         //if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) &&

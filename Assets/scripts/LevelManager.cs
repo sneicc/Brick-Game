@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
     public event Action CoinsChanged;
     public event Action DaimondsChanged;
 
+    public int LevelNumber { get; private set; }
+
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class LevelManager : MonoBehaviour
         LevelCoins = 0;
         LevelDaimonds = 0;
 
+        LevelNumber = GetCurrentLevelNumber();
         GameManager.ResumeGame();
     }
     void Update()
@@ -56,24 +59,39 @@ public class LevelManager : MonoBehaviour
         GameManager.AddDaimonds(collectedDaimonds);
     }
 
-    public void Retry(float coef = 1f)
+    private void SaveChanges(int coef)
     {
-        SaveChanges(coef);
-        int level = GetCurrentLevelNumber();
-        GameManager.NewGame(level);
+        LevelCoins *= coef;
+        LevelDaimonds *= coef;
+        GameManager.AddCoins(LevelCoins);
+        GameManager.AddDaimonds(LevelDaimonds);
     }
 
-    public void Exit(float coef = 1f)
+    public void Retry(float coef)
+    {
+        SaveChanges(coef);      
+        GameManager.NewGame(LevelNumber);
+    }
+
+    public void Exit(float coef)
     {
         SaveChanges(coef);
         GameManager.ResumeGame();
         SceneManager.LoadScene("LevelMap", LoadSceneMode.Single);
     }
 
-    public void NextLevel(float coef = 1f)
+    public void Exit()
     {
-        SaveChanges(coef);
-        int level = GetCurrentLevelNumber() + 1;
+        SaveChanges(1);
+        GameManager.ResumeGame();
+        SceneManager.LoadScene("LevelMap", LoadSceneMode.Single);
+    }
+
+    public void NextLevel()
+    {
+        int rewardCoef = 1;
+        SaveChanges(rewardCoef);
+        int level = LevelNumber + 1;
         GameManager.NewGame(level);
     }
 
@@ -82,5 +100,10 @@ public class LevelManager : MonoBehaviour
         int level;
         _ = int.TryParse(_name.Split(' ')[1], out level);
         return level;
+    }
+
+    public void MultiplyRewardX2()
+    {
+        SaveChanges(2);
     }
 }

@@ -208,6 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 73983341}
+  - component: {fileID: 73983342}
   m_Layer: 0
   m_Name: GameWinHandler
   m_TagString: Untagged
@@ -228,8 +229,32 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &73983342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73983340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3f7308ea129af468553fc8e535979c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 1138076520}
+  Exit: {fileID: 961606046}
+  NextLevel: {fileID: 1485445122}
+  MultiplyReward: {fileID: 1469838293}
+  CoinText: {fileID: 1656787634}
+  DaimondText: {fileID: 546532232}
+  BigStarBright: {fileID: 629220651}
+  SmallStarLeftBright: {fileID: 368195735}
+  SmallStarRightBright: {fileID: 690064874}
+  LeftStarAnimator: {fileID: 368195734}
+  BigStarAnimator: {fileID: 629220650}
+  RightStarAnimator: {fileID: 690064873}
 --- !u!1 &145558091
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +402,7 @@ GameObject:
   - component: {fileID: 168113743}
   - component: {fileID: 168113742}
   m_Layer: 5
-  m_Name: littlestar_left
+  m_Name: SmallStarLeftDim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,74 +466,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168113740}
   m_CullTransparentMesh: 1
---- !u!1 &353708513
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 353708516}
-  - component: {fileID: 353708515}
-  - component: {fileID: 353708514}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &353708514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353708513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &353708515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353708513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &353708516
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353708513}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &368195732
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +479,7 @@ GameObject:
   - component: {fileID: 368195735}
   - component: {fileID: 368195734}
   m_Layer: 5
-  m_Name: littlestar_left (1)
+  m_Name: SmallStarLeftBright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,7 +517,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 129091163bc7ecd4a9fafd39c5ce065e, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -771,7 +728,7 @@ GameObject:
   - component: {fileID: 451902102}
   - component: {fileID: 451902104}
   m_Layer: 5
-  m_Name: bigstar
+  m_Name: BigStarDim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -843,7 +800,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451902100}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e0d3fa582b881754181522f352b864c3, type: 2}
   m_CullingMode: 0
@@ -867,7 +824,7 @@ GameObject:
   - component: {fileID: 546532233}
   - component: {fileID: 546532232}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Daimonds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -890,7 +847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -65.19999, y: -35.968994}
+  m_AnchoredPosition: {x: -87.1, y: -35.968994}
   m_SizeDelta: {x: 131.2367, y: 34.9593}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546532232
@@ -947,8 +904,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1003,7 +960,7 @@ GameObject:
   - component: {fileID: 629220651}
   - component: {fileID: 629220650}
   m_Layer: 5
-  m_Name: bigstar (1)
+  m_Name: BigStarBright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1041,7 +998,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e0d3fa582b881754181522f352b864c3, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1099,7 +1056,7 @@ GameObject:
   - component: {fileID: 646518152}
   - component: {fileID: 646518151}
   m_Layer: 5
-  m_Name: littlestar_right
+  m_Name: SmallStarRightDim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1176,7 +1133,7 @@ GameObject:
   - component: {fileID: 690064874}
   - component: {fileID: 690064873}
   m_Layer: 5
-  m_Name: littlestar_right (1)
+  m_Name: SmallStarRightBright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1214,7 +1171,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0359ed2d2fc906b478d8eb2fc3f71078, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -2172,7 +2129,7 @@ GameObject:
   - component: {fileID: 1422380301}
   - component: {fileID: 1422380300}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DaimondImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2735,7 +2692,7 @@ GameObject:
   - component: {fileID: 1656787635}
   - component: {fileID: 1656787634}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2758,7 +2715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 93.3, y: -36.7}
+  m_AnchoredPosition: {x: 71.6, y: -36.7}
   m_SizeDelta: {x: 131.2367, y: 34.9593}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1656787634
@@ -2815,8 +2772,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3083,7 +3040,7 @@ GameObject:
   - component: {fileID: 1769042109}
   - component: {fileID: 1769042108}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: CoinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

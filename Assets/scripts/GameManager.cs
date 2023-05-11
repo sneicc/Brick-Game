@@ -13,22 +13,22 @@ public sealed class GameManager : MonoBehaviour
     public static List<BallB> Balls = new List<BallB>();
 
     public static float Speed = 6; //установка через параметры уровная
-    public static Vector3 SpawnPoint;
+
     public static int Damage = 10;
     public static int Coins { get; private set; }
     public static int Daimonds { get; private set; }
-
     public static float Luck { get; private set; }
-
     public static int Lives { get; private set; }
-    public static int Score { get; private set; }
+    public static int Stars { get; private set; }
 
     public static float LevelStartTime { get; private set; }
-
-    private static bool[] LevelStatus = new bool[NumberOfLevels];
+    public static bool[] LevelStatus = new bool[NumberOfLevels];
+    [SerializeField]
+    private static float[,] LevelCompliteTime = new float[NumberOfLevels, 3];
     private static int _bricksOnLevel;
 
     public static bool IsPause { get; private set; }
+    public static bool IsGameWin { get; private set; }
 
     //Events
     //==========
@@ -36,7 +36,7 @@ public sealed class GameManager : MonoBehaviour
     public static event Action CoinsChanged;
     public static event Action DiamondChanged;
     public static event Action GameLoose;
-    public static event Action GameWin;
+    public static event Action<int> GameWin;
     //==========
 
     //Settings
@@ -99,14 +99,14 @@ public sealed class GameManager : MonoBehaviour
         PauseGame();
         if(Lives > 0)
         {
-            //endGameMenu.getcomponent<script>().StarsAmount()
-            //(Canvas) endGameMenu.SetActive(true);
-            int stars = CalculateStart();
+            IsGameWin = true;
+            int stars = 3;//CalculateStart();
+            GameWin?.Invoke(stars);
+            
         }
         else
         {
             GameLoose?.Invoke();
-            //(Canvas)losseGameMenu.SetActive(true);
         }            
     }
 
@@ -130,6 +130,7 @@ public sealed class GameManager : MonoBehaviour
     {       
         SceneManager.LoadScene($"Level {level}", LoadSceneMode.Single);
         SceneManager.LoadScene("GAME_LOOSE", LoadSceneMode.Additive);
+        SceneManager.LoadScene("GAME_WIN", LoadSceneMode.Additive);
         SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);            
     }
 
