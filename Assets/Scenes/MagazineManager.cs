@@ -5,8 +5,10 @@ using UnityEngine.UI;
 public class MagazineManager : MonoBehaviour
 {
     public Canvas Skins;
-    public Canvas Updates;
-    public Canvas ValueStore;
+    public Canvas Upgrades;
+    public Canvas CurrencyShop;
+    public Canvas Skills;
+    public Canvas Settings;
     public Canvas main;
 
     public GameObject modifier1;
@@ -25,10 +27,11 @@ public class MagazineManager : MonoBehaviour
     public Image[] ModifierSprites5;
 
 
-    public Button ButtonUR;
-    public Button ButtonUL;
-    public Button ButtonMid;
-    public Button ButtonLow;
+    public Button ButtonUpgrades;
+    public Button ButtonSkins;
+    public Button ButtonSkills;
+    public Button ButtonCurrencyShop;
+    public Button ButtonSettings;
     // public Button ButtonMAIN;
 
     //public TextMeshProUGUI COINS_COUNT;
@@ -61,8 +64,8 @@ public class MagazineManager : MonoBehaviour
     {
         //Canvases
         Skins.enabled = false;
-        Updates.enabled = false;
-        ValueStore.enabled = false;
+        Upgrades.enabled = false;
+        CurrencyShop.enabled = false;
         main.enabled = true;
 
         for (int i = 0; i < ModifierSprites1.Length; i++)
@@ -77,10 +80,11 @@ public class MagazineManager : MonoBehaviour
 
         //Button Listeners init
 
-        ButtonUR.onClick.AddListener(UR);
-        ButtonUL.onClick.AddListener(UL);
-        ButtonMid.onClick.AddListener(Mid);
-        ButtonLow.onClick.AddListener(Low);
+        ButtonUpgrades.onClick.AddListener(OnUpgrades);
+        ButtonSkins.onClick.AddListener(OnSkins);
+        ButtonSkills.onClick.AddListener(OnSkills);
+        ButtonCurrencyShop.onClick.AddListener(OnCurrencyShop);
+        ButtonSettings.onClick.AddListener(OnSettings);
         // ButtonMAIN.onClick.AddListener(Main);
 
         PowerUPButton.onClick.AddListener(PowerUP);
@@ -96,7 +100,6 @@ public class MagazineManager : MonoBehaviour
     private void OnTestClickedModifier()
     {
         Debug.Log("PASSED");
-
     }
 
     public void PowerUP()
@@ -105,15 +108,15 @@ public class MagazineManager : MonoBehaviour
         //PowerUpLVLText.text = $"{count}";
     }
 
-    public void UR()
+    public void OnUpgrades()
     {
         main.enabled = false;
-        Updates.enabled = true;
+        Upgrades.enabled = true;
         //ButtonMAIN.image.sprite = MainButtonSpriteCROSS;
         DATA_HOLDER.IsMagazineMain = false;
     }
 
-    public void UL()
+    public void OnSkins()
     {
         main.enabled = false;
         Skins.enabled = true;
@@ -122,26 +125,32 @@ public class MagazineManager : MonoBehaviour
 
     }
 
-    public void Mid()
+    public void OnSkills()
     {
-        Debug.Log("as;lkdjsa;ldk");
+        Debug.Log("IM SKILLS BUTTON!!!");
         DATA_HOLDER.IsMagazineMain = false;
     }
 
-    public void Low()
+    public void OnCurrencyShop()
     {
         main.enabled = false;
-        ValueStore.enabled = true;
+        CurrencyShop.enabled = true;
         DATA_HOLDER.IsMagazineMain = false;
     }
 
     public void BackToMainMagazine()
     {
         main.enabled = true;
-        Updates.enabled = false;
+        Upgrades.enabled = false;
         Skins.enabled = false;
         // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
         DATA_HOLDER.IsMagazineMain = true;
+    }
+
+    public void OnSettings()
+    {
+        Debug.Log("IM SETTINGS BUTTON!!!");
+        DATA_HOLDER.IsMagazineMain = false;
     }
 
 
@@ -150,7 +159,7 @@ public class MagazineManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse4))
         {
             main.enabled = true;
-            Updates.enabled = false;
+            Upgrades.enabled = false;
             Skins.enabled = false;
             // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
             DATA_HOLDER.IsMagazineMain = true;
@@ -159,10 +168,10 @@ public class MagazineManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        ButtonUR.onClick.RemoveAllListeners();
-        ButtonUL.onClick.RemoveAllListeners();
-        ButtonMid.onClick.RemoveAllListeners();
-        ButtonLow.onClick.RemoveAllListeners();
+        ButtonUpgrades.onClick.RemoveAllListeners();
+        ButtonSkins.onClick.RemoveAllListeners();
+        ButtonSkills.onClick.RemoveAllListeners();
+        ButtonCurrencyShop.onClick.RemoveAllListeners();
 
         PowerUPButton.onClick.RemoveAllListeners();
     }
