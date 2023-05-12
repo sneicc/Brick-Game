@@ -14,7 +14,6 @@ public class LevelMapControl : MonoBehaviour
 
     void Start()
     {
-
         SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
         ButtonInitialize();
     }

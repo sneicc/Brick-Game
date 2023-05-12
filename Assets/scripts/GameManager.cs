@@ -120,6 +120,7 @@ public sealed class GameManager : MonoBehaviour
 
     public static void NewGame(int level)
     {
+        IsGameWin = false;
         LevelStartTime = Time.time;
         Lives = 3;
 
