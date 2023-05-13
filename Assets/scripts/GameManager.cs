@@ -100,7 +100,7 @@ public sealed class GameManager : MonoBehaviour
         if(Lives > 0)
         {
             IsGameWin = true;
-            int stars = 3;//CalculateStart();
+            int stars = 2;//CalculateStart();
             GameWin?.Invoke(stars);
             
         }

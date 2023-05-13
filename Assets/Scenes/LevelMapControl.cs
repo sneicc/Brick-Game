@@ -11,7 +11,10 @@ public class LevelMapControl : MonoBehaviour
 {
     public Button[] buttons;
 
-
+    private void Awake()
+    {
+        GameManager.ResumeGame();
+    }
     void Start()
     {
         SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);

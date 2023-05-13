@@ -62,11 +62,6 @@ public class MagazineManager : MonoBehaviour
 
     void Start()
     {
-        //Canvases
-        Skins.enabled = false;
-        Upgrades.enabled = false;
-        CurrencyShop.enabled = false;
-        main.enabled = true;
 
         for (int i = 0; i < ModifierSprites1.Length; i++)
         {
@@ -111,7 +106,7 @@ public class MagazineManager : MonoBehaviour
     public void OnUpgrades()
     {
         main.enabled = false;
-        Upgrades.enabled = true;
+        Upgrades.gameObject.SetActive(true);
         //ButtonMAIN.image.sprite = MainButtonSpriteCROSS;
         DATA_HOLDER.IsMagazineMain = false;
     }
@@ -119,7 +114,7 @@ public class MagazineManager : MonoBehaviour
     public void OnSkins()
     {
         main.enabled = false;
-        Skins.enabled = true;
+        Skins.gameObject.SetActive(true);
         // ButtonMAIN.image.sprite = MainButtonSpriteCROSS;
         DATA_HOLDER.IsMagazineMain = false;
 
@@ -134,15 +129,15 @@ public class MagazineManager : MonoBehaviour
     public void OnCurrencyShop()
     {
         main.enabled = false;
-        CurrencyShop.enabled = true;
+        CurrencyShop.gameObject.SetActive(true);
         DATA_HOLDER.IsMagazineMain = false;
     }
 
     public void BackToMainMagazine()
     {
         main.enabled = true;
-        Upgrades.enabled = false;
-        Skins.enabled = false;
+        Upgrades.gameObject.SetActive(false);
+        Skins.gameObject.SetActive(false);
         // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
         DATA_HOLDER.IsMagazineMain = true;
     }
@@ -151,19 +146,6 @@ public class MagazineManager : MonoBehaviour
     {
         Debug.Log("IM SETTINGS BUTTON!!!");
         DATA_HOLDER.IsMagazineMain = false;
-    }
-
-
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Mouse4))
-        {
-            main.enabled = true;
-            Upgrades.enabled = false;
-            Skins.enabled = false;
-            // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
-            DATA_HOLDER.IsMagazineMain = true;
-        }
     }
 
     private void OnDestroy()
