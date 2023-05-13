@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,6 +27,12 @@ public class MagazineManager : MonoBehaviour
     public GameObject modifier5;
     public Image[] ModifierSprites5;
 
+    public GameObject modifier6;
+    public Image[] ModifierSprites6;
+
+    public GameObject modifier7;
+    public Image[] ModifierSprites7;
+
 
     public Button ButtonUpgrades;
     public Button ButtonSkins;
@@ -38,12 +45,22 @@ public class MagazineManager : MonoBehaviour
     //public TextMeshProUGUI DIAMOND_COUNT;
 
 
-    public Button PowerUPButton;
-    public TextMeshProUGUI PowerUpLVLText;
+    //public Button PowerUPButton;
+    //public TextMeshProUGUI PowerUpLVLText;
 
     //public Sprite MainButtonSpriteMENU;
     //public Sprite MainButtonSpriteCROSS;
 
+    //Upgrade buttons
+    //----------------
+    public Button BallDamageUpgrade;
+    public Button DamageMultiplier;
+    public Button SpeedMultiplier;
+    public Button BallDoubler;
+    public Button Exploson;
+    public Button PlatformSize;
+    public Button PlatformSpeed;
+    //----------------
 
     //TEST
     private int count;
@@ -58,6 +75,55 @@ public class MagazineManager : MonoBehaviour
         modifier3 = new GameObject();
         modifier4 = new GameObject();
         modifier5 = new GameObject();
+
+        ButtonUpgrades.onClick.AddListener(OnUpgrades);
+        ButtonSkins.onClick.AddListener(OnSkins);
+        ButtonSkills.onClick.AddListener(OnSkills);
+        ButtonCurrencyShop.onClick.AddListener(OnCurrencyShop);
+        ButtonSettings.onClick.AddListener(OnSettings);
+
+        //BallDamageUpgrade.onClick.AddListener(OnDamageUpgrade);
+        //DamageMultiplier.onClick.AddListener(OnDamageMultiplierUpgrade);
+        //SpeedMultiplier.onClick.AddListener(OnSpeedMultiplierUpgrade);
+        //BallDoubler.onClick.AddListener(OnDoublerUpgrade);
+        //Exploson.onClick.AddListener(OnExplosionUpgrade);
+        //PlatformSize.onClick.AddListener(OnPlatformSizeUpgrade);
+        //PlatformSpeed.onClick.AddListener(OnPlatformSpeedUpgrade);
+    }
+
+    private void OnPlatformSpeedUpgrade()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnPlatformSizeUpgrade()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnExplosionUpgrade()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnDoublerUpgrade()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnSpeedMultiplierUpgrade()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnDamageMultiplierUpgrade()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnDamageUpgrade()
+    {
+        throw new NotImplementedException();
     }
 
     void Start()
@@ -75,14 +141,10 @@ public class MagazineManager : MonoBehaviour
 
         //Button Listeners init
 
-        ButtonUpgrades.onClick.AddListener(OnUpgrades);
-        ButtonSkins.onClick.AddListener(OnSkins);
-        ButtonSkills.onClick.AddListener(OnSkills);
-        ButtonCurrencyShop.onClick.AddListener(OnCurrencyShop);
-        ButtonSettings.onClick.AddListener(OnSettings);
+
         // ButtonMAIN.onClick.AddListener(Main);
 
-        PowerUPButton.onClick.AddListener(PowerUP);
+        //PowerUPButton.onClick.AddListener(PowerUP);
 
         DATA_HOLDER.IsMagazineMain = true;
 
@@ -155,6 +217,6 @@ public class MagazineManager : MonoBehaviour
         ButtonSkills.onClick.RemoveAllListeners();
         ButtonCurrencyShop.onClick.RemoveAllListeners();
 
-        PowerUPButton.onClick.RemoveAllListeners();
+        //PowerUPButton.onClick.RemoveAllListeners();
     }
 }
