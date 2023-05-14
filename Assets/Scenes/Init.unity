@@ -247,12 +247,13 @@ MonoBehaviour:
   ExplosionAmount: 10
   ExplosionPrice: 10
   ExplosionUpgrade:
+  - 5
   - 10
   - 15
   - 20
   - 25
   - 30
-  ExplosionUpgradePrice: 640000005e010000bc020000b00400006c070000
+  ExplosionUpgradePrice: 00000000640000005e010000bc020000b00400006c070000
   ExplosionUpgradeIndex: 0
   ExplosionRadius: 0.7
   ExplosionOffset: 0.1
@@ -273,12 +274,13 @@ MonoBehaviour:
   DoublingAmount: 10
   DoublingPrice: 10
   DoublingUpgrade:
-  - 2
-  - 2.5
   - 3
-  - 3.5
-  - 4
-  DoublingUpgradePrice: 640000005e010000bc020000b00400006c070000
+  - 6
+  - 12
+  - 18
+  - 24
+  - 30
+  DoublingUpgradePrice: 000000005e010000bc020000b00400006c0700006c070000
   DoublingIndex: 0
 --- !u!114 &1857893662
 MonoBehaviour:
@@ -296,12 +298,13 @@ MonoBehaviour:
   SpeedAmount: 10
   SpeedPrice: 10
   SpeedUpgrade:
+  - 1.2
   - 1.5
   - 2
   - 2.5
   - 3
   - 3.5
-  SpeedUpgradePrice: 640000005e010000bc020000b00400006c070000
+  SpeedUpgradePrice: 00000000640000005e010000bc020000b00400006c070000
   SpeedUpgradeIndex: 0
 --- !u!114 &1857893663
 MonoBehaviour:
@@ -319,12 +322,13 @@ MonoBehaviour:
   DamageModifierAmount: 10
   DamageModifierPrice: 10
   DamageModifierUpgrade:
+  - 1.5
   - 2
   - 2.5
   - 3
   - 3.5
   - 4
-  DamageModifierUpgradePrice: 640000005e010000bc020000b00400006c070000
+  DamageModifierUpgradePrice: 00000000640000005e010000bc020000b00400006c070000
   DamageModifierIndex: 0
 --- !u!4 &1857893664
 Transform:

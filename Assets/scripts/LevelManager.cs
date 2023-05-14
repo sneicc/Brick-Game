@@ -104,6 +104,7 @@ public class LevelManager : MonoBehaviour
 
     public void MultiplyRewardX2()
     {
-        SaveChanges(2);
+        LevelCoins *= 2;
+        LevelDaimonds *= 2;
     }
 }

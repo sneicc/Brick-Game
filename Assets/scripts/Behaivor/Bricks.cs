@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Bricks : MonoBehaviour
 {
     public int HP = 1;
     public Material[] Materials;
-    private Renderer Renderer;
+    private Renderer _renderer;
     public ParticleSystem VFX;
     public ParticleSystem BasicVFX;
 
@@ -26,17 +27,17 @@ public class Bricks : MonoBehaviour
     {
         GameManager.AddBrick();
 
-        Renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<Renderer>();
         if(!Unbreakable && !Fragile)
         {
             if (Gradient) 
             {
-                Renderer.material.color = FirstColor; 
+                _renderer.material.color = FirstColor; 
             }
             else
             {
                 HP = Materials.Length;
-                Renderer.material = Materials[HP - 1];
+                _renderer.material = Materials[HP - 1];
             }                        
         }
         SetHPText();
@@ -75,11 +76,11 @@ public class Bricks : MonoBehaviour
         else if (Gradient)
         {
             float range = ConvertRange(0, RangeMaxBorder, 0, 1, HP);
-            Renderer.material.color = Color.Lerp(SecondColor, FirstColor, range); ;
+            _renderer.material.color = Color.Lerp(SecondColor, FirstColor, range); ;
         }
         else
         {
-            Renderer.material = Materials[HP - 1];
+            _renderer.material = Materials[HP - 1];
         }
     }
 
@@ -107,14 +108,21 @@ public class Bricks : MonoBehaviour
     {
         if (VFX is null) return;
 
-        var shape = VFX.shape;
+
         //Vector3 rotation = new Vector3(collision.transform.eulerAngles.x, 90, 0);
         try 
         {
+            var vfx = Instantiate(VFX.gameObject, transform.position, transform.rotation);
+            ParticleSystem particleSystem = vfx.GetComponent<ParticleSystem>();
+            var shape = particleSystem.shape;
             Quaternion quaternion = Quaternion.LookRotation(collision.gameObject.GetComponent<BallB>().PrevVelocity[1]);
             Vector3 rotation = quaternion.eulerAngles;
             shape.rotation = rotation;// * -1f;
-            Instantiate(VFX.gameObject, transform.position, transform.rotation);
+
+            var vfxSettings = particleSystem.main;
+            vfxSettings.startColor = _renderer.material.color;
+
+
         }
         catch
         {

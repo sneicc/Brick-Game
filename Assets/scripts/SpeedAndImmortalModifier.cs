@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,15 +8,21 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
 {
     public static SpeedAndImmortalModifier Instance;
 
-    public int SpeedWorkingTime = 5;
-    public int SpeedAmount = 10;
-    public int SpeedPrice = 10;
+    [SerializeField]
+    private int SpeedWorkingTime = 5;
+    [SerializeField]
+    private int SpeedAmount = 10;
+    [SerializeField]
+    private int SpeedPrice = 10;
 
-    public float[] SpeedUpgrade = { 1.5f, 2f, 2.5f, 3f, 3.5f };
-    public int[] SpeedUpgradePrice = { 100, 350, 700, 1200, 1900 };
-    public int SpeedUpgradeIndex = 0;
+    [SerializeField]
+    private float[] SpeedUpgrade = { 1, 1.5f, 2f, 2.5f, 3f, 3.5f };
+    [SerializeField]
+    private int[] SpeedUpgradePrice = { 0, 100, 350, 700, 1200, 1900 };
+    [SerializeField]
+    private int SpeedUpgradeIndex = 0;
 
-    private static List<BallB> BallsCopy;
+    private List<BallB> _ballsCopy;
 
     void Awake()
     {
@@ -32,11 +39,11 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
         Instance = this;
     }
     
-    public void Activate()
+    public override void Activate()
     {
         if (Spend())
         {
-            BallsCopy = new List<BallB>(GameManager.Balls);
+            _ballsCopy = new List<BallB>(GameManager.Balls);
 
             foreach (var ball in GameManager.Balls)
             {
@@ -52,7 +59,7 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
 
     public void Disable()
     {
-        foreach (var ball in BallsCopy)
+        foreach (var ball in _ballsCopy)
         {
             if (!ReferenceEquals(ball, null))
             {
@@ -63,9 +70,4 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
         }
     }
 
-    public void Subscribe(Button button)
-    {
-        _button = button;
-        button.onClick.AddListener(Activate);
-    }
 }

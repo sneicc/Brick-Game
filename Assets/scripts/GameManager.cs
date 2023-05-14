@@ -56,6 +56,8 @@ public sealed class GameManager : MonoBehaviour
 
 #if DEBUG
         Lives = 3;
+        Coins = 2000;
+        Daimonds = 100;
 #endif
         DontDestroyOnLoad(gameObject);
         Instance = this;

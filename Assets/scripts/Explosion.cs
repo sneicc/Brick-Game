@@ -11,23 +11,35 @@ public class Explosion : Modifier
     /// <summary>
     /// Отличное от 0 значение приведёт к блокировке кнопки на X секунд после её нажатия
     /// </summary>
-    /// 
-    public int ExplosionTime = 5; 
-    public int ExplosionAmount = 10;
-    public int ExplosionPrice = 10;
+    ///
+    [SerializeField]
+    private int ExplosionTime = 5;
+    [SerializeField]
+    private int ExplosionAmount = 10;
+    [SerializeField]
+    private int ExplosionPrice = 10;
 
-    public float[] ExplosionUpgrade = { 10, 15, 20, 25, 30 };
-    public int[] ExplosionUpgradePrice = { 100, 350, 700, 1200, 1900 };
-    public int ExplosionUpgradeIndex = 0;
+    [SerializeField]
+    private float[] ExplosionUpgrade = { 2, 10, 15, 20, 25, 30 };
+    [SerializeField]
+    private int[] ExplosionUpgradePrice = { 0, 100, 350, 700, 1200, 1900 };
+    [SerializeField]
+    private int ExplosionUpgradeIndex = 0;
 
-    public float ExplosionRadius = 0.7f;
-    public float ExplosionOffset = 0.1f;
+    [SerializeField]
+    private float ExplosionRadius = 0.7f;
+    [SerializeField]
+    private float ExplosionOffset = 0.1f;
 
-    private bool waitingForClick = false;
+    private bool _waitingForClick = false;
 
     private ColorBlock _colorBuffer;
 
     public GameObject ExplosionVFX;
+
+#if DEBUG
+    private RaycastHit _RH = new RaycastHit();
+#endif
     void Awake()
     {
         if (Instance is not null) Destroy(gameObject);
@@ -48,7 +60,7 @@ public class Explosion : Modifier
         base.Start();
     }
 
-    public void Activate()
+    public override void Activate()
     {
         if (Amount > 0) ChangeState();      
     }
@@ -57,24 +69,24 @@ public class Explosion : Modifier
     {
         var colors = _button.colors;
 
-        if (waitingForClick)
+        if (_waitingForClick)
         {
             _button.colors = _colorBuffer;
-            waitingForClick = false;
+            _waitingForClick = false;
             if(!GameManager.IsGameWin) GameManager.ResumeGame();
         }
         else
         {                       
             colors.normalColor = colors.selectedColor = colors.highlightedColor = colors.pressedColor;
             _button.colors = colors;
-            waitingForClick = true;
+            _waitingForClick = true;
             GameManager.PauseGame();
         }       
     }
 
     private void Update()
     {
-        if (!waitingForClick) return;
+        if (!_waitingForClick) return;
         if (Input.touchCount > 0)
         {
             if (Input.GetTouch(0).phase != TouchPhase.Began) return;
@@ -91,6 +103,9 @@ public class Explosion : Modifier
         int layerMask = LayerMask.GetMask("Background");
         if (Physics.Raycast(ray, out hit, 1000f, layerMask))
         {
+#if DEBUG
+            _RH = hit;
+#endif
             if (!Spend()) return;
             Instantiate(ExplosionVFX, new Vector3(hit.point.x, hit.point.y, hit.point.z - ExplosionOffset), Quaternion.Euler(0, 180, 0));
             Collider[] colliders = Physics.OverlapSphere(hit.point, ExplosionRadius);
@@ -112,10 +127,19 @@ public class Explosion : Modifier
         }
     }
 
-    public void Subscribe(Button button)
+    public override void Subscribe(Button button)
     {
         _button = button;
         _colorBuffer = _button.colors;
         button.onClick.AddListener(Activate);
     }
+
+#if DEBUG
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
+        Gizmos.DrawSphere(_RH.point, ExplosionRadius);
+    }
+#endif
 }

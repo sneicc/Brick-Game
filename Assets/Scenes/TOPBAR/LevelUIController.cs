@@ -75,10 +75,10 @@ public class LevelUIController : MonoBehaviour
 
     private void OnDestroy()
     {
-        DamageButton.onClick.RemoveAllListeners();
-        SpeedButton.onClick.RemoveAllListeners();
-        DoublingButton.onClick.RemoveAllListeners();
-        ExplosionButton.onClick.RemoveAllListeners();
+        DamageModifier.Instance.Unsubscribe();
+        SpeedAndImmortalModifier.Instance.Unsubscribe();
+        DoublingAllBalls.Instance.Unsubscribe();
+        Explosion.Instance.Unsubscribe();
 
         LevelManager.Instance.CoinsChanged -= OnCoinsChanged;
         LevelManager.Instance.DaimondsChanged -= OnDiamondChanged;

@@ -11,15 +11,21 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
 {  
     public static DamageModifier Instance;
 
-    public int DamageWorkingTime = 5;
-    public int DamageModifierAmount = 10;
-    public int DamageModifierPrice = 10;
+    [SerializeField]
+    private int DamageWorkingTime = 5;
+    [SerializeField]
+    private int DamageModifierAmount = 10;
+    [SerializeField]
+    private int DamageModifierPrice = 10;
 
-    public float[] DamageModifierUpgrade = { 2, 2.5f, 3, 3.5f, 4 };
-    public int[] DamageModifierUpgradePrice = { 100, 350, 700, 1200, 1900 };
-    public int DamageModifierIndex = 0;
+    [SerializeField]
+    private float[] DamageModifierUpgrade = { 1.5f, 2, 2.5f, 3, 3.5f, 4 };
+    [SerializeField]
+    private int[] DamageModifierUpgradePrice = { 0, 100, 350, 700, 1200, 1900 };
+    [SerializeField]
+    private int DamageModifierIndex = 0;
 
-    private static List<BallB> BallsCopy; 
+    private List<BallB> _ballsCopy;
 
     void Awake()
     {
@@ -36,11 +42,11 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
         Instance = this;
     }
 
-    public void Activate()
+    public override void Activate()
     {
         if (Spend()) 
         {
-            BallsCopy = new List<BallB>(GameManager.Balls); 
+            _ballsCopy = new List<BallB>(GameManager.Balls); 
 
             int tempDamage = (int)(GameManager.Damage * UpgradeBonus[UpgradeIndex]);
             foreach (var ball in GameManager.Balls)
@@ -53,17 +59,11 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
 
     public void Disable()
     {
-        foreach (var ball in BallsCopy)
+        foreach (var ball in _ballsCopy)
         {
             if (!ReferenceEquals(ball, null)) ball.Damage = GameManager.Damage;
         }
-    }
-
-    public void Subscribe(Button button)
-    {
-        _button = button;
-        _button.onClick.AddListener(Activate);
-    }
+    } 
 
     //public void Disable()
     //{

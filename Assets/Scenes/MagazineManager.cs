@@ -62,6 +62,26 @@ public class MagazineManager : MonoBehaviour
     public Button PlatformSpeed;
     //----------------
 
+    //Upgrade text
+    //----------------
+    public TextMeshProUGUI BallDamagePrice;
+    public TextMeshProUGUI DamageMultiplierPrice;
+    public TextMeshProUGUI SpeedMultiplierPrice;
+    public TextMeshProUGUI BallDoublerPrice;
+    public TextMeshProUGUI ExplosionPrice;
+    public TextMeshProUGUI PlatformSizePrice;
+    public TextMeshProUGUI PlatformSpeedPrice;
+
+    public TextMeshProUGUI[] BallDamageBonus;
+    public TextMeshProUGUI[] DamageMultiplierBonus;
+    public TextMeshProUGUI[] SpeedMultiplierBonus;
+    public TextMeshProUGUI[] BallDoublerBonus;
+    public TextMeshProUGUI[] ExplosionBonus;
+    public TextMeshProUGUI[] PlatformSizeBonus;
+    public TextMeshProUGUI[] PlatformSpeedBonus;
+
+    //----------------
+
     //TEST
     private int count;
 
@@ -70,11 +90,11 @@ public class MagazineManager : MonoBehaviour
     {
         //DontDestroyOnLoad(gameObject);
 
-        modifier1 = new GameObject();
-        modifier2 = new GameObject();
-        modifier3 = new GameObject();
-        modifier4 = new GameObject();
-        modifier5 = new GameObject();
+        //modifier1 = new GameObject();
+        //modifier2 = new GameObject();
+        //modifier3 = new GameObject();
+        //modifier4 = new GameObject();
+        //modifier5 = new GameObject();
 
         ButtonUpgrades.onClick.AddListener(OnUpgrades);
         ButtonSkins.onClick.AddListener(OnSkins);
@@ -82,13 +102,13 @@ public class MagazineManager : MonoBehaviour
         ButtonCurrencyShop.onClick.AddListener(OnCurrencyShop);
         ButtonSettings.onClick.AddListener(OnSettings);
 
-        //BallDamageUpgrade.onClick.AddListener(OnDamageUpgrade);
-        //DamageMultiplier.onClick.AddListener(OnDamageMultiplierUpgrade);
-        //SpeedMultiplier.onClick.AddListener(OnSpeedMultiplierUpgrade);
-        //BallDoubler.onClick.AddListener(OnDoublerUpgrade);
-        //Exploson.onClick.AddListener(OnExplosionUpgrade);
-        //PlatformSize.onClick.AddListener(OnPlatformSizeUpgrade);
-        //PlatformSpeed.onClick.AddListener(OnPlatformSpeedUpgrade);
+        BallDamageUpgrade.onClick.AddListener(OnDamageUpgrade);
+        DamageMultiplier.onClick.AddListener(OnDamageMultiplierUpgrade);
+        SpeedMultiplier.onClick.AddListener(OnSpeedMultiplierUpgrade);
+        BallDoubler.onClick.AddListener(OnDoublerUpgrade);
+        Exploson.onClick.AddListener(OnExplosionUpgrade);
+        PlatformSize.onClick.AddListener(OnPlatformSizeUpgrade);
+        PlatformSpeed.onClick.AddListener(OnPlatformSpeedUpgrade);
     }
 
     private void OnPlatformSpeedUpgrade()
@@ -118,12 +138,19 @@ public class MagazineManager : MonoBehaviour
 
     private void OnDamageMultiplierUpgrade()
     {
-        throw new NotImplementedException();
+        DamageModifier.Instance.Upgrade();
+        DamageMultiplierPrice.text = DamageModifier.Instance.NextUpgradePrice.ToString();
+        //DamageMultiplierBonus.text = DamageModifier.Instance.NextUpgradeBonus.ToString();
+
+        for (int i = 0; i < DamageModifier.Instance.CurrentUpgradeIndex; i++)
+        {
+            ModifierSprites2[i].enabled = true;
+        }
     }
 
     private void OnDamageUpgrade()
     {
-        throw new NotImplementedException();
+        Debug.Log("work");
     }
 
     void Start()
@@ -136,22 +163,24 @@ public class MagazineManager : MonoBehaviour
             ModifierSprites3[i].enabled = false;
             ModifierSprites4[i].enabled = false;
             ModifierSprites5[i].enabled = false;
+            ModifierSprites6[i].enabled = false;
+            ModifierSprites7[i].enabled = false;
         }
 
+        var bonuses = DamageModifier.Instance.UpgradeBonuses;
+        for (int i = 0; i < DamageModifier.Instance.CurrentUpgradeIndex; i++)
+        {
+            ModifierSprites2[i].enabled = true;
+        }
+        for (int i = 0; i < DamageMultiplierBonus.Length; i++)
+        {
+            DamageMultiplierBonus[i].text = '+' + bonuses[i + 1].ToString();
+        }
+        DamageMultiplierPrice.text = DamageModifier.Instance.NextUpgradePrice.ToString();
 
-        //Button Listeners init
 
-
-        // ButtonMAIN.onClick.AddListener(Main);
-
-        //PowerUPButton.onClick.AddListener(PowerUP);
 
         DATA_HOLDER.IsMagazineMain = true;
-
-
-        //COINS_COUNT.text = "9999";
-        //DIAMOND_COUNT.text = "9999";
-        count = 0;
     }
 
     private void OnTestClickedModifier()

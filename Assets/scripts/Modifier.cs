@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 /// <summary>
 /// Модификатор поведения шара.
@@ -39,6 +41,68 @@ public abstract class Modifier : MonoBehaviour
     /// Кнопка к которой привязан модификатор.
     /// </summary>
     protected Button _button;
+
+    public int NextUpgradePrice
+    {
+        get
+        {
+            if (UpgradeIndex + 1 >= UpgradePrice.Length) return -1;
+            return UpgradePrice[UpgradeIndex + 1];
+        }
+    }
+
+    public int CurrentUpgradePrice
+    {
+        get
+        {
+            return UpgradePrice[UpgradeIndex];
+        }
+    }
+
+    public float NextUpgradeBonus
+    {
+        get
+        {
+            if (UpgradeIndex + 1 >= UpgradeBonus.Length) return -1;
+            return UpgradeBonus[UpgradeIndex + 1];
+        }
+    }
+
+    public float CurrentUpgradeBonus
+    {
+        get
+        {
+            return UpgradeBonus[UpgradeIndex];
+        }
+    }
+
+    public int CurrentUpgradeIndex
+    {
+        get
+        {
+            return UpgradeIndex;
+        }
+    }
+
+    public int[] UpgradePrices
+    {
+        get
+        {
+            int[] temp = new int[UpgradePrice.Length];
+            UpgradePrice.CopyTo(temp, 0);
+            return temp;
+        }
+    }
+
+    public float[] UpgradeBonuses
+    {
+        get
+        {
+            float[] temp = new float[UpgradeBonus.Length];
+            UpgradeBonus.CopyTo(temp, 0);
+            return temp;
+        }
+    }
 
     /// <summary>
     /// При запуске приложения получает ссылку на кнопку.
@@ -81,11 +145,12 @@ public abstract class Modifier : MonoBehaviour
     /// <summary>
     /// Увеличивает индекс текущего улучшения на 1, при условии налачия нужной суммы монет.
     /// </summary>
-    protected virtual void Upgrade()
+    public virtual void Upgrade()
     {
-        if (UpgradeBonus.Length <= UpgradeIndex)
+        int nextIndex = UpgradeIndex + 1;
+        if (nextIndex < UpgradeBonus.Length)
         {
-            int currentPrice = UpgradePrice[UpgradeIndex];
+            int currentPrice = UpgradePrice[nextIndex];
             if (GameManager.RemoveCoins(currentPrice)) UpgradeIndex++;
         }     
     }
@@ -97,10 +162,26 @@ public abstract class Modifier : MonoBehaviour
     /// <returns>Итератор</returns>
     protected IEnumerator StartCooldown(int workingTime)
     {
-        if (workingTime <= 0) yield break; 
+        if (workingTime <= 0) yield break;
 
+        if (GameObject.ReferenceEquals(_button, null)) yield break;
         _button.interactable = false;
         yield return new WaitForSeconds(workingTime);
+        if (GameObject.ReferenceEquals(_button, null)) yield break;
         _button.interactable = true;
+    }
+
+    public abstract void Activate();
+
+    public virtual void Subscribe(Button button)
+    {
+        _button = button;
+        _button.onClick.AddListener(Activate);
+    }
+
+    public virtual void Unsubscribe()
+    {
+        _button.onClick.RemoveListener(Activate);
+        _button = null;
     }
 }

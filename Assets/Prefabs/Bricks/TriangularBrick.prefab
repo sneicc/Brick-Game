@@ -240,8 +240,8 @@ MonoBehaviour:
   BasicVFX: {fileID: 4431557799201808170, guid: 06579011cd71ce9468582f8318c643fc, type: 3}
   Unbreakable: 0
   Fragile: 0
-  FirstColor: {r: 0, g: 1, b: 0.35506845, a: 0}
-  SecondColor: {r: 1, g: 0, b: 0, a: 0}
+  FirstColor: {r: 0, g: 1, b: 0.35506845, a: 1}
+  SecondColor: {r: 1, g: 0, b: 0, a: 1}
   Gradient: 1
   HPText: {fileID: 2066692055156768886}
 --- !u!114 &3691047047501660857
