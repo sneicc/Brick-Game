@@ -12,6 +12,7 @@ public class Bricks : MonoBehaviour
     private Renderer _renderer;
     public ParticleSystem VFX;
     public ParticleSystem BasicVFX;
+    public float VFXParticleBrightness = 3f;
 
     public bool Unbreakable;
     public bool Fragile;
@@ -23,6 +24,8 @@ public class Bricks : MonoBehaviour
     private float RangeMaxBorder;
 
     public TextMeshProUGUI HPText;
+
+    
     void Start()
     {
         GameManager.AddBrick();
@@ -87,8 +90,7 @@ public class Bricks : MonoBehaviour
     private void ShowVFXBasic()
     {
         if (BasicVFX is null) return;
-
-        Instantiate(BasicVFX.gameObject, transform.position, transform.rotation);
+        CreateVFX(BasicVFX);
     }
     public void Hit(int Damage)
     {
@@ -108,26 +110,30 @@ public class Bricks : MonoBehaviour
     {
         if (VFX is null) return;
 
-
         //Vector3 rotation = new Vector3(collision.transform.eulerAngles.x, 90, 0);
-        try 
+        try
         {
-            var vfx = Instantiate(VFX.gameObject, transform.position, transform.rotation);
-            ParticleSystem particleSystem = vfx.GetComponent<ParticleSystem>();
+            ParticleSystem particleSystem = CreateVFX(VFX);
+
             var shape = particleSystem.shape;
             Quaternion quaternion = Quaternion.LookRotation(collision.gameObject.GetComponent<BallB>().PrevVelocity[1]);
             Vector3 rotation = quaternion.eulerAngles;
-            shape.rotation = rotation;// * -1f;
-
-            var vfxSettings = particleSystem.main;
-            vfxSettings.startColor = _renderer.material.color;
-
-
+            shape.rotation = rotation;// * -1f;          
         }
         catch
         {
             Debug.Log($"{collision.gameObject.name} не имеет компонент BallB");
         }       
+    }
+
+    private ParticleSystem CreateVFX(ParticleSystem ps)
+    {
+        var vfx = Instantiate(ps.gameObject, transform.position, transform.rotation);
+        ParticleSystem particleSystem = vfx.GetComponent<ParticleSystem>();
+        var vfxSettings = particleSystem.main;
+        _renderer.material.SetFloat("_Saturation", VFXParticleBrightness);
+        vfxSettings.startColor = _renderer.material.color;
+        return particleSystem;
     }
 
     private float ConvertRange(float oldMinBorder, float oldMaxBorder, float newMinBorder,float newMaxBorder, float value)

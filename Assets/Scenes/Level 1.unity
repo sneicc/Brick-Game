@@ -728,6 +728,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (11)
@@ -785,6 +797,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (42)
@@ -899,6 +923,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (20)
@@ -1281,6 +1317,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (10)
@@ -1338,6 +1386,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (46)
@@ -1405,6 +1465,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (45)
@@ -1730,6 +1802,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (48)
@@ -1812,6 +1896,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (71)
@@ -2007,6 +2103,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (40)
@@ -2244,6 +2352,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (25)
@@ -2363,6 +2483,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (1)
@@ -2538,6 +2670,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (41)
@@ -2728,6 +2872,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (70)
@@ -2847,6 +3003,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (9)
@@ -3431,6 +3599,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (6)
@@ -3498,6 +3678,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (8)
@@ -3808,6 +4000,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (47)
@@ -3898,6 +4102,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (68)
@@ -4113,6 +4329,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (67)
@@ -4687,6 +4915,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (12)
@@ -4749,6 +4989,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (23)
@@ -5224,6 +5476,18 @@ PrefabInstance:
       propertyPath: FirstColor.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 2225739277281692350, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -5330,6 +5594,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (13)
@@ -5489,6 +5765,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (39)
@@ -5731,6 +6019,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (60)
@@ -5997,6 +6297,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (38)
@@ -6275,6 +6587,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (32)
@@ -6337,6 +6661,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (66)
@@ -6394,6 +6730,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (24)
@@ -6471,6 +6819,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (44)
@@ -6758,6 +7118,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (22)
@@ -7352,6 +7724,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (43)
@@ -7532,6 +7916,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (37)
@@ -7589,6 +7985,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (50)
@@ -7950,6 +8358,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (7)
@@ -8353,6 +8773,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (21)
@@ -8790,6 +9222,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (63)
@@ -9424,6 +9868,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (69)
@@ -9689,6 +10145,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (65)
@@ -9916,6 +10384,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (49)
@@ -10144,6 +10624,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (61)
@@ -10514,6 +11006,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (31)
@@ -10685,6 +11189,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (64)
@@ -11231,6 +11747,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (26)
@@ -11407,6 +11935,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237948286}
     m_Modifications:
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221404770053962805, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
+      propertyPath: SecondColor.r
+      value: 0.17962885
+      objectReference: {fileID: 0}
     - target: {fileID: 4739303092915792304, guid: bffbcbaa3516eb940950b47afb764c7f, type: 3}
       propertyPath: m_Name
       value: MainBrick (62)
