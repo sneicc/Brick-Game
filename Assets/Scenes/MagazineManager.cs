@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MagazineManager : MonoBehaviour
 {
+    private const int _bonusOffset = 1;
+
     public Canvas Skins;
     public Canvas Upgrades;
     public Canvas CurrencyShop;
@@ -12,26 +14,13 @@ public class MagazineManager : MonoBehaviour
     public Canvas Settings;
     public Canvas main;
 
-    public GameObject modifier1;
-    public Image[] ModifierSprites1;
-
-    public GameObject modifier2;
-    public Image[] ModifierSprites2;
-
-    public GameObject modifier3;
-    public Image[] ModifierSprites3;
-
-    public GameObject modifier4;
-    public Image[] ModifierSprites4;
-
-    public GameObject modifier5;
-    public Image[] ModifierSprites5;
-
-    public GameObject modifier6;
-    public Image[] ModifierSprites6;
-
-    public GameObject modifier7;
-    public Image[] ModifierSprites7;
+    public Image[] DamageSprites;
+    public Image[] DamageModSprites;
+    public Image[] SpeedModSprites;
+    public Image[] BallDoublerSprites;
+    public Image[] ExplosionSprites;
+    public Image[] PlatformSizeSprites;
+    public Image[] PlatformSpeedSprites;
 
 
     public Button ButtonUpgrades;
@@ -39,19 +28,7 @@ public class MagazineManager : MonoBehaviour
     public Button ButtonSkills;
     public Button ButtonCurrencyShop;
     public Button ButtonSettings;
-    // public Button ButtonMAIN;
 
-    //public TextMeshProUGUI COINS_COUNT;
-    //public TextMeshProUGUI DIAMOND_COUNT;
-
-
-    //public Button PowerUPButton;
-    //public TextMeshProUGUI PowerUpLVLText;
-
-    //public Sprite MainButtonSpriteMENU;
-    //public Sprite MainButtonSpriteCROSS;
-
-    //Upgrade buttons
     //----------------
     public Button BallDamageUpgrade;
     public Button DamageMultiplier;
@@ -88,14 +65,6 @@ public class MagazineManager : MonoBehaviour
 
     private void Awake()
     {
-        //DontDestroyOnLoad(gameObject);
-
-        //modifier1 = new GameObject();
-        //modifier2 = new GameObject();
-        //modifier3 = new GameObject();
-        //modifier4 = new GameObject();
-        //modifier5 = new GameObject();
-
         ButtonUpgrades.onClick.AddListener(OnUpgrades);
         ButtonSkins.onClick.AddListener(OnSkins);
         ButtonSkills.onClick.AddListener(OnSkills);
@@ -144,7 +113,7 @@ public class MagazineManager : MonoBehaviour
 
         for (int i = 0; i < DamageModifier.Instance.CurrentUpgradeIndex; i++)
         {
-            ModifierSprites2[i].enabled = true;
+            DamageModSprites[i].enabled = true;
         }
     }
 
@@ -156,31 +125,39 @@ public class MagazineManager : MonoBehaviour
     void Start()
     {
 
-        for (int i = 0; i < ModifierSprites1.Length; i++)
-        {
-            ModifierSprites1[i].enabled = false;
-            ModifierSprites2[i].enabled = false;
-            ModifierSprites3[i].enabled = false;
-            ModifierSprites4[i].enabled = false;
-            ModifierSprites5[i].enabled = false;
-            ModifierSprites6[i].enabled = false;
-            ModifierSprites7[i].enabled = false;
-        }
+        //for (int i = 0; i < DamageSprites.Length; i++)
+        //{
+        //    DamageSprites[i].enabled = false;
+        //    DamageModSprites[i].enabled = false;
+        //    SpeedModSprites[i].enabled = false;
+        //    BallDoublerSprites[i].enabled = false;
+        //    ExplosionSprites[i].enabled = false;
+        //    PlatformSizeSprites[i].enabled = false;
+        //    PlatformSpeedSprites[i].enabled = false;
+        //}
 
-        var bonuses = DamageModifier.Instance.UpgradeBonuses;
-        for (int i = 0; i < DamageModifier.Instance.CurrentUpgradeIndex; i++)
-        {
-            ModifierSprites2[i].enabled = true;
-        }
-        for (int i = 0; i < DamageMultiplierBonus.Length; i++)
-        {
-            DamageMultiplierBonus[i].text = '+' + bonuses[i + 1].ToString();
-        }
-        DamageMultiplierPrice.text = DamageModifier.Instance.NextUpgradePrice.ToString();
+        SetSpritesBonusesAndPrice(DamageModifier.Instance, DamageModSprites, DamageMultiplierBonus, DamageMultiplierPrice);
+        SetSpritesBonusesAndPrice(SpeedAndImmortalModifier.Instance, SpeedModSprites, SpeedMultiplierBonus, SpeedMultiplierPrice);
+        SetSpritesBonusesAndPrice(DoublingAllBalls.Instance, BallDoublerSprites, BallDoublerBonus, BallDoublerPrice);
+        SetSpritesBonusesAndPrice(Explosion.Instance, ExplosionSprites, ExplosionBonus, ExplosionPrice);
 
-
+        //добавить остальные
 
         DATA_HOLDER.IsMagazineMain = true;
+    }
+
+    private void SetSpritesBonusesAndPrice(Modifier modifier, Image[] sprites,TextMeshProUGUI[] bonusText, TextMeshProUGUI price)
+    {
+        var bonuses = modifier.UpgradeBonuses;
+        for (int i = 0; i < modifier.CurrentUpgradeIndex; i++)
+        {
+            sprites[i].enabled = true;
+        }
+        for (int i = 0; i < bonusText.Length; i++)
+        {
+            bonusText[i].text = '+' + bonuses[i + _bonusOffset].ToString();
+        }
+        price.text = modifier.NextUpgradePrice.ToString();
     }
 
     private void OnTestClickedModifier()
@@ -245,7 +222,5 @@ public class MagazineManager : MonoBehaviour
         ButtonSkins.onClick.RemoveAllListeners();
         ButtonSkills.onClick.RemoveAllListeners();
         ButtonCurrencyShop.onClick.RemoveAllListeners();
-
-        //PowerUPButton.onClick.RemoveAllListeners();
     }
 }
