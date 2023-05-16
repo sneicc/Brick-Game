@@ -16,8 +16,7 @@ public class LevelMapControl : MonoBehaviour
         GameManager.ResumeGame();
     }
     void Start()
-    {
-        SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
+    {        
         ButtonInitialize();
     }
 

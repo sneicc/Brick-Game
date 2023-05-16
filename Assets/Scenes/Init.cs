@@ -9,6 +9,7 @@ public class Init : MonoBehaviour
     void Start()
     {
         SceneManager.LoadScene("LevelMap", LoadSceneMode.Single);
+        SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
     }
 
 }

@@ -82,7 +82,7 @@ public class GameUIController : MonoBehaviour
         }
         else if (DATA_HOLDER.currentScene.name == "Magazine")
         {
-            SceneManager.LoadScene("LevelMap", LoadSceneMode.Single);
+            GameManager.LoadMainMenu();
             ButtonSprite = true;
         }
         else if (DATA_HOLDER.currentScene.name == "LevelMap")

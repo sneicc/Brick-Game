@@ -137,6 +137,13 @@ public sealed class GameManager : MonoBehaviour
         SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);            
     }
 
+    public static void LoadMainMenu()
+    {
+        ResumeGame();
+        SceneManager.LoadScene("LevelMap", LoadSceneMode.Single);
+        SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
+    }
+
     public static void OpenPauseMenu()
     {
         //(Canvas) pauseMenu.SetActive(true);

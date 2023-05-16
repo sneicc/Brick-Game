@@ -18701,6 +18701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479793673}
   - component: {fileID: 1479793672}
+  - component: {fileID: 1479793674}
   m_Layer: 0
   m_Name: MagazineManager
   m_TagString: Untagged
@@ -18726,45 +18727,45 @@ MonoBehaviour:
   Skills: {fileID: 0}
   Settings: {fileID: 0}
   main: {fileID: 1418547074}
-  DamageSprites: []
-  DamageModSprites:
-  - {fileID: 2060589630}
-  - {fileID: 1101976827}
-  - {fileID: 2135889095}
-  - {fileID: 922269497}
-  - {fileID: 1603049827}
-  SpeedModSprites:
-  - {fileID: 146918125}
-  - {fileID: 86935318}
-  - {fileID: 253994346}
-  - {fileID: 2110607263}
-  - {fileID: 1633523687}
-  BallDoublerSprites:
-  - {fileID: 1424969494}
-  - {fileID: 1852131559}
-  - {fileID: 155068667}
-  - {fileID: 606627936}
-  - {fileID: 438571673}
-  ExplosionSprites:
-  - {fileID: 118111598}
-  - {fileID: 932928453}
-  - {fileID: 1992985346}
-  - {fileID: 196530328}
-  - {fileID: 2104076575}
-  PlatformSizeSprites: []
-  PlatformSpeedSprites: []
   ButtonUpgrades: {fileID: 20320426}
   ButtonSkins: {fileID: 1853874203}
   ButtonSkills: {fileID: 927183502}
   ButtonCurrencyShop: {fileID: 1860785540}
   ButtonSettings: {fileID: 877522408}
-  BallDamageUpgrade: {fileID: 683766993}
+--- !u!4 &1479793673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479793671}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.4399915, y: -1576.2985, z: -66.75722}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2140597904}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1479793674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479793671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b72ac01b2a40044b70f73bc30f9d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BallDamageUpgrade: {fileID: 0}
   DamageMultiplier: {fileID: 2047477968}
   SpeedMultiplier: {fileID: 565975770}
   BallDoubler: {fileID: 598394534}
   Exploson: {fileID: 1314073161}
-  PlatformSize: {fileID: 1460733569}
-  PlatformSpeed: {fileID: 1359353250}
+  PlatformSize: {fileID: 0}
+  PlatformSpeed: {fileID: 0}
   BallDamagePrice: {fileID: 0}
   DamageMultiplierPrice: {fileID: 2082083638}
   SpeedMultiplierPrice: {fileID: 260404181}
@@ -18799,21 +18800,33 @@ MonoBehaviour:
   - {fileID: 354972435}
   PlatformSizeBonus: []
   PlatformSpeedBonus: []
---- !u!4 &1479793673
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479793671}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.4399915, y: -1576.2985, z: -66.75722}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2140597904}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  DamageSprites: []
+  DamageModSprites:
+  - {fileID: 2060589630}
+  - {fileID: 1101976827}
+  - {fileID: 2135889095}
+  - {fileID: 922269497}
+  - {fileID: 1603049827}
+  SpeedModSprites:
+  - {fileID: 146918125}
+  - {fileID: 86935318}
+  - {fileID: 253994346}
+  - {fileID: 2110607263}
+  - {fileID: 1633523687}
+  BallDoublerSprites:
+  - {fileID: 1424969494}
+  - {fileID: 1852131559}
+  - {fileID: 155068667}
+  - {fileID: 606627936}
+  - {fileID: 438571673}
+  ExplosionSprites:
+  - {fileID: 118111598}
+  - {fileID: 932928453}
+  - {fileID: 1992985346}
+  - {fileID: 196530328}
+  - {fileID: 2104076575}
+  PlatformSizeSprites: []
+  PlatformSpeedSprites: []
 --- !u!1 &1490550134
 GameObject:
   m_ObjectHideFlags: 0
