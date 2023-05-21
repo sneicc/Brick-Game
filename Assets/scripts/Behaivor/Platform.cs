@@ -53,7 +53,7 @@ public class Platform : MonoBehaviour
 
             if (Vector3.Distance(transform.position, _targetPosition) > 0.05f)
             {
-                _rigidbody.AddForce(direction * Speed);
+                _rigidbody.velocity = direction * Speed;
             }
             else
             {

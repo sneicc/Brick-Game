@@ -134,7 +134,8 @@ public sealed class GameManager : MonoBehaviour
         SceneManager.LoadScene($"Level {level}", LoadSceneMode.Single);
         SceneManager.LoadScene("GAME_LOOSE", LoadSceneMode.Additive);
         SceneManager.LoadScene("GAME_WIN", LoadSceneMode.Additive);
-        SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);            
+        SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Pause", LoadSceneMode.Additive);
     }
 
     public static void LoadMainMenu()

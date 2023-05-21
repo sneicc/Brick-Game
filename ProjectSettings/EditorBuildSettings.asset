@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartTimer.unity
     guid: 7a4e2f5d85e3e0647a0868a8fd32e44d
+  - enabled: 1
+    path: Assets/Scenes/Pause.unity
+    guid: 7ab127138572e1c4999d0c4c8f989403
   m_configObjects: {}

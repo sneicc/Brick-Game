@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class LevelUIController : MonoBehaviour
 {
+    public static LevelUIController Instance { get; private set; }
+
+    public Button PauseButton;
     public Button DamageButton;
     public Button SpeedButton;
     public Button DoublingButton;
@@ -22,6 +25,9 @@ public class LevelUIController : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance is not null) Destroy(gameObject);
+        Instance = this;
+
         _mainColor = Hearts[0].color;
         GameManager.LivesChanged += OnLivesChanged;
 

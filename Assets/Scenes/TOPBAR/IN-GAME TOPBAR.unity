@@ -2592,6 +2592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76bb1a5dc429564abbfc5c45e9fe1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PauseButton: {fileID: 740334015}
   DamageButton: {fileID: 1064951860}
   SpeedButton: {fileID: 953450837}
   DoublingButton: {fileID: 1386435327}
