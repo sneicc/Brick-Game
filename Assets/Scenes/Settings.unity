@@ -1541,28 +1541,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1692696709}
-  - component: {fileID: 1692696708}
+  - component: {fileID: 1692696710}
   m_Layer: 0
-  m_Name: PauseManager
+  m_Name: SettingsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1692696708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692696707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c0958b48111fdc4bbcd571e667ddc12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ExitButton: {fileID: 0}
-  PauseCanvas: {fileID: 698107787}
 --- !u!4 &1692696709
 Transform:
   m_ObjectHideFlags: 0
@@ -1578,6 +1564,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1692696710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692696707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3c53f0108df1240978ec7f92425d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CloseButton: {fileID: 0}
+  OpenButton: {fileID: 0}
+  OpenInfoButton: {fileID: 0}
+  CloseInfoButton: {fileID: 0}
+  PauseCanvas: {fileID: 0}
+  InfoCanvas: {fileID: 0}
 --- !u!1 &1699790849
 GameObject:
   m_ObjectHideFlags: 0

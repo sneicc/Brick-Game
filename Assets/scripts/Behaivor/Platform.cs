@@ -51,7 +51,7 @@ public class Platform : MonoBehaviour
         {
             Vector3 direction = (_targetPosition - transform.position).normalized;
 
-            if (Vector3.Distance(transform.position, _targetPosition) > 0.05f)
+            if (Vector3.Distance(transform.position, _targetPosition) > 0.08f)
             {
                 _rigidbody.velocity = direction * Speed;
             }

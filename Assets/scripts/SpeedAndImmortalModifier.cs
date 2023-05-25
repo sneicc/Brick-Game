@@ -47,7 +47,7 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
 
             foreach (var ball in GameManager.Balls)
             {
-                if (!ball.enabled) continue;
+                if (!ball.gameObject.active) continue;
 
                 ball.SpeedModCounter++;
                 ball.IsImmortal = true;
@@ -63,7 +63,8 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
         {
             if (!ReferenceEquals(ball, null))
             {
-                if(ball.SpeedModCounter == 1)ball.IsImmortal = false;
+                if (ball.SpeedModCounter == 0) continue;
+                if(ball.SpeedModCounter == 1) ball.IsImmortal = false;
                 ball.SpeedModCounter--;
                 ball.BounceSpeed -= UpgradeBonus[UpgradeIndex];
             }

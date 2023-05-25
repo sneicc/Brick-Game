@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,8 @@ using UnityEngine.UI;
 /// </summary>
 public abstract class Modifier : MonoBehaviour
 {
+    public event Action<int> AmountChanged;
+
     /// <summary>
     /// Время работы модификатора.
     /// </summary>
@@ -14,7 +17,7 @@ public abstract class Modifier : MonoBehaviour
     /// <summary>
     /// Количество модификаторов.
     /// </summary>
-    protected int Amount;
+    public int Amount { get; protected set; }
     /// <summary>
     /// Цена одного модификатора.
     /// </summary>
@@ -132,6 +135,7 @@ public abstract class Modifier : MonoBehaviour
         if(Amount > 0)
         {
             Amount--;
+            AmountChanged?.Invoke(Amount);
             StartCoroutine(StartCooldown(WorkingTime));
             return true;
         }

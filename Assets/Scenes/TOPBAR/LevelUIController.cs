@@ -14,6 +14,15 @@ public class LevelUIController : MonoBehaviour
     public Button DoublingButton;
     public Button ExplosionButton;
 
+    [SerializeField]
+    private TextMeshProUGUI DamageModAmount;
+    [SerializeField]
+    private TextMeshProUGUI SpeedModAmount;
+    [SerializeField]
+    private TextMeshProUGUI DoublingModAmount;
+    [SerializeField]
+    private TextMeshProUGUI ExplosionModAmount;
+
     public Image[] Hearts;
     public Color SpendHearth;
     public Color BonusHearth;
@@ -36,11 +45,21 @@ public class LevelUIController : MonoBehaviour
         DoublingAllBalls.Instance.Subscribe(DoublingButton);
         Explosion.Instance.Subscribe(ExplosionButton);
 
+        DamageModifier.Instance.AmountChanged += OnDamageAmountChanged;
+        SpeedAndImmortalModifier.Instance.AmountChanged += OnSpeedAmountChanged;
+        DoublingAllBalls.Instance.AmountChanged += OnDoublingAmountChanged;
+        Explosion.Instance.AmountChanged += OnExplosionAmountChanged;
+
         LevelManager.Instance.CoinsChanged += OnCoinsChanged;
         LevelManager.Instance.DaimondsChanged += OnDiamondChanged;
 
         COINS_COUNT.text = LevelManager.Instance.LevelCoins.ToString();
         DIAMOND_COUNT.text = LevelManager.Instance.LevelDaimonds.ToString();
+
+        DamageModAmount.text = DamageModifier.Instance.Amount.ToString();
+        SpeedModAmount.text = SpeedAndImmortalModifier.Instance.Amount.ToString();
+        DoublingModAmount.text = DoublingAllBalls.Instance.Amount.ToString();
+        ExplosionModAmount.text = Explosion.Instance.Amount.ToString();
     }
     protected void OnCoinsChanged()
     {
@@ -79,12 +98,39 @@ public class LevelUIController : MonoBehaviour
      
     }
 
+    private void OnDamageAmountChanged(int amount)
+    {
+        DamageModAmount.text = amount.ToString();
+    }
+
+    private void OnSpeedAmountChanged(int amount)
+    {
+        SpeedModAmount.text = amount.ToString();
+    }
+
+    private void OnDoublingAmountChanged(int amount)
+    {
+        DoublingModAmount.text = amount.ToString();
+    }
+
+    private void OnExplosionAmountChanged(int amount)
+    {
+        ExplosionModAmount.text = amount.ToString();
+    }
+
     private void OnDestroy()
     {
+        Instance = null;
+
         DamageModifier.Instance.Unsubscribe();
         SpeedAndImmortalModifier.Instance.Unsubscribe();
         DoublingAllBalls.Instance.Unsubscribe();
         Explosion.Instance.Unsubscribe();
+
+        DamageModifier.Instance.AmountChanged -= OnDamageAmountChanged;
+        SpeedAndImmortalModifier.Instance.AmountChanged -= OnSpeedAmountChanged;
+        DoublingAllBalls.Instance.AmountChanged -= OnDoublingAmountChanged;
+        Explosion.Instance.AmountChanged -= OnExplosionAmountChanged;
 
         LevelManager.Instance.CoinsChanged -= OnCoinsChanged;
         LevelManager.Instance.DaimondsChanged -= OnDiamondChanged;

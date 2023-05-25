@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -130,12 +131,23 @@ public sealed class GameManager : MonoBehaviour
     }
 
     public static void LoadLevel(int level)
-    {       
-        SceneManager.LoadScene($"Level {level}", LoadSceneMode.Single);
-        SceneManager.LoadScene("GAME_LOOSE", LoadSceneMode.Additive);
-        SceneManager.LoadScene("GAME_WIN", LoadSceneMode.Additive);
-        SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);
-        SceneManager.LoadScene("Pause", LoadSceneMode.Additive);
+    {
+        string levelName = $"Level {level}";
+        if(SceneUtility.GetBuildIndexByScenePath($"Scenes/{levelName}") >= 0)
+        {
+            SceneManager.LoadScene(levelName, LoadSceneMode.Single);
+            SceneManager.LoadScene("GAME_LOOSE", LoadSceneMode.Additive);
+            SceneManager.LoadScene("GAME_WIN", LoadSceneMode.Additive);
+            SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Pause", LoadSceneMode.Additive);
+        }
+        else
+        {
+            Debug.Log($"Scene {levelName} does not exist");
+        }
+
+
+        
     }
 
     public static void LoadMainMenu()

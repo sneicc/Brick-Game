@@ -1,14 +1,12 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameUIController : MonoBehaviour
 {
+    public static GameUIController Instance;
 
     protected Animator AnimatorBTN;
 
@@ -23,8 +21,11 @@ public class GameUIController : MonoBehaviour
     protected static bool ButtonSprite = true;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        if(Instance is not null) Destroy(gameObject);
+        Instance = this;
+
         MainButton.onClick.AddListener(MainClick);
         AnimatorBTN = MainButton.GetComponent<Animator>();
 
@@ -75,20 +76,16 @@ public class GameUIController : MonoBehaviour
 
     private static void LoadScenes()
     {
-        if (DATA_HOLDER.currentScene.name == "Magazine" && DATA_HOLDER.IsMagazineMain == false)
-        {
-            SceneManager.LoadScene("MAGAZINE", LoadSceneMode.Single);
-            SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
-        }
-        else if (DATA_HOLDER.currentScene.name == "Magazine")
+
+        if (DATA_HOLDER.currentScene.name == "TOPBAR" && DATA_HOLDER.IsMagazineMain == true)
         {
             GameManager.LoadMainMenu();
             ButtonSprite = true;
         }
         else if (DATA_HOLDER.currentScene.name == "LevelMap")
         {
-            SceneManager.LoadScene("MAGAZINE", LoadSceneMode.Single);
-            SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
+            SceneManager.LoadScene("TOPBAR", LoadSceneMode.Single);
+            SceneManager.LoadScene("MAGAZINE", LoadSceneMode.Additive);           
             ButtonSprite = false;
         }
     }
@@ -100,5 +97,7 @@ public class GameUIController : MonoBehaviour
         GameManager.DiamondChanged -= OnDiamondChanged;
 
         MainButton.onClick.RemoveAllListeners();
+
+        Instance = null;
     }
 }

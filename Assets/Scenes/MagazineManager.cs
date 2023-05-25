@@ -19,18 +19,15 @@ public class MagazineManager : MonoBehaviour
     public Button ButtonSettings;
     //----------------
 
-
-    //TEST
-    private int count;
-
-
     private void Awake()
     {
         ButtonUpgrades.onClick.AddListener(OnUpgrades);
         ButtonSkins.onClick.AddListener(OnSkins);
         ButtonSkills.onClick.AddListener(OnSkills);
         ButtonCurrencyShop.onClick.AddListener(OnCurrencyShop);
-        ButtonSettings.onClick.AddListener(OnSettings);       
+        ButtonSettings.onClick.AddListener(OnSettings);
+
+        GameUIController.Instance.MainButton.onClick.AddListener(BackToMainMagazine);
     }
    
     void Start()
@@ -57,7 +54,8 @@ public class MagazineManager : MonoBehaviour
 
     public void OnSkills()
     {
-        Debug.Log("IM SKILLS BUTTON!!!");
+        main.enabled = false;
+        Skills.gameObject.SetActive(true);
         DATA_HOLDER.IsMagazineMain = false;
     }
 
@@ -73,13 +71,17 @@ public class MagazineManager : MonoBehaviour
         main.enabled = true;
         Upgrades.gameObject.SetActive(false);
         Skins.gameObject.SetActive(false);
+        Settings.gameObject.SetActive(false);
+        Skills.gameObject.SetActive(false);
+        CurrencyShop.gameObject.SetActive(false);
         // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
         DATA_HOLDER.IsMagazineMain = true;
     }
 
     public void OnSettings()
     {
-        Debug.Log("IM SETTINGS BUTTON!!!");
+        main.enabled = false;
+        Settings.gameObject.SetActive(true);
         DATA_HOLDER.IsMagazineMain = false;
     }
 
@@ -89,5 +91,7 @@ public class MagazineManager : MonoBehaviour
         ButtonSkins.onClick.RemoveAllListeners();
         ButtonSkills.onClick.RemoveAllListeners();
         ButtonCurrencyShop.onClick.RemoveAllListeners();
+
+        GameUIController.Instance.MainButton.onClick.RemoveAllListeners();
     }
 }
