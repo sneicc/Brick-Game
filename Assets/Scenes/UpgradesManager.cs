@@ -7,18 +7,18 @@ public class UpgradesManager : MonoBehaviour
 {
     private const int _bonusOffset = 1;
 
-    //----------------
+    [Header("Upgrade Buttons")]
     public Button BallDamageUpgrade;
     public Button DamageMultiplier;
     public Button SpeedMultiplier;
     public Button BallDoubler;
-    public Button Exploson;
+    public Button Explosion;
     public Button PlatformSize;
     public Button PlatformSpeed;
-    //----------------
 
-    //Upgrade text
-    //----------------
+    [Space]
+
+    [Header("Upgrade Prices")]
     public TextMeshProUGUI BallDamagePrice;
     public TextMeshProUGUI DamageMultiplierPrice;
     public TextMeshProUGUI SpeedMultiplierPrice;
@@ -27,6 +27,9 @@ public class UpgradesManager : MonoBehaviour
     public TextMeshProUGUI PlatformSizePrice;
     public TextMeshProUGUI PlatformSpeedPrice;
 
+    [Space]
+
+    [Header("Upgrade Bonuses")]
     public TextMeshProUGUI[] BallDamageBonus;
     public TextMeshProUGUI[] DamageMultiplierBonus;
     public TextMeshProUGUI[] SpeedMultiplierBonus;
@@ -34,10 +37,10 @@ public class UpgradesManager : MonoBehaviour
     public TextMeshProUGUI[] ExplosionBonus;
     public TextMeshProUGUI[] PlatformSizeBonus;
     public TextMeshProUGUI[] PlatformSpeedBonus;
-    //----------------
 
-    //Upgrade sprites
-    //----------------
+    [Space]
+
+    [Header("Upgrade Sprites")]
     public Image[] DamageSprites;
     public Image[] DamageModSprites;
     public Image[] SpeedModSprites;
@@ -45,15 +48,14 @@ public class UpgradesManager : MonoBehaviour
     public Image[] ExplosionSprites;
     public Image[] PlatformSizeSprites;
     public Image[] PlatformSpeedSprites;
-    //----------------
 
     private void Awake()
     {
-        //BallDamageUpgrade.onClick.AddListener(OnDamageUpgrade);
+        BallDamageUpgrade.onClick.AddListener(OnDamageUpgrade);
         DamageMultiplier.onClick.AddListener(OnDamageMultiplierUpgrade);
         SpeedMultiplier.onClick.AddListener(OnSpeedMultiplierUpgrade);
         BallDoubler.onClick.AddListener(OnDoublerUpgrade);
-        Exploson.onClick.AddListener(OnExplosionUpgrade);
+        Explosion.onClick.AddListener(OnExplosionUpgrade);
         //PlatformSize.onClick.AddListener(OnPlatformSizeUpgrade);
         //PlatformSpeed.onClick.AddListener(OnPlatformSpeedUpgrade);
     }
@@ -63,8 +65,14 @@ public class UpgradesManager : MonoBehaviour
         SetSpritesBonusesAndPrice(DamageModifier.Instance, DamageModSprites, DamageMultiplierBonus, DamageMultiplierPrice);
         SetSpritesBonusesAndPrice(SpeedAndImmortalModifier.Instance, SpeedModSprites, SpeedMultiplierBonus, SpeedMultiplierPrice);
         SetSpritesBonusesAndPrice(DoublingAllBalls.Instance, BallDoublerSprites, BallDoublerBonus, BallDoublerPrice);
-        SetSpritesBonusesAndPrice(Explosion.Instance, ExplosionSprites, ExplosionBonus, ExplosionPrice);
+        SetSpritesBonusesAndPrice(global::Explosion.Instance, ExplosionSprites, ExplosionBonus, ExplosionPrice);
+        SetSpritesBonusesAndPrice(BallDamageManager.Instance, DamageSprites, BallDamageBonus, BallDamagePrice);
         //добавить остальные
+    }
+
+    private void OnDamageUpgrade()
+    {
+        Upgrade(BallDamageManager.Instance, DamageSprites, BallDamagePrice);
     }
 
     private void OnPlatformSpeedUpgrade()
@@ -79,7 +87,7 @@ public class UpgradesManager : MonoBehaviour
 
     private void OnExplosionUpgrade()
     {
-        Upgrade(Explosion.Instance, ExplosionSprites, ExplosionPrice);
+        Upgrade(global::Explosion.Instance, ExplosionSprites, ExplosionPrice);
     }
 
     private void OnDoublerUpgrade()
@@ -97,7 +105,7 @@ public class UpgradesManager : MonoBehaviour
         Upgrade(DamageModifier.Instance, DamageModSprites, DamageMultiplierPrice);
     }
 
-    private void Upgrade(Modifier modifier, Image[] images, TextMeshProUGUI price)
+    private void Upgrade(Upgradable modifier, Image[] images, TextMeshProUGUI price)
     {
         modifier.Upgrade();
         price.text = modifier.NextUpgradePrice.ToString();
@@ -106,14 +114,9 @@ public class UpgradesManager : MonoBehaviour
         {
             images[i].enabled = true;
         }
-    }
+    }    
 
-    private void OnDamageUpgrade()
-    {
-        Debug.Log("work");
-    }
-
-    private void SetSpritesBonusesAndPrice(Modifier modifier, Image[] sprites, TextMeshProUGUI[] bonusText, TextMeshProUGUI price)
+    private void SetSpritesBonusesAndPrice(Upgradable modifier, Image[] sprites, TextMeshProUGUI[] bonusText, TextMeshProUGUI price)
     {
         var bonuses = modifier.UpgradeBonuses;
         for (int i = 0; i < modifier.CurrentUpgradeIndex; i++)

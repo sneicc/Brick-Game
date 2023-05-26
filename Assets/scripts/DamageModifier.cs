@@ -48,7 +48,7 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
         {
             _ballsCopy = new List<BallB>(GameManager.Balls); 
 
-            int tempDamage = (int)(GameManager.Damage * UpgradeBonus[UpgradeIndex]);
+            int tempDamage = (int)(BallDamageManager.Instance.Damage * UpgradeBonus[UpgradeIndex]);
             foreach (var ball in GameManager.Balls)
             {
                 ball.Damage = tempDamage;
@@ -61,16 +61,16 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
     {
         foreach (var ball in _ballsCopy)
         {
-            if (!ReferenceEquals(ball, null)) ball.Damage = GameManager.Damage;
+            if (!ReferenceEquals(ball, null)) ball.Damage = BallDamageManager.Instance.Damage;
         }
-    } 
+    }
 
     //public void Disable()
     //{
     //    var intersect = GameManager.Balls.Intersect(BallsCopy);
     //    foreach (var ball in intersect)
     //    {
-    //        if (!ReferenceEquals(ball, null)) ball.Damage = GameManager.Damage; // протестировать скорость
+    //        if (!ReferenceEquals(ball, null)) ball.Damage = BallDamageManager.Instance.Damage; // протестировать скорость
     //    }
     //}
 }

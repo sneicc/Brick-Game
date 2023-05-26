@@ -92,6 +92,6 @@ public class MagazineManager : MonoBehaviour
         ButtonSkills.onClick.RemoveAllListeners();
         ButtonCurrencyShop.onClick.RemoveAllListeners();
 
-        GameUIController.Instance.MainButton.onClick.RemoveAllListeners();
+        GameUIController.Instance?.MainButton.onClick.RemoveAllListeners();
     }
 }

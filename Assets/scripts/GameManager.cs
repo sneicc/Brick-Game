@@ -14,8 +14,6 @@ public sealed class GameManager : MonoBehaviour
     public static List<BallB> Balls = new List<BallB>();
 
     public static float Speed = 6; //установка через параметры уровная
-
-    public static int Damage = 10;
     public static int Coins { get; private set; }
     public static int Daimonds { get; private set; }
     public static float Luck { get; private set; }

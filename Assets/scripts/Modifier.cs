@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Модификатор поведения шара.
 /// </summary>
-public abstract class Modifier : MonoBehaviour
+public abstract class Modifier : Upgradable
 {
     public event Action<int> AmountChanged;
 
@@ -24,84 +24,9 @@ public abstract class Modifier : MonoBehaviour
     protected int Price;
 
     /// <summary>
-    /// Массив улучшений характеристик модификатора.
-    /// </summary>
-    protected float[] UpgradeBonus;
-    /// <summary>
-    /// Массив цен для улучшения модификатора.
-    /// </summary>
-    protected int[] UpgradePrice;
-    /// <summary>
-    /// Текущий индекс улучшения модификатора.
-    /// </summary>
-    protected int UpgradeIndex;
-
-    /// <summary>
     /// Кнопка к которой привязан модификатор.
     /// </summary>
     protected Button _button;
-
-    public int NextUpgradePrice
-    {
-        get
-        {
-            if (UpgradeIndex + 1 >= UpgradePrice.Length) return -1;
-            return UpgradePrice[UpgradeIndex + 1];
-        }
-    }
-
-    public int CurrentUpgradePrice
-    {
-        get
-        {
-            return UpgradePrice[UpgradeIndex];
-        }
-    }
-
-    public float NextUpgradeBonus
-    {
-        get
-        {
-            if (UpgradeIndex + 1 >= UpgradeBonus.Length) return -1;
-            return UpgradeBonus[UpgradeIndex + 1];
-        }
-    }
-
-    public float CurrentUpgradeBonus
-    {
-        get
-        {
-            return UpgradeBonus[UpgradeIndex];
-        }
-    }
-
-    public int CurrentUpgradeIndex
-    {
-        get
-        {
-            return UpgradeIndex;
-        }
-    }
-
-    public int[] UpgradePrices
-    {
-        get
-        {
-            int[] temp = new int[UpgradePrice.Length];
-            UpgradePrice.CopyTo(temp, 0);
-            return temp;
-        }
-    }
-
-    public float[] UpgradeBonuses
-    {
-        get
-        {
-            float[] temp = new float[UpgradeBonus.Length];
-            UpgradeBonus.CopyTo(temp, 0);
-            return temp;
-        }
-    }
 
     /// <summary>
     /// При запуске приложения получает ссылку на кнопку.
@@ -145,7 +70,7 @@ public abstract class Modifier : MonoBehaviour
     /// <summary>
     /// Увеличивает индекс текущего улучшения на 1, при условии налачия нужной суммы монет.
     /// </summary>
-    public virtual void Upgrade()
+    public override void Upgrade()
     {
         int nextIndex = UpgradeIndex + 1;
         if (nextIndex < UpgradeBonus.Length)

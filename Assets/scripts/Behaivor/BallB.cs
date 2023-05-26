@@ -38,7 +38,7 @@ public class BallB : MonoBehaviour
 	{
         _spawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
         MainSpeed = BounceSpeed = GameManager.Speed;
-        Damage = GameManager.Damage;
+        Damage = BallDamageManager.Instance.Damage;
 		RB = gameObject.GetComponent<Rigidbody>();
 
         GameManager.Balls.Add(this);
