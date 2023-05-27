@@ -21,7 +21,7 @@ public abstract class Modifier : Upgradable
     /// <summary>
     /// Цена одного модификатора.
     /// </summary>
-    protected int Price;
+    public int Price { get; protected set; }
 
     /// <summary>
     /// Кнопка к которой привязан модификатор.
@@ -41,8 +41,10 @@ public abstract class Modifier : Upgradable
     /// Добавляет 1 еденицу модификатора, при условии налачия нужной суммы монет.
     /// </summary>
     /// <returns>Булево значение результата операции.</returns>
-    protected bool Buy()
+    public bool Buy()
     {
+        if(Amount >= 10) return false;
+
         if (GameManager.RemoveCoins(Price))
         {
             Amount++;

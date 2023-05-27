@@ -125,7 +125,7 @@ public class UpgradesManager : MonoBehaviour
         }
         for (int i = 0; i < bonusText.Length; i++)
         {
-            bonusText[i].text = '+' + bonuses[i + _bonusOffset].ToString();
+            bonusText[i].text = bonuses[i + _bonusOffset].ToString();
         }
         price.text = modifier.NextUpgradePrice.ToString();
     }

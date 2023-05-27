@@ -76,7 +76,7 @@ public sealed class GameManager : MonoBehaviour
     public static void RemoveBrick()
     {
         _bricksOnLevel--;
-        if (_bricksOnLevel == 0) EndGame();
+        if (_bricksOnLevel == 0 && Lives > 0) EndGame();
     }
 
     public static void AddLive()
