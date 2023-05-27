@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2144559208662641855}
   - component: {fileID: 510690075869343739}
   - component: {fileID: 1227116819001108986}
+  - component: {fileID: -3613329331581089327}
   m_Layer: 3
   m_Name: Ball
   m_TagString: GameBall
@@ -117,7 +118,7 @@ MonoBehaviour:
   BounceSpeed: 0
   Threashold: 1
   ReboundLimit: 5
-  CloneMaterial: {fileID: 2100000, guid: 4aac98aef254ecf429643db51adb8f72, type: 2}
+  CloneMaterial: {fileID: 2100000, guid: a7a35a310f4bf234099e346d4c063b79, type: 2}
   PrevVelocity: []
   IsClone: 0
   IsImmortal: 0
@@ -138,6 +139,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 120
   m_CollisionDetection: 1
+--- !u!114 &-3613329331581089327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694419259228504301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b049d777596bcf4ea3563b0391a6667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: -2
 --- !u!1 &1715104507704689892
 GameObject:
   m_ObjectHideFlags: 0

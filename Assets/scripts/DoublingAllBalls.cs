@@ -64,12 +64,15 @@ public class DoublingAllBalls : Modifier, IModifier
         Vector3 position = GetClonePosition(gameObject.transform.position, gameObject.GetComponent<SphereCollider>().radius, gameObject.transform.localScale);
         var clone = Instantiate(gameObject, position, gameObject.transform.rotation);
 
+        
         clone.gameObject.GetComponent<Rigidbody>().velocity = gameObject.GetComponent<Rigidbody>().velocity;
         var ballB = clone.gameObject.GetComponent<BallB>();
         ballB.BounceSpeed = GameManager.Speed;
         ballB.SpeedModCounter = 0;
         ballB.IsClone = true;
         ballB.IsImmortal = false;
+
+        clone.GetComponent<Renderer>().material = Instantiate(ballB.CloneMaterial);
 
         return clone;
     }
