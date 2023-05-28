@@ -10,13 +10,13 @@ public class SpeedMod : MonoBehaviour
     public float Duration = 3;
     private Vector3 AddedSpeed;
 
-    private BallB Ball;
+    private Ball Ball;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("GameBall"))
         {
-            Ball = other.gameObject.GetComponent<BallB>();
+            Ball = other.gameObject.GetComponent<Ball>();
 
             Ball.SpeedModCounter++;
             Ball.IsImmortal = true;

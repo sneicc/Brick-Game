@@ -66,7 +66,7 @@ public class DoublingAllBalls : Modifier, IModifier
 
         
         clone.gameObject.GetComponent<Rigidbody>().velocity = gameObject.GetComponent<Rigidbody>().velocity;
-        var ballB = clone.gameObject.GetComponent<BallB>();
+        var ballB = clone.gameObject.GetComponent<Ball>();
         ballB.BounceSpeed = GameManager.Speed;
         ballB.SpeedModCounter = 0;
         ballB.IsClone = true;

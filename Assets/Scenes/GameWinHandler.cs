@@ -41,6 +41,9 @@ public class GameWinHandler : MonoBehaviour
         NextLevel.onClick.AddListener(OnNextLevel);
         MultiplyReward.onClick.AddListener(OnMultiplyReward);
 
+        CoinText.text = "0";
+        DaimondText.text = "0";
+
         Canvas.SetActive(false);
     }
 

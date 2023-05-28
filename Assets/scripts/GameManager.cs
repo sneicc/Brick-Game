@@ -8,7 +8,7 @@ public sealed class GameManager : MonoBehaviour
     private const int NumberOfLevels = 99;
     public static GameManager Instance;
 
-    public static List<BallB> Balls = new List<BallB>();
+    public static List<Ball> Balls = new List<Ball>();
 
     public static float Speed = 6; //установка через параметры уровная
     public static int Coins { get; private set; }
@@ -42,8 +42,6 @@ public sealed class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 120;
-
         if (Instance is not null)
         {
             Destroy(gameObject);
@@ -211,6 +209,12 @@ public sealed class GameManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public static void RemoveAllListeners()
+    {
+        GameLoose = null;
+        GameWin = null;
     }
 
 }

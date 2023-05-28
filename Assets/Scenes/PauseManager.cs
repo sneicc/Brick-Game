@@ -27,6 +27,7 @@ public class PauseManager : MonoBehaviour
 
     private void Exit()
     {
+        GameManager.RemoveAllListeners();
         GameManager.LoadMainMenu();
     }
 

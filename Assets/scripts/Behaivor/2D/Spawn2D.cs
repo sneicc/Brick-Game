@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Spawn : MonoBehaviour
+public class Spawn2D : MonoBehaviour
 {
     public int Time = 3;
     public GameObject Ball;
@@ -42,7 +42,7 @@ public class Spawn : MonoBehaviour
     private void SpawnBall()
     {
         var mainBall = Instantiate(Ball, transform.position, transform.rotation);
-        var ballParams = mainBall.GetComponent<Ball>();
+        var ballParams = mainBall.GetComponent<Ball2D>();
         ballParams.IsClone = false;
         ballParams.IsImmortal = false;
     }

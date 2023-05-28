@@ -183,7 +183,7 @@ public class Laser : MonoBehaviour
         {
             if (hit.collider.CompareTag("Brick"))
             {
-                hit.collider.GetComponent<Bricks>().Hit(Dagame);
+                hit.collider.GetComponent<Brick>().Hit(Dagame);
             }
             else if (hit.collider.CompareTag("Laser"))
             {

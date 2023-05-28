@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LootBox : MonoBehaviour
+public class LootBox2D : MonoBehaviour
 {
     /// <summary>
     /// Шанс появления
@@ -31,7 +31,7 @@ public class LootBox : MonoBehaviour
     /// <summary>
     /// Блок
     /// </summary>
-    private Brick Brick;
+    private Brick2D brick2D;
 
     /// <summary>
     /// Шейдер лутбокса
@@ -50,7 +50,7 @@ public class LootBox : MonoBehaviour
         if (Random.Range(1, 100) <= Chance) 
         {
             IsLootBox = true;
-            Brick = gameObject.GetComponent<Brick>();
+            brick2D = gameObject.GetComponent<Brick2D>();
 
             Renderer renderer = gameObject.GetComponent<Renderer>();
             Material material = new Material(Shader);           
@@ -74,7 +74,7 @@ public class LootBox : MonoBehaviour
     private void OnDisable()
     {
         if (!IsLootBox) return;
-        if (Brick.HP > 0) return;
+        if (brick2D.HP > 0) return;
 
         if (!gameObject.scene.isLoaded) return;
         if (_isQuitting) return;

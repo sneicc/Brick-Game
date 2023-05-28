@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class BallB : MonoBehaviour
+public class Ball2D : MonoBehaviour
 {
 	public int Damage;
     public float MainSpeed { get; private set; }
@@ -20,10 +20,10 @@ public class BallB : MonoBehaviour
 	private int YCounterStuck;
 	public int ReboundLimit = 5;
 
-    private Rigidbody RB;
+    private Rigidbody2D _rb2d;
 	public Material CloneMaterial;
 
-	public Vector3[] PrevVelocity;
+	public Vector2[] PrevVelocity;
 
 	public bool IsClone = false;
 	public bool IsImmortal = false;
@@ -34,17 +34,18 @@ public class BallB : MonoBehaviour
 	public int SpeedModCounter = 0;
 	private Vector3 _spawn;
 
-    public LayerMask brickMask;
+	[SerializeField]
+    private LayerMask BrickMask;
 
     private void Awake()
 	{
         _spawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
         MainSpeed = BounceSpeed = GameManager.Speed;
         Damage = BallDamageManager.Instance.Damage;
-		RB = gameObject.GetComponent<Rigidbody>();
+		_rb2d = gameObject.GetComponent<Rigidbody2D>();
 
-        GameManager.Balls.Add(this);
-	}
+        //GameManager.Balls.Add(this);
+    }
 
 	void Start()
 	{
@@ -52,38 +53,47 @@ public class BallB : MonoBehaviour
 		YCounterStuck = 0;
 		LastPos = transform.position;
 
-        RB = GetComponent<Rigidbody>();
+        _rb2d = GetComponent<Rigidbody2D>();
 		if (!IsClone) ResetBall();		
 
-        PrevVelocity = new Vector3[2] { RB.velocity, RB.velocity };
+        PrevVelocity = new Vector2[2] { _rb2d.velocity, _rb2d.velocity };
 
     }
 
 	private void Update()
 	{
 		PrevVelocity[1] = PrevVelocity[0];
-		PrevVelocity[0] = RB.velocity;
+		PrevVelocity[0] = _rb2d.velocity;
         SetMainSpeed();
     }
 
-	private void OnCollisionEnter(Collision collision)
-	{	
-		if (collision.gameObject.name == "ball_deadzone" && !IsImmortal)
-		{
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+        if (collision.gameObject.name == "ball_deadzone" && !IsImmortal)
+        {
             if (IsClone)
             {
                 Destroy(gameObject);
                 return;
             }
-			GameManager.RemoveLive();
+            GameManager.RemoveLive();
             gameObject.SetActive(false);
             Invoke(nameof(ResetBall), 1f);
         }
 
-        
+        Vector2 towardsCollision = collision.contacts[0].point - (Vector2)transform.position;
+        Ray2D ray = new Ray2D(transform.position, towardsCollision);
+
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1f, BrickMask);
+        if (hit.collider != null)
+        {
+			var brick = hit.collider.transform.parent.gameObject.GetComponent<Brick2D>();
+			brick.Hit(Damage, PrevVelocity[1]);
+        }
 
         StuckHandle();
-	}
+    }
+
 	private void BallB_OnSpeedModEnd()
 	{
 		BounceSpeed = MainSpeed;
@@ -92,7 +102,7 @@ public class BallB : MonoBehaviour
 
 	private void SetMainSpeed()
 	{
-		RB.velocity = RB.velocity.normalized * BounceSpeed;
+		_rb2d.velocity = _rb2d.velocity.normalized * BounceSpeed;
 	}
 
 	private void StuckHandle()
@@ -101,12 +111,12 @@ public class BallB : MonoBehaviour
 
         if (XCounterStuck >= ReboundLimit)
 		{
-			RB.velocity = new Vector3(RB.velocity.x + rand, RB.velocity.y, RB.velocity.z);
+			_rb2d.velocity = new Vector2(_rb2d.velocity.x + rand, _rb2d.velocity.y).normalized * BounceSpeed;
 			XCounterStuck = 0;
 		}
 		else if (YCounterStuck >= ReboundLimit)
 		{
-			RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y + rand, RB.velocity.z);
+			_rb2d.velocity = new Vector2(_rb2d.velocity.x, _rb2d.velocity.y + rand).normalized * BounceSpeed;
 			YCounterStuck = 0;
 		}
 
@@ -128,14 +138,14 @@ public class BallB : MonoBehaviour
         gameObject.SetActive(true);
         gameObject.transform.position = _spawn;
 
-		RB.velocity = Vector3.zero;
+		_rb2d.velocity = Vector3.zero;
         Vector3 force = new Vector3(Random.Range(-1f, 1f), -1f,0);
-        RB.velocity = force.normalized * BounceSpeed;
+        _rb2d.velocity = force.normalized * BounceSpeed;
     }
 
 	private void OnDestroy()
 	{
-		GameManager.Balls.Remove(this);
+		//GameManager.Balls.Remove(this);
 	}
 
 }

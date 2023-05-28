@@ -22,7 +22,7 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
     [SerializeField]
     private int SpeedUpgradeIndex = 0;
 
-    private List<BallB> _ballsCopy;
+    private List<Ball> _ballsCopy;
 
     void Awake()
     {
@@ -43,7 +43,7 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
     {
         if (Spend())
         {
-            _ballsCopy = new List<BallB>(GameManager.Balls);
+            _ballsCopy = new List<Ball>(GameManager.Balls);
 
             foreach (var ball in GameManager.Balls)
             {

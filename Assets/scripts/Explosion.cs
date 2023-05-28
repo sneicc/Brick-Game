@@ -122,7 +122,7 @@ public class Explosion : Modifier
         {
             if (item.CompareTag("Brick"))
             {
-                item.GetComponent<Bricks>().Hit(currentDamage);
+                item.GetComponent<Brick>().Hit(currentDamage);
             }
         }
     }

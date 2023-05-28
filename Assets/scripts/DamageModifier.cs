@@ -25,7 +25,7 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
     [SerializeField]
     private int DamageModifierIndex = 0;
 
-    private List<BallB> _ballsCopy;
+    private List<Ball> _ballsCopy;
 
     void Awake()
     {
@@ -46,7 +46,7 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
     {
         if (Spend()) 
         {
-            _ballsCopy = new List<BallB>(GameManager.Balls); 
+            _ballsCopy = new List<Ball>(GameManager.Balls); 
 
             int tempDamage = (int)(BallDamageManager.Instance.Damage * UpgradeBonus[UpgradeIndex]);
             foreach (var ball in GameManager.Balls)

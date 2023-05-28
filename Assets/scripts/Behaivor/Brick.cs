@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class Bricks : MonoBehaviour
+public class Brick : MonoBehaviour
 {
     public int HP = 1;
     public Material[] Materials;
@@ -63,7 +63,7 @@ public class Bricks : MonoBehaviour
     {
         if (Unbreakable) return;
 
-        HP -= collision.gameObject.GetComponent<BallB>().Damage;
+        HP -= collision.gameObject.GetComponent<Ball>().Damage;
         CheckHP(collision);
         SetHPText();
     }
@@ -116,7 +116,7 @@ public class Bricks : MonoBehaviour
             ParticleSystem particleSystem = CreateVFX(VFX);
 
             var shape = particleSystem.shape;
-            Quaternion quaternion = Quaternion.LookRotation(collision.gameObject.GetComponent<BallB>().PrevVelocity[1]);
+            Quaternion quaternion = Quaternion.LookRotation(collision.gameObject.GetComponent<Ball>().PrevVelocity[1]);
             Vector3 rotation = quaternion.eulerAngles;
             shape.rotation = rotation;// * -1f;          
         }

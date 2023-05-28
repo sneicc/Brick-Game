@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 258897453303812688}
   - component: {fileID: 4048160275992099218}
   - component: {fileID: 1242954931738768201}
-  - component: {fileID: 2144559208662641855}
-  - component: {fileID: 510690075869343739}
-  - component: {fileID: 1227116819001108986}
-  - component: {fileID: 8336890512359447078}
+  - component: {fileID: 4281219702696823584}
+  - component: {fileID: 7104195040362902568}
+  - component: {fileID: 4814003238685961849}
+  - component: {fileID: -1094027941060896379}
   m_Layer: 3
-  m_Name: Ball
+  m_Name: Ball2D
   m_TagString: GameBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,20 +88,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2144559208662641855
-SphereCollider:
+--- !u!50 &4281219702696823584
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694419259228504301}
-  m_Material: {fileID: 13400000, guid: 14b51dedb7d9a6844b506c475883b7d9, type: 2}
-  m_IsTrigger: 0
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: d47bd81a1c0bd474da016a87c6c0cefd, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!58 &7104195040362902568
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694419259228504301}
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d47bd81a1c0bd474da016a87c6c0cefd, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &510690075869343739
+--- !u!114 &4814003238685961849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694419259228504301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29fde0c14765894491369df8af9bbd9, type: 3}
+  m_Script: {fileID: 11500000, guid: 05454ab79ccf3c94eac9fa3b240d293e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
@@ -118,31 +142,15 @@ MonoBehaviour:
   BounceSpeed: 0
   Threashold: 0.7
   ReboundLimit: 30
-  CloneMaterial: {fileID: 2100000, guid: a7a35a310f4bf234099e346d4c063b79, type: 2}
+  CloneMaterial: {fileID: 2100000, guid: cb339679d860eb649a63a72e8aaa0ee0, type: 2}
   PrevVelocity: []
   IsClone: 0
   IsImmortal: 0
   SpeedModCounter: 0
-  brickMask:
+  BrickMask:
     serializedVersion: 2
     m_Bits: 512
---- !u!54 &1227116819001108986
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694419259228504301}
-  serializedVersion: 2
-  m_Mass: 0.01
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 120
-  m_CollisionDetection: 1
---- !u!114 &8336890512359447078
+--- !u!114 &-1094027941060896379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,10 +159,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694419259228504301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b049d777596bcf4ea3563b0391a6667, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a0b33458f97bab4db290dc8523f2f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: -2
+  RotationSpeed: -2
 --- !u!1 &1715104507704689892
 GameObject:
   m_ObjectHideFlags: 0
