@@ -34,7 +34,9 @@ public class BallB : MonoBehaviour
 	public int SpeedModCounter = 0;
 	private Vector3 _spawn;
 
-	private void Awake()
+    public LayerMask brickMask;
+
+    private void Awake()
 	{
         _spawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
         MainSpeed = BounceSpeed = GameManager.Speed;
@@ -77,6 +79,8 @@ public class BallB : MonoBehaviour
             gameObject.SetActive(false);
             Invoke(nameof(ResetBall), 1f);
         }
+
+        
 
         StuckHandle();
 	}

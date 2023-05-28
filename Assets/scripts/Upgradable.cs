@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Upgradable : MonoBehaviour
@@ -79,6 +77,27 @@ public abstract class Upgradable : MonoBehaviour
         }
     }
 
-    public abstract void Upgrade();
+    public abstract void Upgrade(IResourceRemovalStrategy removalStrategy);
 
+}
+
+public interface IResourceRemovalStrategy
+{
+    bool RemoveResources(int amount);
+}
+
+public class RemoveCoinsStrategy : IResourceRemovalStrategy
+{
+    public bool RemoveResources(int amount)
+    {
+        return GameManager.RemoveCoins(amount);
+    }
+}
+
+public class RemoveDaimondsStrategy : IResourceRemovalStrategy
+{
+    public bool RemoveResources(int amount)
+    {
+        return GameManager.RemoveDaimonds(amount);
+    }
 }

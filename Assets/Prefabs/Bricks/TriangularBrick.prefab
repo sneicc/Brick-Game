@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8893247142250401524}
   - component: {fileID: 1642867026608132605}
   - component: {fileID: 2066692055156768886}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 2755639805041477528}
   - component: {fileID: 3691047047501660857}
   - component: {fileID: 7386037146220779345}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TriangularBrick
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -238,6 +238,7 @@ MonoBehaviour:
   Materials: []
   VFX: {fileID: 4431557799201808170, guid: 12e01904836581246891419d67a3012f, type: 3}
   BasicVFX: {fileID: 4431557799201808170, guid: 06579011cd71ce9468582f8318c643fc, type: 3}
+  VFXParticleBrightness: 0
   Unbreakable: 0
   Fragile: 0
   FirstColor: {r: 0, g: 1, b: 0.35506845, a: 1}
@@ -288,7 +289,7 @@ GameObject:
   - component: {fileID: 7281508949559245235}
   - component: {fileID: 1517303830117306182}
   - component: {fileID: 8040550015272921603}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -26,6 +26,8 @@ public class DoublingMod : MonoBehaviour
         ballB.SpeedModCounter = 0;
         ballB.IsClone = true;
         ballB.IsImmortal = false;
+
+        clone.GetComponent<Renderer>().material = Instantiate(ballB.CloneMaterial);
     }
 
     private Vector3 GetClonePosition(Vector3 originalPosition, float radius, Vector3 scale)

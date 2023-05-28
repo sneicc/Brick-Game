@@ -146,11 +146,11 @@ GameObject:
   - component: {fileID: 5372428909614183178}
   - component: {fileID: 9016602502670892207}
   - component: {fileID: 6540809395973408869}
+  - component: {fileID: 6209824719181681083}
   - component: {fileID: 1221404770053962805}
   - component: {fileID: 9064504223340760795}
-  - component: {fileID: -5594222936229654440}
   m_Layer: 9
-  m_Name: MainBrick
+  m_Name: MainBrickMesh
   m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ Transform:
   m_GameObject: {fileID: 4739303092915792304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2517455, y: 0.2517455, z: 0.2517455}
+  m_LocalScale: {x: 0.21555398, y: 0.21555398, z: 0.21555398}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3403805018420616802}
@@ -222,6 +222,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6209824719181681083
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739303092915792304}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1997392669490731943, guid: eef77e01f055eb44bab986acb1089794, type: 3}
 --- !u!114 &1221404770053962805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,25 +271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaf2c8e28b7cbd49b09608eb97316db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Chance: 15
+  Chance: 50
   CoinPrefab: {fileID: 6900923454043349292, guid: 9aa1e8ea1b66b954b8dd3ddd2342f049, type: 3}
   DaimondPrefab: {fileID: 8507318651328057593, guid: 45930336201342a4088d38631f503d53, type: 3}
   SpeedPrefab: {fileID: 0}
   DoublingPrefab: {fileID: 0}
   Shader: {fileID: -6465566751694194690, guid: e19e1d52696df7e4f9610197c0713970, type: 3}
---- !u!65 &-5594222936229654440
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4739303092915792304}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.49782014}
-  m_Center: {x: 0, y: 0, z: 0.75108993}
 --- !u!1 &7082661491183198943
 GameObject:
   m_ObjectHideFlags: 0

@@ -139,10 +139,7 @@ public sealed class GameManager : MonoBehaviour
         else
         {
             Debug.Log($"Scene {levelName} does not exist");
-        }
-
-
-        
+        }       
     }
 
     public static void LoadMainMenu()
@@ -208,7 +205,7 @@ public sealed class GameManager : MonoBehaviour
         {
             if (cost >= 0)
             {
-                Coins -= cost;
+                Daimonds -= cost;
                 DiamondChanged?.Invoke();
                 return true;
             }

@@ -49,6 +49,9 @@ public class UpgradesManager : MonoBehaviour
     public Image[] PlatformSizeSprites;
     public Image[] PlatformSpeedSprites;
 
+    private RemoveCoinsStrategy _removeCoinsStrategy = new RemoveCoinsStrategy();
+    private RemoveDaimondsStrategy _removeDaimondsStrategy = new RemoveDaimondsStrategy();
+
     private void Awake()
     {
         BallDamageUpgrade.onClick.AddListener(OnDamageUpgrade);
@@ -72,7 +75,7 @@ public class UpgradesManager : MonoBehaviour
 
     private void OnDamageUpgrade()
     {
-        Upgrade(BallDamageManager.Instance, DamageSprites, BallDamagePrice);
+        Upgrade(BallDamageManager.Instance, DamageSprites, BallDamagePrice, _removeDaimondsStrategy);
     }
 
     private void OnPlatformSpeedUpgrade()
@@ -87,27 +90,27 @@ public class UpgradesManager : MonoBehaviour
 
     private void OnExplosionUpgrade()
     {
-        Upgrade(global::Explosion.Instance, ExplosionSprites, ExplosionPrice);
+        Upgrade(global::Explosion.Instance, ExplosionSprites, ExplosionPrice, _removeCoinsStrategy);
     }
 
     private void OnDoublerUpgrade()
     {
-        Upgrade(DoublingAllBalls.Instance, BallDoublerSprites, BallDoublerPrice);
+        Upgrade(DoublingAllBalls.Instance, BallDoublerSprites, BallDoublerPrice, _removeCoinsStrategy);
     }
 
     private void OnSpeedMultiplierUpgrade()
     {
-        Upgrade(SpeedAndImmortalModifier.Instance, SpeedModSprites, SpeedMultiplierPrice);
+        Upgrade(SpeedAndImmortalModifier.Instance, SpeedModSprites, SpeedMultiplierPrice, _removeCoinsStrategy);
     }
 
     private void OnDamageMultiplierUpgrade()
     {
-        Upgrade(DamageModifier.Instance, DamageModSprites, DamageMultiplierPrice);
+        Upgrade(DamageModifier.Instance, DamageModSprites, DamageMultiplierPrice, _removeCoinsStrategy);
     }
 
-    private void Upgrade(Upgradable modifier, Image[] images, TextMeshProUGUI price)
+    private void Upgrade(Upgradable modifier, Image[] images, TextMeshProUGUI price, IResourceRemovalStrategy removalStrategy)
     {
-        modifier.Upgrade();
+        modifier.Upgrade(removalStrategy);
         price.text = modifier.NextUpgradePrice.ToString();
 
         for (int i = 0; i < modifier.CurrentUpgradeIndex; i++)

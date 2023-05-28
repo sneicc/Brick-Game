@@ -30,13 +30,13 @@ public class BallDamageManager : Upgradable
         Damage = (int)UpgradeBonus[upgradeIndex];
     }
 
-    public override void Upgrade()
+    public override void Upgrade(IResourceRemovalStrategy removalStrategy)
     {
         int nextIndex = UpgradeIndex + 1;
         if (nextIndex < UpgradeBonus.Length)
         {
             int currentPrice = UpgradePrice[nextIndex];
-            if (GameManager.RemoveCoins(currentPrice)) 
+            if (removalStrategy.RemoveResources(currentPrice)) 
             {
                 UpgradeIndex++;
                 SetDamage(UpgradeIndex);

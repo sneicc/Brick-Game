@@ -72,13 +72,13 @@ public abstract class Modifier : Upgradable
     /// <summary>
     /// Увеличивает индекс текущего улучшения на 1, при условии налачия нужной суммы монет.
     /// </summary>
-    public override void Upgrade()//применить паттерн стратегия
+    public override void Upgrade(IResourceRemovalStrategy removalStrategy)//применить паттерн стратегия
     {
         int nextIndex = UpgradeIndex + 1;
         if (nextIndex < UpgradeBonus.Length)
         {
             int currentPrice = UpgradePrice[nextIndex];
-            if (GameManager.RemoveCoins(currentPrice)) UpgradeIndex++;
+            if (removalStrategy.RemoveResources(currentPrice)) UpgradeIndex++;
         }     
     }
     

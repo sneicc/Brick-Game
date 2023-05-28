@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1694419259228504301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.41, y: 0.33, z: -4.24}
-  m_LocalScale: {x: 0.44209686, y: 0.44209686, z: 0.44209686}
+  m_LocalScale: {x: 0.36572552, y: 0.36572552, z: 0.36572552}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4856145729000320239}
@@ -123,6 +123,9 @@ MonoBehaviour:
   IsClone: 0
   IsImmortal: 0
   SpeedModCounter: 0
+  brickMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!54 &1227116819001108986
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -235,7 +238,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0.071002826
-        value: 0.3557045
+        value: 0.3117538
         inSlope: 0
         outSlope: 0
         tangentMode: 0
