@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -66,12 +64,14 @@ public class GameLooseHandler : MonoBehaviour
 
     public void OnExit()
     {
+        GameManager.RemoveAllListeners();
         _isLevelEnd = true;
         LevelManager.Instance.Exit(LooseCoefficient);
     }
 
     public void OnRetry()
     {
+        GameManager.RemoveAllListeners();
         _isLevelEnd = true;
         LevelManager.Instance.Retry(LooseCoefficient);
     }

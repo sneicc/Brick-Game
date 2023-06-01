@@ -1,8 +1,4 @@
-using JetBrains.Annotations;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -37,6 +33,9 @@ public class Ball2D : MonoBehaviour
 	[SerializeField]
     private LayerMask BrickMask;
 
+	private int _collideObjectID;
+    private int _collideBrickID;
+
     private void Awake()
 	{
         _spawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
@@ -69,30 +68,62 @@ public class Ball2D : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-        if (collision.gameObject.name == "ball_deadzone" && !IsImmortal)
+		if (collision.gameObject.name == "ball_deadzone" && !IsImmortal)
+		{
+			if (IsClone)
+			{
+				Destroy(gameObject);
+				return;
+			}
+			GameManager.RemoveLive();
+			gameObject.SetActive(false);
+			Invoke(nameof(ResetBall), 1f);
+		}
+
+		CheckForBrick(collision);
+
+		StuckHandle();
+	}
+
+	private void CheckForBrick(Collision2D collision)
+	{
+		bool waitForCollision = false;
+		Vector2 towardsCollision = (collision.contacts[0].point - (Vector2)transform.position).normalized;
+		Ray2D ray = new Ray2D(transform.position, towardsCollision);
+		RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1f, BrickMask);
+
+#if DEBUG
+		if(hit.collider is not null)
+		{
+            Debug.Log(hit.collider.gameObject.name);
+            var color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
+            Debug.DrawRay(transform.position, towardsCollision, color, 5);
+        }
+        
+#endif
+
+        int objectID = collision.gameObject.GetInstanceID();
+        if (_collideObjectID != objectID)
         {
-            if (IsClone)
-            {
-                Destroy(gameObject);
-                return;
+            waitForCollision = true;
+            _collideObjectID = objectID;
+        }
+        else if(hit.collider is not null)
+        {
+			int brickID = hit.collider.gameObject.GetInstanceID();
+			if(brickID != _collideBrickID)
+			{
+                waitForCollision = true;
+                _collideBrickID = brickID;
             }
-            GameManager.RemoveLive();
-            gameObject.SetActive(false);
-            Invoke(nameof(ResetBall), 1f);
         }
 
-        Vector2 towardsCollision = collision.contacts[0].point - (Vector2)transform.position;
-        Ray2D ray = new Ray2D(transform.position, towardsCollision);
-
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1f, BrickMask);
-        if (hit.collider != null)
-        {
+        if (hit.collider is not null && waitForCollision)
+		{
 			var brick = hit.collider.transform.parent.gameObject.GetComponent<Brick2D>();
 			brick.Hit(Damage, PrevVelocity[1]);
-        }
-
-        StuckHandle();
-    }
+		}
+	}
 
 	private void BallB_OnSpeedModEnd()
 	{
