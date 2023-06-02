@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,7 +9,6 @@ public class Ball2D : MonoBehaviour
     public float BounceSpeed;
 
     Vector3 LastPos;
-	//public Transform Ball;
 	public float Threashold = 1.0f;
 	private int XCounterStuck;
 	private int YCounterStuck;
@@ -18,8 +16,11 @@ public class Ball2D : MonoBehaviour
 
     private Rigidbody2D _rb2d;
 	public Material CloneMaterial;
+    public static Material CustomSkin;
+    [SerializeField]
+    private Material _defaultSkin;
 
-	public Vector2[] PrevVelocity;
+    public Vector2[] PrevVelocity;
 
 	public bool IsClone = false;
 	public bool IsImmortal = false;
@@ -33,9 +34,6 @@ public class Ball2D : MonoBehaviour
 	[SerializeField]
     private LayerMask BrickMask;
 
-	private int _collideObjectID;
-    private int _collideBrickID;
-
     private void Awake()
 	{
         _spawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
@@ -43,7 +41,10 @@ public class Ball2D : MonoBehaviour
         Damage = BallDamageManager.Instance.Damage;
 		_rb2d = gameObject.GetComponent<Rigidbody2D>();
 
-        //GameManager.Balls.Add(this);
+        if (CustomSkin is not null) gameObject.GetComponent<Renderer>().material = CustomSkin;
+        else gameObject.GetComponent<Renderer>().material = _defaultSkin;
+
+        GameManager.Balls.Add(this);
     }
 
 	void Start()
@@ -87,38 +88,20 @@ public class Ball2D : MonoBehaviour
 
 	private void CheckForBrick(Collision2D collision)
 	{
-		bool waitForCollision = false;
 		Vector2 towardsCollision = (collision.contacts[0].point - (Vector2)transform.position).normalized;
 		Ray2D ray = new Ray2D(transform.position, towardsCollision);
-		RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1f, BrickMask);
+		RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 0.5f, BrickMask);
 
 #if DEBUG
 		if(hit.collider is not null)
 		{
             Debug.Log(hit.collider.gameObject.name);
             var color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
-            Debug.DrawRay(transform.position, towardsCollision, color, 5);
-        }
-        
+            Debug.DrawRay(ray.origin, ray.direction * 0.5f, color, 5);
+        }       
 #endif
 
-        int objectID = collision.gameObject.GetInstanceID();
-        if (_collideObjectID != objectID)
-        {
-            waitForCollision = true;
-            _collideObjectID = objectID;
-        }
-        else if(hit.collider is not null)
-        {
-			int brickID = hit.collider.gameObject.GetInstanceID();
-			if(brickID != _collideBrickID)
-			{
-                waitForCollision = true;
-                _collideBrickID = brickID;
-            }
-        }
-
-        if (hit.collider is not null && waitForCollision)
+        if (hit.collider is not null)
 		{
 			var brick = hit.collider.transform.parent.gameObject.GetComponent<Brick2D>();
 			brick.Hit(Damage, PrevVelocity[1]);
@@ -176,7 +159,6 @@ public class Ball2D : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		//GameManager.Balls.Remove(this);
+		GameManager.Balls.Remove(this);
 	}
-
 }

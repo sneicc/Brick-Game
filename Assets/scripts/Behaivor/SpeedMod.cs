@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 public class SpeedMod : MonoBehaviour
@@ -10,17 +6,15 @@ public class SpeedMod : MonoBehaviour
     public float Duration = 3;
     private Vector3 AddedSpeed;
 
-    private Ball Ball;
+    private Ball2D _ball;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("GameBall"))
         {
-            Ball = other.gameObject.GetComponent<Ball>();
+            _ball = other.gameObject.GetComponent<Ball2D>();
 
-            Ball.SpeedModCounter++;
-            Ball.IsImmortal = true;
-            Ball.BounceSpeed += Speed;              
+            SpeedBooster.AddSpeed(_ball, Speed);
 
             Invoke(nameof(RemoveMod), Duration);
             gameObject.SetActive(false);
@@ -29,11 +23,9 @@ public class SpeedMod : MonoBehaviour
 
     private void RemoveMod()
     {
-        if (!ReferenceEquals(Ball, null))
+        if (!ReferenceEquals(_ball, null))
         {
-            if(Ball.SpeedModCounter == 1) Ball.IsImmortal = false;
-            Ball.SpeedModCounter--;
-            Ball.BounceSpeed -= Speed;
+            SpeedBooster.RemoveSpeed(_ball, Speed);
         }
 
         Destroy(gameObject);

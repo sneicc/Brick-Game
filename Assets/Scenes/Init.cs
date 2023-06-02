@@ -8,7 +8,6 @@ public class Init : MonoBehaviour
 
     void Start()
     {
-        Physics2D.queriesHitTriggers = true;
         Application.targetFrameRate = 120;
 
         SceneManager.LoadScene("LevelMap", LoadSceneMode.Single);

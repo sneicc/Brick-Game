@@ -24,7 +24,7 @@ public class Laser : MonoBehaviour
 
     public LineRenderer LaserBeam;
     public GameObject LaserContactPoint;
-    public GameObject LaserShootPoint;
+    //public GameObject LaserShootPoint;
 
     public GameObject LaserLens;
 
@@ -36,19 +36,14 @@ public class Laser : MonoBehaviour
 
     private int _borderMask;
 
+    private Camera _camera;
+
     void Start()
     {
         _heightOffset = transform.position.z - LaserBeamHeightOffset; //офсет высоты эффекта столкновения (чтобы избежать перекрытия эффектов)
-
-        Camera mainCamera = Camera.main;
-        float cameraHeight = mainCamera.orthographicSize * 2f;
-        float cameraWidth = cameraHeight * mainCamera.aspect;
-        Vector3 cameraPosition = mainCamera.transform.position;
-
-         _borderMask = LayerMask.GetMask("LaserBorder");
-
-        _leftBound = cameraPosition.x - cameraWidth / 2f + BoundOffset;
-        _rightBound = cameraPosition.x + cameraWidth / 2f - BoundOffset;        
+        _camera = Camera.main;
+        _borderMask = LayerMask.GetMask("LaserBorder");
+    
         InstantiateLenses();
     }
 
@@ -84,6 +79,12 @@ public class Laser : MonoBehaviour
         
         if (collision.gameObject.CompareTag("GameBall"))
         {
+            float cameraHeight = _camera.orthographicSize * 2f;
+            float cameraWidth = cameraHeight * _camera.aspect;
+            Vector3 cameraPosition = _camera.transform.position;
+
+            _leftBound = cameraPosition.x - cameraWidth / 2f + BoundOffset;
+            _rightBound = cameraPosition.x + cameraWidth / 2f - BoundOffset;
             Activate();
         }
     }
@@ -183,7 +184,7 @@ public class Laser : MonoBehaviour
         {
             if (hit.collider.CompareTag("Brick"))
             {
-                hit.collider.GetComponent<Brick>().Hit(Dagame);
+                hit.collider.GetComponent<Brick2D>().Hit(Dagame);
             }
             else if (hit.collider.CompareTag("Laser"))
             {

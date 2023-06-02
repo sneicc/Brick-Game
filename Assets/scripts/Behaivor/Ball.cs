@@ -21,9 +21,12 @@ public class Ball : MonoBehaviour
 	public int ReboundLimit = 5;
 
     private Rigidbody RB;
-	public Material CloneMaterial;
+	public Material CloneMaterial;   
+    public static Material CustomSkin;
+	[SerializeField]
+	private Material _defaultSkin;
 
-	public Vector3[] PrevVelocity;
+    public Vector3[] PrevVelocity;
 
 	public bool IsClone = false;
 	public bool IsImmortal = false;
@@ -35,6 +38,7 @@ public class Ball : MonoBehaviour
 	private Vector3 _spawn;
 
     public LayerMask brickMask;
+	
 
     private void Awake()
 	{
@@ -43,7 +47,11 @@ public class Ball : MonoBehaviour
         Damage = BallDamageManager.Instance.Damage;
 		RB = gameObject.GetComponent<Rigidbody>();
 
-        GameManager.Balls.Add(this);
+		if(CustomSkin is not null) gameObject.GetComponent<Renderer>().material = CustomSkin;
+		else gameObject.GetComponent<Renderer>().material = _defaultSkin;
+
+
+        //GameManager.Balls.Add(this);
 	}
 
 	void Start()
@@ -56,7 +64,6 @@ public class Ball : MonoBehaviour
 		if (!IsClone) ResetBall();		
 
         PrevVelocity = new Vector3[2] { RB.velocity, RB.velocity };
-
     }
 
 	private void Update()
@@ -133,7 +140,7 @@ public class Ball : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		GameManager.Balls.Remove(this);
+		//GameManager.Balls.Remove(this);
 	}
 
 }

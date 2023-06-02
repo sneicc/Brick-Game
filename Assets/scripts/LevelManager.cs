@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
     public event Action DaimondsChanged;
 
     public int LevelNumber { get; private set; }
+    [SerializeField]
+    public float LooseCoefficient { get; private set; }
 
 
     private void Awake()
@@ -29,11 +31,10 @@ public class LevelManager : MonoBehaviour
         LevelDaimonds = 0;
 
         LevelNumber = GetCurrentLevelNumber();
+
+        GameManager.GameWin += OnGameWin;
+        GameManager.GameLoose += OnGameLoose;
         GameManager.ResumeGame();
-    }
-    void Update()
-    {
-        
     }
 
     public void AddCoins(int cost)
@@ -64,28 +65,13 @@ public class LevelManager : MonoBehaviour
         GameManager.AddDaimonds(LevelDaimonds);
     }
 
-    public void Retry(float coef)
-    {
-        SaveChanges(coef);      
+    public void Retry()
+    {    
         GameManager.NewGame(LevelNumber);
-    }
-
-    public void Exit(float coef)
-    {
-        SaveChanges(coef);
-        GameManager.LoadMainMenu();
-    }
-
-    public void Exit()
-    {
-        SaveChanges(1);        
-        GameManager.LoadMainMenu();
     }
 
     public void NextLevel()
     {
-        int rewardCoef = 1;
-        SaveChanges(rewardCoef);
         int level = LevelNumber + 1;
         GameManager.NewGame(level);
     }
@@ -99,7 +85,16 @@ public class LevelManager : MonoBehaviour
 
     public void MultiplyRewardX2()
     {
-        LevelCoins *= 2;
-        LevelDaimonds *= 2;
+        SaveChanges(1);
+    }
+
+    private void OnGameWin(int _)
+    {
+        SaveChanges(1);
+    }
+
+    private void OnGameLoose()
+    {
+        SaveChanges(LooseCoefficient);
     }
 }

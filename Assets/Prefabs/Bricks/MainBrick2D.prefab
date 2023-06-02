@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8441508552181057093}
   m_Layer: 9
   m_Name: InternalBrick
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 1248960377811353493}
   m_Layer: 10
   m_Name: MainBrick2D
-  m_TagString: Brick
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,6 +304,7 @@ MonoBehaviour:
   SecondColor: {r: 0, g: 1, b: 0.8352942, a: 1}
   Gradient: 1
   HPText: {fileID: 6047582950031141322}
+  NextHitDelay: 0
 --- !u!114 &-2713531632956776673
 MonoBehaviour:
   m_ObjectHideFlags: 0

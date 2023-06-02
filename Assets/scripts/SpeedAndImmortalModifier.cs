@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорения до запуска шара
 {
@@ -22,7 +19,7 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
     [SerializeField]
     private int SpeedUpgradeIndex = 0;
 
-    private List<Ball> _ballsCopy;
+    private List<Ball2D> _ballsCopy;
 
     void Awake()
     {
@@ -43,15 +40,13 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
     {
         if (Spend())
         {
-            _ballsCopy = new List<Ball>(GameManager.Balls);
+            _ballsCopy = new List<Ball2D>(GameManager.Balls);
 
             foreach (var ball in GameManager.Balls)
             {
                 if (!ball.gameObject.active) continue;
 
-                ball.SpeedModCounter++;
-                ball.IsImmortal = true;
-                ball.BounceSpeed +=  UpgradeBonus[UpgradeIndex];
+                SpeedBooster.AddSpeed(ball, UpgradeBonus[UpgradeIndex]);
             }
             Invoke(nameof(Disable), WorkingTime);
         }
@@ -64,9 +59,7 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
             if (!ReferenceEquals(ball, null))
             {
                 if (ball.SpeedModCounter == 0) continue;
-                if(ball.SpeedModCounter == 1) ball.IsImmortal = false;
-                ball.SpeedModCounter--;
-                ball.BounceSpeed -= UpgradeBonus[UpgradeIndex];
+                SpeedBooster.RemoveSpeed(ball, UpgradeBonus[UpgradeIndex]);
             }
         }
     }

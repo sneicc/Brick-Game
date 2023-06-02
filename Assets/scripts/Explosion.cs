@@ -108,13 +108,13 @@ public class Explosion : Modifier
 #endif
             if (!Spend()) return;
             Instantiate(ExplosionVFX, new Vector3(hit.point.x, hit.point.y, hit.point.z - ExplosionOffset), Quaternion.Euler(0, 180, 0));
-            Collider[] colliders = Physics.OverlapSphere(hit.point, ExplosionRadius);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(hit.point, ExplosionRadius);
             MakeDamage(colliders);
             ChangeState();
         }
     }
 
-    private void MakeDamage(Collider[] colliders)
+    private void MakeDamage(Collider2D[] colliders)
     {
         int currentDamage = (int)UpgradeBonus[UpgradeIndex];
 
@@ -122,7 +122,7 @@ public class Explosion : Modifier
         {
             if (item.CompareTag("Brick"))
             {
-                item.GetComponent<Brick>().Hit(currentDamage);
+                item.transform.parent.GetComponent<Brick2D>().Hit(currentDamage);
             }
         }
     }

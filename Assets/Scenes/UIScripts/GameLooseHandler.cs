@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class GameLooseHandler : MonoBehaviour
 {
-    public float LooseCoefficient = 0.7f;
-
     public GameObject Canvas;
 
     public Button Exit;
@@ -22,6 +20,8 @@ public class GameLooseHandler : MonoBehaviour
     private bool _isLevelEnd;
     private bool _needUpdateText;
 
+    private float _looseCoefficient;
+
     private void Awake()
     {
         GameManager.GameLoose += OnGameLoose;
@@ -29,6 +29,8 @@ public class GameLooseHandler : MonoBehaviour
         Exit.onClick.AddListener(OnExit);
         Retry.onClick.AddListener(OnRetry);
         AD.onClick.AddListener(OnAD);
+
+        _looseCoefficient = LevelManager.Instance.LooseCoefficient;
 
         Canvas.SetActive(false);
     }
@@ -44,9 +46,9 @@ public class GameLooseHandler : MonoBehaviour
         {
             int coins = LevelManager.Instance.LevelCoins;
             CollectedCoins.text = '+' + coins.ToString();
-            LooseCoefficientText.text = $"x {LooseCoefficient} =";
+            LooseCoefficientText.text = $"x {_looseCoefficient} =";
 
-            int collectedCoins = (int)Math.Ceiling(coins * LooseCoefficient);
+            int collectedCoins = (int)Math.Ceiling(coins * _looseCoefficient);
             StartCoroutine(TextAnimation(collectedCoins));
 
             _needUpdateText = false;
@@ -66,14 +68,14 @@ public class GameLooseHandler : MonoBehaviour
     {
         GameManager.RemoveAllListeners();
         _isLevelEnd = true;
-        LevelManager.Instance.Exit(LooseCoefficient);
+        GameManager.LoadMainMenu();
     }
 
     public void OnRetry()
     {
         GameManager.RemoveAllListeners();
         _isLevelEnd = true;
-        LevelManager.Instance.Retry(LooseCoefficient);
+        LevelManager.Instance.Retry();
     }
 
     public void OnAD()

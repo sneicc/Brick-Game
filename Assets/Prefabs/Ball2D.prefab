@@ -105,8 +105,8 @@ Rigidbody2D:
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: d47bd81a1c0bd474da016a87c6c0cefd, type: 2}
-  m_Interpolate: 0
-  m_SleepingMode: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &7104195040362902568
@@ -142,7 +142,8 @@ MonoBehaviour:
   BounceSpeed: 0
   Threashold: 0.7
   ReboundLimit: 30
-  CloneMaterial: {fileID: 2100000, guid: cb339679d860eb649a63a72e8aaa0ee0, type: 2}
+  CloneMaterial: {fileID: 2100000, guid: a7a35a310f4bf234099e346d4c063b79, type: 2}
+  _defaultSkin: {fileID: 2100000, guid: f99c2f606e487bd4ba7c619b09a10f39, type: 2}
   PrevVelocity: []
   IsClone: 0
   IsImmortal: 0
@@ -254,7 +255,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.66890424
+        time: 0.6456944
         value: 0
         inSlope: 0
         outSlope: 0

@@ -8,7 +8,7 @@ public sealed class GameManager : MonoBehaviour
     private const int NumberOfLevels = 99;
     public static GameManager Instance;
 
-    public static List<Ball> Balls = new List<Ball>();
+    public static List<Ball2D> Balls = new List<Ball2D>();
 
     public static float Speed = 6; //установка через параметры уровная
     public static int Coins { get; private set; }
@@ -56,11 +56,6 @@ public sealed class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Instance = this;
         _bricksOnLevel = 0;
-    }
-
-    private void Start()
-    {
-
     }
 
     public static void AddBrick()

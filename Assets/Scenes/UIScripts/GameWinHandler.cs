@@ -90,7 +90,7 @@ public class GameWinHandler : MonoBehaviour
 
     private void OnExit()
     {
-        LevelManager.Instance.Exit();
+        GameManager.LoadMainMenu();
     }
 
     private void OnNextLevel()

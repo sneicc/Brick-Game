@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class Brick2D : MonoBehaviour
 {
@@ -25,7 +22,11 @@ public class Brick2D : MonoBehaviour
 
     public TextMeshProUGUI HPText;
 
-    
+    [SerializeField]
+    private float NextHitDelay;
+
+
+
     void Start()
     {
         GameManager.AddBrick();
@@ -52,14 +53,6 @@ public class Brick2D : MonoBehaviour
         GameManager.RemoveBrick();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("GameBall"))
-        {
-            //Hit(collision);
-        }
-    }
-
     /// <summary>
     /// Наносит урон блоку
     /// </summary>
@@ -72,6 +65,16 @@ public class Brick2D : MonoBehaviour
         HP -= damage;
         CheckHP(direction);
         SetHPText();
+
+        Unbreakable = true;
+
+        if(gameObject.active) StartCoroutine(WaitBeforeNextHit(NextHitDelay));
+
+        IEnumerator WaitBeforeNextHit(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            Unbreakable = false;
+        }
     }
 
     private void CheckHP(Vector2 direction)

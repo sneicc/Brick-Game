@@ -1001,8 +1001,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.700909, y: -0.78, z: 2.6913128}
-  m_Center: {x: -0.5743427, y: 0, z: -0.8456564}
+  m_Size: {x: 11.700908, y: 0.8343241, z: 2.6913128}
+  m_Center: {x: -0.57434285, y: -0.027162043, z: -0.84565634}
 --- !u!114 &460512278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,7 +1491,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &548797309
 PrefabInstance:
@@ -1704,8 +1704,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.60123825, y: 18.24374, z: 9.007541}
-  m_Center: {x: 0.039003372, y: -1.0030503, z: 4.0037713}
+  m_Size: {x: 0.08316555, y: 18.24374, z: 9.007541}
+  m_Center: {x: 0.2079394, y: -1.0030501, z: 4.0037713}
 --- !u!1 &653055571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,7 +1760,7 @@ Camera:
   far clip plane: 50.3
   field of view: 25.97778
   orthographic: 1
-  orthographic size: 9.11
+  orthographic size: 6.261504
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -3423,8 +3423,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.44049835, y: 19.73742, z: 6.271965}
-  m_Center: {x: -0.27975082, y: -3.6101289, z: 5.371559}
+  m_Size: {x: 0.034756597, y: 19.73742, z: 6.2719655}
+  m_Center: {x: -0.43601683, y: -3.6101286, z: 5.371559}
 --- !u!1001 &1229855923
 PrefabInstance:
   m_ObjectHideFlags: 0
