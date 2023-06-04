@@ -15,15 +15,15 @@ public abstract class Currency : MonoBehaviour
         Cost += (int)(Cost * Random.Range(0, GameManager.Luck));
     }
 
-    protected void DesplayCostAndDestroy()
+    protected void DesplayCostAndDisable()
     {
         Model.SetActive(false);
         Text.text = $"+{Cost}";
-        Invoke(nameof(MyDestroy), 1);
+        Invoke(nameof(Disable), 1);
     }
 
-    private void MyDestroy()
+    private void Disable()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

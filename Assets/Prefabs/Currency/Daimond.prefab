@@ -246,7 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4875548665239139309}
   - component: {fileID: 8628200252699077308}
-  - component: {fileID: 5016678524324699241}
+  - component: {fileID: 8215922507434520671}
   m_Layer: 0
   m_Name: Daimond
   m_TagString: Untagged
@@ -286,19 +286,32 @@ MonoBehaviour:
   Cost: 1
   Text: {fileID: 2981649516664765547}
   Model: {fileID: 1596873525736661287}
---- !u!65 &5016678524324699241
-BoxCollider:
+--- !u!61 &8215922507434520671
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8507318651328057593}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.044160433}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.38148916, y: 0.2320712, z: 0.36756933}
-  m_Center: {x: 0.0001642108, y: -0.040367536, z: -0.002653718}
+  m_Size: {x: 0.37194085, y: 0.2394595}
+  m_EdgeRadius: 0
 --- !u!1001 &1938894005128354934
 PrefabInstance:
   m_ObjectHideFlags: 0

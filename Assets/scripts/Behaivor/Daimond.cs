@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Daimond : Currency
 {
-    private void OnTriggerEnter(Collider other)
+    public bool IsCollected { get; private set; }
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("GameBall"))
+        if (collision.gameObject.CompareTag("GameBall"))
         {
             LevelManager.Instance.AddDaimonds(Cost);
-            DesplayCostAndDestroy();
+            IsCollected = true;
+            DesplayCostAndDisable();
         }
     }
 }

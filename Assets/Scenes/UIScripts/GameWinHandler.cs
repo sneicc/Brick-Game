@@ -61,7 +61,6 @@ public class GameWinHandler : MonoBehaviour
         _prevDaimondsValue = daimonds;
             
         _needUpdateText = false;
-
     }
 
     private void OnGameWin(int stars)
