@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Hearth : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("GameBall"))
+        if (collision.CompareTag("GameBall"))
         {
             GameManager.AddLive();
             Destroy(gameObject);

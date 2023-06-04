@@ -19,10 +19,14 @@ public class DaimondManager : MonoBehaviour
 
     private void LoadDiamonds()
     {
-        foreach (var daimond in _daimonds)
+        for (int i = 0; i < _daimonds.Length; i++)
         {
-            bool isCollected = PlayerPrefs.GetInt(daimond.gameObject.name, 0) == 1;
-            if(isCollected) Destroy(daimond.gameObject);
+            bool isCollected = PlayerPrefs.GetInt(_daimonds[i].gameObject.name, 0) == 1;
+            if (isCollected) 
+            { 
+                Destroy(_daimonds[i].gameObject);
+                _daimonds[i] = null;
+            }
         }
     }
 
@@ -30,6 +34,7 @@ public class DaimondManager : MonoBehaviour
     {
         foreach (var daimond in _daimonds)
         {
+            if (daimond is null) continue;
             int isCollected = daimond.IsCollected ? 1 : 0;
             PlayerPrefs.SetInt(daimond.gameObject.name, isCollected);
         }

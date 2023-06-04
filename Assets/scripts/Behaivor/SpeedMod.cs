@@ -8,11 +8,11 @@ public class SpeedMod : MonoBehaviour
 
     private Ball2D _ball;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("GameBall"))
+        if (collision.gameObject.CompareTag("GameBall"))
         {
-            _ball = other.gameObject.GetComponent<Ball2D>();
+            _ball = collision.gameObject.GetComponent<Ball2D>();
 
             SpeedBooster.AddSpeed(_ball, Speed);
 

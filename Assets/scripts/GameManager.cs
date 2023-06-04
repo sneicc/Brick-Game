@@ -17,14 +17,18 @@ public sealed class GameManager : MonoBehaviour
     public static int Lives { get; private set; }
     public static int Stars { get; private set; }
 
+    
     public static float LevelStartTime { get; private set; }
-    public static bool[] LevelStatus = new bool[NumberOfLevels];
+    private static int[] _levelStars = new int[NumberOfLevels];
+    public static int CurrentOpenedLevel { get; private set; }
+    private static int _loadedLevel;
     [SerializeField]
     private static float[,] LevelCompliteTime = new float[NumberOfLevels, 3];
     private static int _bricksOnLevel;
 
     public static bool IsPause { get; private set; }
     public static bool IsGameWin { get; private set; }
+    private static bool _isLevelExit;
 
     //Events
     //==========
@@ -66,7 +70,7 @@ public sealed class GameManager : MonoBehaviour
     public static void RemoveBrick()
     {
         _bricksOnLevel--;
-        if (_bricksOnLevel == 0 && Lives > 0) EndGame();
+        if (_bricksOnLevel == 0 && Lives > 0 && !_isLevelExit) EndGame();
     }
 
     public static void AddLive()
@@ -86,14 +90,20 @@ public sealed class GameManager : MonoBehaviour
     }
 
     private static void EndGame()
-    {      
+    {
+        if (IsGameWin) return;
+
         PauseGame();
         if(Lives > 0)
         {
             IsGameWin = true;
+
             int stars = 2;//CalculateStart();
-            GameWin?.Invoke(stars);
-            
+            SetStars(_loadedLevel, stars);
+
+            if (_loadedLevel == CurrentOpenedLevel) CurrentOpenedLevel++;
+
+            GameWin?.Invoke(stars);           
         }
         else
         {
@@ -112,10 +122,12 @@ public sealed class GameManager : MonoBehaviour
     public static void NewGame(int level)
     {
         IsGameWin = false;
+        _isLevelExit = false;
         LevelStartTime = Time.time;
         Lives = 3;
 
         LoadLevel(level);
+        _loadedLevel = level;
     }
 
     public static void LoadLevel(int level)
@@ -129,29 +141,20 @@ public sealed class GameManager : MonoBehaviour
             SceneManager.LoadScene("IN-GAME TOPBAR", LoadSceneMode.Additive);
             SceneManager.LoadScene("Pause", LoadSceneMode.Additive);
         }
+#if DEBUG
         else
         {
             Debug.Log($"Scene {levelName} does not exist");
-        }       
+        }
+#endif
     }
 
     public static void LoadMainMenu()
     {
         ResumeGame();
+        _isLevelExit = true;
         SceneManager.LoadScene("LevelMap", LoadSceneMode.Single);
         SceneManager.LoadScene("TOPBAR", LoadSceneMode.Additive);
-    }
-
-    public static void OpenPauseMenu()
-    {
-        //(Canvas) pauseMenu.SetActive(true);
-        PauseGame();
-    }
-
-    public static void ClosePauseMenu()
-    {
-        //(Canvas) pauseMenu.SetActive(false);
-        ResumeGame();
     }
 
     public static void PauseGame()
@@ -210,6 +213,11 @@ public sealed class GameManager : MonoBehaviour
     {
         GameLoose = null;
         GameWin = null;
+    }
+
+    private static void SetStars(int level, int stars)
+    {
+        if (_levelStars[level] < stars && stars < 4) _levelStars[level] = stars;
     }
 
 }

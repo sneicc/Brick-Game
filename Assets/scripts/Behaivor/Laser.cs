@@ -7,7 +7,7 @@ using UnityEngineInternal;
 public class Laser : MonoBehaviour
 {
     public int WorkTime = 2;
-    public int Dagame = 10;
+    public int Damage = 10;
     /// <summary>
     /// Размер части лазера наносящий урон
     /// </summary>
@@ -49,7 +49,7 @@ public class Laser : MonoBehaviour
 
     private void InstantiateLenses()
     {
-        MeshCollider collider = GetComponent<MeshCollider>();
+        PolygonCollider2D collider = GetComponent<PolygonCollider2D>();
         Bounds bounds = collider.bounds;
         float lensOffset = LaserLens.GetComponent<Renderer>().bounds.size.x * 0.5f; // половина ширины линзы
         if (ShootRight)
@@ -74,17 +74,12 @@ public class Laser : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject.CompareTag("GameBall"))
         {
-            float cameraHeight = _camera.orthographicSize * 2f;
-            float cameraWidth = cameraHeight * _camera.aspect;
-            Vector3 cameraPosition = _camera.transform.position;
+            
 
-            _leftBound = cameraPosition.x - cameraWidth / 2f + BoundOffset;
-            _rightBound = cameraPosition.x + cameraWidth / 2f - BoundOffset;
             Activate();
         }
     }
@@ -93,6 +88,12 @@ public class Laser : MonoBehaviour
     {
         if (_isActive) return;
         _isActive = true;
+
+        float cameraHeight = _camera.orthographicSize * 2f;
+        float cameraWidth = cameraHeight * _camera.aspect;
+        Vector3 cameraPosition = _camera.transform.position;
+        _leftBound = cameraPosition.x - cameraWidth / 2f + BoundOffset;
+        _rightBound = cameraPosition.x + cameraWidth / 2f - BoundOffset;
 
         _bottomBound = FindBorder(Vector3.down, _borderMask).y;
         _topBound = FindBorder(Vector3.up, _borderMask).y;
@@ -167,10 +168,7 @@ public class Laser : MonoBehaviour
 
     private Vector3 FindBorder(Vector3 direction, int layerMask)
     {
-
-        RaycastHit hit;
-        Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, _raycastLength, layerMask);
-
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _raycastLength, layerMask);
         return hit.point;
 
     }
@@ -178,13 +176,13 @@ public class Laser : MonoBehaviour
     private IEnumerator MakeDamage(Vector3 direction) //оптимизировать
     {
         var lasers = new List<Laser>();
-        RaycastHit[] hits;
-        hits = Physics.SphereCastAll(transform.position, LaserThickness, direction);
+        RaycastHit2D[] hits;
+        hits = Physics2D.CircleCastAll(transform.position, LaserThickness, direction);
         foreach (var hit in hits)
         {
             if (hit.collider.CompareTag("Brick"))
             {
-                hit.collider.GetComponent<Brick2D>().Hit(Dagame);
+                hit.collider.transform.parent.GetComponent<Brick2D>().Hit(Damage);
             }
             else if (hit.collider.CompareTag("Laser"))
             {

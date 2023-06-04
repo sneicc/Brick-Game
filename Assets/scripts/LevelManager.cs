@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     private string _name;
 
     public int LevelCoins { get; private set; }
+    private int _levelCoins;
     public int LevelDaimonds { get; private set; }
 
 
@@ -17,7 +18,13 @@ public class LevelManager : MonoBehaviour
 
     public int LevelNumber { get; private set; }
     [SerializeField]
-    public float LooseCoefficient { get; private set; }
+    private float _looseCoefficient;
+    public float LooseCoefficient
+    {
+        get { return _looseCoefficient; }
+        set { _looseCoefficient = value; }
+    }
+
 
 
     private void Awake()
@@ -39,29 +46,43 @@ public class LevelManager : MonoBehaviour
 
     public void AddCoins(int cost)
     {
-        if (cost >= 0) LevelCoins += cost;
-        CoinsChanged?.Invoke();
+        if (cost >= 0)
+        {
+            LevelCoins += cost;
+            _levelCoins += cost;
+            CoinsChanged?.Invoke();
+        }
     }
 
     public void AddDaimonds(int cost)
     {
-        if (cost >= 0) LevelDaimonds += cost;
-        DaimondsChanged?.Invoke();
+        if (cost >= 0)
+        {
+            LevelDaimonds += cost;
+            DaimondsChanged?.Invoke();
+        }
     }
 
+    /// <summary>
+    /// Сохраняет только монеты
+    /// </summary>
+    /// <param name="coef"></param>
     private void SaveChanges(float coef)
     {
-        int collectedCoins = (int)Math.Ceiling(LevelCoins * coef);
-        int collectedDaimonds = (int)Math.Ceiling(LevelDaimonds * coef);
+        int collectedCoins = (int)Math.Ceiling(_levelCoins * coef);
         GameManager.AddCoins(collectedCoins);
-        GameManager.AddDaimonds(collectedDaimonds);
+        _levelCoins = 0;
     }
 
+    /// <summary>
+    /// Сохраняет все ресурсы
+    /// </summary>
+    /// <param name="coef"></param>
     private void SaveChanges(int coef)
     {
-        LevelCoins *= coef;
+        _levelCoins *= coef;
         LevelDaimonds *= coef;
-        GameManager.AddCoins(LevelCoins);
+        GameManager.AddCoins(_levelCoins);
         GameManager.AddDaimonds(LevelDaimonds);
     }
 

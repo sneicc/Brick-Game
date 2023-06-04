@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2354883848735793712}
   - component: {fileID: 1657854590923353493}
   - component: {fileID: 3523247291323144543}
-  - component: {fileID: 1657854590923353494}
   - component: {fileID: 1657854590923353495}
+  - component: {fileID: -7783510978809068212}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Laser
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1657854590923353494
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3163192486491584650}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: 559941b33a2ea0242acf552b9daec853, type: 3}
 --- !u!114 &1657854590923353495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorkTime: 2
-  Dagame: 10
+  Damage: 10
   LaserThickness: 0.2
   ShootRight: 1
   ShootLeft: 1
@@ -123,5 +109,34 @@ MonoBehaviour:
   BoundOffset: 0.1
   LaserBeam: {fileID: 970700431752624662, guid: aa79d7f8edb097641a233025d1cf5274, type: 3}
   LaserContactPoint: {fileID: 2180956592273709428, guid: 68250f605fd0bfe4b81af7646957eeb1, type: 3}
-  LaserShootPoint: {fileID: 0}
   LaserLens: {fileID: 6669914549623293785, guid: f8f6b0607adc1374eade4b7390b4fdeb, type: 3}
+--- !u!60 &-7783510978809068212
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163192486491584650}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 1}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: 0.9510565, y: 0.30901712}

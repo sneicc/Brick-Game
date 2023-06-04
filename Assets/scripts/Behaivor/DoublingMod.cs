@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class DoublingMod : MonoBehaviour
 {
-    // Update is called once per frame
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("GameBall"))
+        if (collision.gameObject.CompareTag("GameBall"))
         {
             gameObject.SetActive(false);
 
-            BallCloner.CreateClone(other.gameObject);
+            BallCloner.CreateClone(collision.gameObject);
         }
-    }  
+    }
 }

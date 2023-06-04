@@ -25,7 +25,6 @@ public class GameWinHandler : MonoBehaviour
     public Animator RightStarAnimator;
 
     private bool _isADWatched;
-    private bool _needUpdateText;
 
     private int _prevCoinsValue;
     private int _prevDaimondsValue;
@@ -47,26 +46,21 @@ public class GameWinHandler : MonoBehaviour
         Canvas.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void DisplayCoinsAndDaimonds(int coef = 1)
     {
-        if (!_needUpdateText) return;
-
-        int coins = LevelManager.Instance.LevelCoins;
-        int daimonds = LevelManager.Instance.LevelDaimonds;
+        int coins = LevelManager.Instance.LevelCoins * coef;
+        int daimonds = LevelManager.Instance.LevelDaimonds * coef;
         StartCoroutine(TextAnimation(coins, CoinText, _prevCoinsValue));
         StartCoroutine(TextAnimation(daimonds, DaimondText, _prevDaimondsValue));
 
         _prevCoinsValue = coins;
         _prevDaimondsValue = daimonds;
-            
-        _needUpdateText = false;
     }
 
     private void OnGameWin(int stars)
     {
         Canvas.SetActive(true);
-        _needUpdateText = true;
+        DisplayCoinsAndDaimonds();
 
         if (stars >= 1) LeftStarAnimator.SetTrigger("Activate");
         if (stars >= 2)
@@ -110,7 +104,8 @@ public class GameWinHandler : MonoBehaviour
             //throw new NotImplementedException(); (реклама)
 
             LevelManager.Instance.MultiplyRewardX2();
-            _needUpdateText = true;
+            DisplayCoinsAndDaimonds(2);
+            //GameManager.ResumeGame();
         }
     }
 

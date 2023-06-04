@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class LevelMapControl : MonoBehaviour
 {
-    public Button[] buttons;
+    public Button[] Buttons;
 
     private void Awake()
     {
@@ -18,16 +18,29 @@ public class LevelMapControl : MonoBehaviour
     void Start()
     {        
         ButtonInitialize();
+        CloseLevels();
     }
 
     private void ButtonInitialize()
     {
-        for (int i = 0; i < buttons.Length; i++)
+        for (int i = 0; i < Buttons.Length; i++)
         {
-            Button button = buttons[i];
+            Button button = Buttons[i];
 
             int level = i;
             button.onClick.AddListener(() => GameManager.NewGame(level));
+        }
+    }
+
+    private void CloseLevels()
+    {
+        int CurrentOpenedLevel = GameManager.CurrentOpenedLevel;
+        for (int i = 0; i < Buttons.Length; i++)
+        {
+            if(i > CurrentOpenedLevel)
+            {
+                Buttons[i].interactable = false;
+            }
         }
     }
 }
