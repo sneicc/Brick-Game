@@ -204,9 +204,9 @@ GameObject:
   - component: {fileID: 5372428909614183178}
   - component: {fileID: 9016602502670892207}
   - component: {fileID: 6540809395973408869}
-  - component: {fileID: -8813076255998451209}
-  - component: {fileID: -2713531632956776673}
   - component: {fileID: 1248960377811353493}
+  - component: {fileID: 6789525595527808530}
+  - component: {fileID: 9185512076618490702}
   m_Layer: 10
   m_Name: MainBrick2D
   m_TagString: Untagged
@@ -281,48 +281,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-8813076255998451209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4739303092915792304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d847d71ed9147514bbf12c68bf753970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 50
-  Materials: []
-  VFX: {fileID: 4431557799201808170, guid: 12e01904836581246891419d67a3012f, type: 3}
-  BasicVFX: {fileID: 4431557799201808170, guid: 06579011cd71ce9468582f8318c643fc, type: 3}
-  VFXParticleBrightness: 3
-  Unbreakable: 0
-  Fragile: 0
-  FirstColor: {r: 0, g: 0.13725491, b: 1, a: 1}
-  SecondColor: {r: 0, g: 1, b: 0.8352942, a: 1}
-  Gradient: 1
-  HPText: {fileID: 6047582950031141322}
-  NextHitDelay: 0
---- !u!114 &-2713531632956776673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4739303092915792304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a4cc0b26408cf46879eb89b650bef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Chance: 25
-  CoinPrefab: {fileID: 6900923454043349292, guid: 9aa1e8ea1b66b954b8dd3ddd2342f049, type: 3}
-  DaimondPrefab: {fileID: 8507318651328057593, guid: 45930336201342a4088d38631f503d53, type: 3}
-  SpeedPrefab: {fileID: 0}
-  DoublingPrefab: {fileID: 0}
-  Shader: {fileID: -6465566751694194690, guid: e19e1d52696df7e4f9610197c0713970, type: 3}
 --- !u!61 &1248960377811353493
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -349,6 +307,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &6789525595527808530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739303092915792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d847d71ed9147514bbf12c68bf753970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 50
+  Materials: []
+  VFX: {fileID: 4431557799201808170, guid: 12e01904836581246891419d67a3012f, type: 3}
+  BasicVFX: {fileID: 4431557799201808170, guid: 06579011cd71ce9468582f8318c643fc, type: 3}
+  VFXParticleBrightness: 3
+  Unbreakable: 0
+  Fragile: 0
+  FirstColor: {r: 0, g: 0.13725491, b: 1, a: 1}
+  SecondColor: {r: 0, g: 1, b: 0.8352942, a: 1}
+  Gradient: 1
+  HPText: {fileID: 6047582950031141322}
+  NextHitDelay: 0.03
+--- !u!114 &9185512076618490702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739303092915792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a4cc0b26408cf46879eb89b650bef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Chance: 25
+  CoinPrefab: {fileID: 6900923454043349292, guid: 9aa1e8ea1b66b954b8dd3ddd2342f049, type: 3}
+  DaimondPrefab: {fileID: 8507318651328057593, guid: 45930336201342a4088d38631f503d53, type: 3}
+  SpeedPrefab: {fileID: 0}
+  DoublingPrefab: {fileID: 0}
+  Shader: {fileID: -6465566751694194690, guid: e19e1d52696df7e4f9610197c0713970, type: 3}
 --- !u!1 &7082661491183198943
 GameObject:
   m_ObjectHideFlags: 0

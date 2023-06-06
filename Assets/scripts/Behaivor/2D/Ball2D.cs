@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -100,11 +101,13 @@ public class Ball2D : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * 0.5f, color, 5);
         }       
 #endif
-
         if (hit.collider is not null)
 		{
-			var brick = hit.collider.transform.parent.gameObject.GetComponent<Brick2D>();
-			brick.Hit(Damage, PrevVelocity[1]);
+			Brick2D brick;
+            if(hit.collider.transform.parent != null) brick = hit.collider.transform.parent.gameObject.GetComponent<Brick2D>();
+			else brick = hit.collider.GetComponent<Brick2D>();
+
+            brick.Hit(Damage, PrevVelocity[1]);
 		}
 	}
 
