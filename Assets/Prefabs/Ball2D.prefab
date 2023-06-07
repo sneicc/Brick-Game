@@ -140,8 +140,9 @@ MonoBehaviour:
   Damage: 0
   MaxSpeed: 50
   BounceSpeed: 0
+  HitLength: 0.4
   Threashold: 0.7
-  ReboundLimit: 30
+  ReboundLimit: 4
   CloneMaterial: {fileID: 2100000, guid: a7a35a310f4bf234099e346d4c063b79, type: 2}
   _defaultSkin: {fileID: 2100000, guid: f99c2f606e487bd4ba7c619b09a10f39, type: 2}
   PrevVelocity: []

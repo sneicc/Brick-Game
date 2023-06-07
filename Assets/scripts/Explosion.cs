@@ -73,7 +73,7 @@ public class Explosion : Modifier
         {
             _button.colors = _colorBuffer;
             _waitingForClick = false;
-            if(!GameManager.IsGameWin) GameManager.ResumeGame();
+            GameManager.ResumeGame();
         }
         else
         {                       
@@ -106,11 +106,12 @@ public class Explosion : Modifier
 #if DEBUG
             _RH = hit;
 #endif
+            ChangeState();
+
             if (!Spend()) return;
             Instantiate(ExplosionVFX, new Vector3(hit.point.x, hit.point.y, hit.point.z - ExplosionOffset), Quaternion.Euler(0, 180, 0));
             Collider2D[] colliders = Physics2D.OverlapCircleAll(hit.point, ExplosionRadius);
             MakeDamage(colliders);
-            ChangeState();
         }
     }
 
@@ -118,11 +119,12 @@ public class Explosion : Modifier
     {
         int currentDamage = (int)UpgradeBonus[UpgradeIndex];
 
-        foreach (var item in colliders)
+        foreach (var collider in colliders)
         {
-            if (item.CompareTag("Brick"))
+            if (collider.CompareTag("Brick"))
             {
-                item.transform.parent.GetComponent<Brick2D>().Hit(currentDamage);
+                if (collider.transform.parent != null) collider.transform.parent.GetComponent<Brick2D>().Hit(currentDamage);
+                else collider.GetComponent<Brick2D>().Hit(currentDamage);
             }
         }
     }

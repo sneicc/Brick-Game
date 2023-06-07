@@ -70,7 +70,7 @@ public sealed class GameManager : MonoBehaviour
     public static void RemoveBrick()
     {
         _bricksOnLevel--;
-        if (_bricksOnLevel == 0 && Lives > 0 && !_isLevelExit) EndGame();
+        if (_bricksOnLevel == 0 && Lives > 0 && !_isLevelExit) WinGame();
     }
 
     public static void AddLive()
@@ -83,13 +83,22 @@ public sealed class GameManager : MonoBehaviour
     }
 
     public  static void RemoveLive()
-    {      
+    {
         Lives--;
         LivesChanged?.Invoke();
-        if (Lives <= 0) EndGame();
+        LooseGame();
     }
 
-    private static void EndGame()
+    private static void LooseGame()
+    {
+        if (Lives <= 0)
+        {
+            PauseGame();
+            GameLoose?.Invoke();
+        }
+    }
+
+    private static void WinGame()
     {
         if (IsGameWin) return;
 
@@ -104,11 +113,7 @@ public sealed class GameManager : MonoBehaviour
             if (_loadedLevel == CurrentOpenedLevel) CurrentOpenedLevel++;
 
             GameWin?.Invoke(stars);           
-        }
-        else
-        {
-            GameLoose?.Invoke();
-        }            
+        }         
     }
 
     private static int CalculateStart()

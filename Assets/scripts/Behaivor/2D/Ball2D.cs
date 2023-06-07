@@ -9,6 +9,9 @@ public class Ball2D : MonoBehaviour
     public float MaxSpeed = 50f;
     public float BounceSpeed;
 
+	[SerializeField]
+	private float HitLength = 0.5f;
+
     Vector3 LastPos;
 	public float Threashold = 1.0f;
 	private int XCounterStuck;
@@ -91,18 +94,21 @@ public class Ball2D : MonoBehaviour
 	{
 		Vector2 towardsCollision = (collision.contacts[0].point - (Vector2)transform.position).normalized;
 		Ray2D ray = new Ray2D(transform.position, towardsCollision);
-		RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 0.5f, BrickMask);
+		RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, HitLength, BrickMask);
 
 #if DEBUG
 		if(hit.collider is not null)
 		{
             Debug.Log(hit.collider.gameObject.name);
             var color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
-            Debug.DrawRay(ray.origin, ray.direction * 0.5f, color, 5);
+            Debug.DrawRay(ray.origin, ray.direction * HitLength, color, 5);
         }       
 #endif
         if (hit.collider is not null)
 		{
+			XCounterStuck = 0;
+			YCounterStuck = 0;
+
 			Brick2D brick;
             if(hit.collider.transform.parent != null) brick = hit.collider.transform.parent.gameObject.GetComponent<Brick2D>();
 			else brick = hit.collider.GetComponent<Brick2D>();
