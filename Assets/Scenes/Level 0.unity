@@ -3309,7 +3309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 6
   MaxBounceAngle: 65
-  Threshold: 0.08
+  Threshold: 0.15
 --- !u!50 &691672386
 Rigidbody2D:
   serializedVersion: 4

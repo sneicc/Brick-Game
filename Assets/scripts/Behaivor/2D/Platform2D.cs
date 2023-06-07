@@ -9,7 +9,6 @@ public class Platform2D : MonoBehaviour
     private float Speed = 10;
 
     private Collider2D _collider;
-    private float _halfScreenWidth;
 
     [SerializeField]
     private float MaxBounceAngle = 80;
@@ -21,9 +20,9 @@ public class Platform2D : MonoBehaviour
 
     void Start()
     {
+        Speed = PlatformSpeedManager.Instance.Speed;
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
-        _halfScreenWidth = Screen.width / 2;
     }
 
     void Update()

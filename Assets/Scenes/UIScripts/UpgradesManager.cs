@@ -59,8 +59,7 @@ public class UpgradesManager : MonoBehaviour
         SpeedMultiplier.onClick.AddListener(OnSpeedMultiplierUpgrade);
         BallDoubler.onClick.AddListener(OnDoublerUpgrade);
         Explosion.onClick.AddListener(OnExplosionUpgrade);
-        //PlatformSize.onClick.AddListener(OnPlatformSizeUpgrade);
-        //PlatformSpeed.onClick.AddListener(OnPlatformSpeedUpgrade);
+        PlatformSpeed.onClick.AddListener(OnPlatformSpeedUpgrade);
     }
 
     private void Start()
@@ -70,7 +69,14 @@ public class UpgradesManager : MonoBehaviour
         SetSpritesBonusesAndPrice(DoublingAllBalls.Instance, BallDoublerSprites, BallDoublerBonus, BallDoublerPrice);
         SetSpritesBonusesAndPrice(global::Explosion.Instance, ExplosionSprites, ExplosionBonus, ExplosionPrice);
         SetSpritesBonusesAndPrice(BallDamageManager.Instance, DamageSprites, BallDamageBonus, BallDamagePrice);
-        //добавить остальные
+        SetSpritesBonusesAndPrice(PlatformSpeedManager.Instance, PlatformSpeedSprites, PlatformSpeedBonus, PlatformSpeedPrice);
+
+        int value = 20;
+        for (int i = 0; i < PlatformSpeedBonus.Length; i++)
+        {
+            PlatformSpeedBonus[i].text = value.ToString();
+            value += 20;
+        }
     }
 
     private void OnDamageUpgrade()
@@ -80,12 +86,7 @@ public class UpgradesManager : MonoBehaviour
 
     private void OnPlatformSpeedUpgrade()
     {
-        //throw new NotImplementedException();
-    }
-
-    private void OnPlatformSizeUpgrade()
-    {
-        //throw new NotImplementedException();
+        Upgrade(PlatformSpeedManager.Instance, PlatformSpeedSprites, PlatformSpeedPrice, _removeDaimondsStrategy);
     }
 
     private void OnExplosionUpgrade()
@@ -108,28 +109,32 @@ public class UpgradesManager : MonoBehaviour
         Upgrade(DamageModifier.Instance, DamageModSprites, DamageMultiplierPrice, _removeCoinsStrategy);
     }
 
-    private void Upgrade(Upgradable modifier, Image[] images, TextMeshProUGUI price, IResourceRemovalStrategy removalStrategy)
+    private void Upgrade(Upgradable modifier, Image[] sprites, TextMeshProUGUI price, IResourceRemovalStrategy removalStrategy)
     {
         modifier.Upgrade(removalStrategy);
         price.text = modifier.NextUpgradePrice.ToString();
 
-        for (int i = 0; i < modifier.CurrentUpgradeIndex; i++)
-        {
-            images[i].enabled = true;
-        }
-    }    
+        SetSprites(modifier, sprites);
+    }
 
     private void SetSpritesBonusesAndPrice(Upgradable modifier, Image[] sprites, TextMeshProUGUI[] bonusText, TextMeshProUGUI price)
     {
+        SetSprites(modifier, sprites);
+
         var bonuses = modifier.UpgradeBonuses;
-        for (int i = 0; i < modifier.CurrentUpgradeIndex; i++)
-        {
-            sprites[i].enabled = true;
-        }
         for (int i = 0; i < bonusText.Length; i++)
         {
             bonusText[i].text = bonuses[i + _bonusOffset].ToString();
         }
+
         price.text = modifier.NextUpgradePrice.ToString();
+    }
+
+    private static void SetSprites(Upgradable modifier, Image[] sprites)
+    {
+        for (int i = 0; i < modifier.CurrentUpgradeIndex; i++)
+        {
+            sprites[i].enabled = true;
+        }
     }
 }
