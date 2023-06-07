@@ -8,6 +8,9 @@ public class LootBox : MonoBehaviour
     /// Шанс появления
     /// </summary>
     public int Chance;
+
+    [SerializeField]
+    private int ExplosionDamage = 25;
     /// <summary>
     /// Префаб монеты
     /// </summary>
@@ -24,6 +27,8 @@ public class LootBox : MonoBehaviour
     /// Префаб удвоителя
     /// </summary>
     public GameObject DoublingPrefab;
+
+    public GameObject HearthPrefab;
     /// <summary>
     /// Флаг лутбокса
     /// </summary>
@@ -79,19 +84,31 @@ public class LootBox : MonoBehaviour
         if (!gameObject.scene.isLoaded) return;
         if (_isQuitting) return;
 
-        int value = Random.Range(1, 100);
+        int value = Random.Range(1, 101);
 
-        if (value <= 45)
+        if (value <= 25)
         {
             Instantiate(CoinPrefab, transform.position, new Quaternion());
         }
-        else if (value >= 46 && value <= 90)
+        else if(value >= 26 && value <= 50)
         {
-            Instantiate(DaimondPrefab, transform.position, new Quaternion());
+            Explosion.Instance.Explode(transform.position, ExplosionDamage);
+        }
+        else if (value >= 51 && value <= 75)
+        {
+            Instantiate(SpeedPrefab, transform.position, new Quaternion());
+        }
+        else if (value >= 76 && value <= 82)
+        {
+            Instantiate(DoublingPrefab, transform.position, new Quaternion());
+        }
+        else if (value >= 83 && value <= 94)
+        {
+            Instantiate(HearthPrefab, transform.position, new Quaternion());
         }
         else
         {
-            //придумать что-то
+            Instantiate(DaimondPrefab, transform.position, new Quaternion());
         }
     }
 }

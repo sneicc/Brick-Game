@@ -43,12 +43,12 @@ public class SkillsManager : MonoBehaviour
         DamagePrice.text = DamageModifier.Instance.Price.ToString();
         SpeedPrice.text = SpeedAndImmortalModifier.Instance.Price.ToString();
         DoublingPrice.text = DoublingAllBalls.Instance.Price.ToString();
-        ExplosionPrice.text = Explosion.Instance.Price.ToString();
+        ExplosionPrice.text = ExplosionModifier.Instance.Price.ToString();
 
         SetAmountText(DamageAmount, DamageModifier.Instance);
         SetAmountText(SpeedAmount, SpeedAndImmortalModifier.Instance);
         SetAmountText(DoublingAmount, DoublingAllBalls.Instance);
-        SetAmountText(ExplosionAmount, Explosion.Instance);
+        SetAmountText(ExplosionAmount, ExplosionModifier.Instance);
 
         DamageButton.onClick.AddListener(BuyDamage);
         SpeedButton.onClick.AddListener(BuySpeed);
@@ -81,8 +81,8 @@ public class SkillsManager : MonoBehaviour
 
     private void BuyExplosion()
     {
-        Explosion.Instance.Buy();
-        SetAmountText(ExplosionAmount, Explosion.Instance);
+        ExplosionModifier.Instance.Buy();
+        SetAmountText(ExplosionAmount, ExplosionModifier.Instance);
     }
 
     private void OnDestroy()

@@ -43,12 +43,12 @@ public class LevelUIController : MonoBehaviour
         DamageModifier.Instance.Subscribe(DamageButton);
         SpeedAndImmortalModifier.Instance.Subscribe(SpeedButton);
         DoublingAllBalls.Instance.Subscribe(DoublingButton);
-        Explosion.Instance.Subscribe(ExplosionButton);
+        ExplosionModifier.Instance.Subscribe(ExplosionButton);
 
         DamageModifier.Instance.AmountChanged += OnDamageAmountChanged;
         SpeedAndImmortalModifier.Instance.AmountChanged += OnSpeedAmountChanged;
         DoublingAllBalls.Instance.AmountChanged += OnDoublingAmountChanged;
-        Explosion.Instance.AmountChanged += OnExplosionAmountChanged;
+        ExplosionModifier.Instance.AmountChanged += OnExplosionAmountChanged;
 
         LevelManager.Instance.CoinsChanged += OnCoinsChanged;
         LevelManager.Instance.DaimondsChanged += OnDiamondChanged;
@@ -59,7 +59,7 @@ public class LevelUIController : MonoBehaviour
         DamageModAmount.text = DamageModifier.Instance.Amount.ToString();
         SpeedModAmount.text = SpeedAndImmortalModifier.Instance.Amount.ToString();
         DoublingModAmount.text = DoublingAllBalls.Instance.Amount.ToString();
-        ExplosionModAmount.text = Explosion.Instance.Amount.ToString();
+        ExplosionModAmount.text = ExplosionModifier.Instance.Amount.ToString();
     }
     protected void OnCoinsChanged()
     {
@@ -125,12 +125,12 @@ public class LevelUIController : MonoBehaviour
         DamageModifier.Instance.Unsubscribe();
         SpeedAndImmortalModifier.Instance.Unsubscribe();
         DoublingAllBalls.Instance.Unsubscribe();
-        Explosion.Instance.Unsubscribe();
+        ExplosionModifier.Instance.Unsubscribe();
 
         DamageModifier.Instance.AmountChanged -= OnDamageAmountChanged;
         SpeedAndImmortalModifier.Instance.AmountChanged -= OnSpeedAmountChanged;
         DoublingAllBalls.Instance.AmountChanged -= OnDoublingAmountChanged;
-        Explosion.Instance.AmountChanged -= OnExplosionAmountChanged;
+        ExplosionModifier.Instance.AmountChanged -= OnExplosionAmountChanged;
 
         LevelManager.Instance.CoinsChanged -= OnCoinsChanged;
         LevelManager.Instance.DaimondsChanged -= OnDiamondChanged;

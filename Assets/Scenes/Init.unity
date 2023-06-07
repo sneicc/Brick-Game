@@ -255,9 +255,7 @@ MonoBehaviour:
   - 30
   ExplosionUpgradePrice: 00000000640000005e010000bc020000b00400006c070000
   ExplosionUpgradeIndex: 0
-  ExplosionRadius: 0.7
   ExplosionOffset: 0.1
-  ExplosionVFX: {fileID: 9068411099774099659, guid: c857e451574ac2848b6ad0996481359c, type: 3}
 --- !u!114 &1857893661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +354,7 @@ GameObject:
   - component: {fileID: 2051250515}
   - component: {fileID: 2051250514}
   - component: {fileID: 2051250516}
+  - component: {fileID: 2051250517}
   m_Layer: 0
   m_Name: "\u0421haracteristicsManager"
   m_TagString: Untagged
@@ -420,3 +419,17 @@ MonoBehaviour:
   - 10
   PlatformSpeedUpgradePrice: 00000000320000006400000096000000c8000000fa000000
   PlatformSpeedUpgradeIndex: 0
+--- !u!114 &2051250517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051250513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327e02d1f9de88c45a20de612a06ec2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionVFX: {fileID: 9068411099774099659, guid: c857e451574ac2848b6ad0996481359c, type: 3}
+  ExplosionRadius: 0.7

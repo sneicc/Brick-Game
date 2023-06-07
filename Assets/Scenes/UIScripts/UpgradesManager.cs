@@ -67,7 +67,7 @@ public class UpgradesManager : MonoBehaviour
         SetSpritesBonusesAndPrice(DamageModifier.Instance, DamageModSprites, DamageMultiplierBonus, DamageMultiplierPrice);
         SetSpritesBonusesAndPrice(SpeedAndImmortalModifier.Instance, SpeedModSprites, SpeedMultiplierBonus, SpeedMultiplierPrice);
         SetSpritesBonusesAndPrice(DoublingAllBalls.Instance, BallDoublerSprites, BallDoublerBonus, BallDoublerPrice);
-        SetSpritesBonusesAndPrice(global::Explosion.Instance, ExplosionSprites, ExplosionBonus, ExplosionPrice);
+        SetSpritesBonusesAndPrice(global::ExplosionModifier.Instance, ExplosionSprites, ExplosionBonus, ExplosionPrice);
         SetSpritesBonusesAndPrice(BallDamageManager.Instance, DamageSprites, BallDamageBonus, BallDamagePrice);
         SetSpritesBonusesAndPrice(PlatformSpeedManager.Instance, PlatformSpeedSprites, PlatformSpeedBonus, PlatformSpeedPrice);
 
@@ -91,7 +91,7 @@ public class UpgradesManager : MonoBehaviour
 
     private void OnExplosionUpgrade()
     {
-        Upgrade(global::Explosion.Instance, ExplosionSprites, ExplosionPrice, _removeCoinsStrategy);
+        Upgrade(global::ExplosionModifier.Instance, ExplosionSprites, ExplosionPrice, _removeCoinsStrategy);
     }
 
     private void OnDoublerUpgrade()

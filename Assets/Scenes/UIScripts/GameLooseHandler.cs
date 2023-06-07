@@ -34,11 +34,6 @@ public class GameLooseHandler : MonoBehaviour
 
         Canvas.SetActive(false);
     }
-    void Start()
-    {
-        
-    }
-
 
     void Update()
     {

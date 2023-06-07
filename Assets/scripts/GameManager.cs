@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -125,18 +126,23 @@ public sealed class GameManager : MonoBehaviour
     }
 
     public static void NewGame(int level)
-    {
+    {       
+        LoadLevel(level);
+        _loadedLevel = level;
+
+        var bricks = FindObjectsOfType<Brick2D>();
+        foreach (Brick2D brick in bricks) Destroy(brick.gameObject);
+
         IsGameWin = false;
         _isLevelExit = false;
         LevelStartTime = Time.time;
         Lives = 3;
-
-        LoadLevel(level);
-        _loadedLevel = level;
     }
 
     public static void LoadLevel(int level)
     {
+        _isLevelExit = true;
+
         string levelName = $"Level {level}";
         if(SceneUtility.GetBuildIndexByScenePath($"Scenes/{levelName}") >= 0)
         {

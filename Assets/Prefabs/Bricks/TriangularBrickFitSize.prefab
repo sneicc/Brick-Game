@@ -157,10 +157,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chance: 25
+  ExplosionDamage: 25
   CoinPrefab: {fileID: 6900923454043349292, guid: 9aa1e8ea1b66b954b8dd3ddd2342f049, type: 3}
   DaimondPrefab: {fileID: 8507318651328057593, guid: 45930336201342a4088d38631f503d53, type: 3}
-  SpeedPrefab: {fileID: 0}
-  DoublingPrefab: {fileID: 0}
+  SpeedPrefab: {fileID: 1813609196163289917, guid: 71a9e25b279c0ee4cb50f7c85b9fb19e, type: 3}
+  DoublingPrefab: {fileID: 75942448449788298, guid: 1f04533492af45f418c414ffdf0792ce, type: 3}
+  HearthPrefab: {fileID: 4995253152252545121, guid: 8ab13fe8ad1fc1b4ab0096b6327b097e, type: 3}
   Shader: {fileID: -6465566751694194690, guid: e19e1d52696df7e4f9610197c0713970, type: 3}
 --- !u!114 &7691292584335757940
 MonoBehaviour:
