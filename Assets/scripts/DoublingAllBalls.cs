@@ -21,7 +21,7 @@ public class DoublingAllBalls : Modifier, IModifier
 
     void Awake()
     {
-        if(Instance is not null) Destroy(gameObject);
+        if(Instance != null) Destroy(gameObject);
 
         WorkingTime = DoublingTime;
         Amount = DoublingAmount;

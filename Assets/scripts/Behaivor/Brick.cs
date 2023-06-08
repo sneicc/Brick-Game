@@ -73,7 +73,7 @@ public class Brick : MonoBehaviour
         if (Fragile || HP <= 0)
         {
             gameObject.SetActive(false);
-            if (collision is not null) ShowVFXBallBrick(collision);
+            if (collision != null) ShowVFXBallBrick(collision);
             else ShowVFXBasic();
         }
         else if (Gradient)
@@ -89,7 +89,7 @@ public class Brick : MonoBehaviour
 
     private void ShowVFXBasic()
     {
-        if (BasicVFX is null) return;
+        if (BasicVFX == null) return;
         CreateVFX(BasicVFX);
     }
     public void Hit(int Damage)
@@ -103,12 +103,12 @@ public class Brick : MonoBehaviour
 
     private void SetHPText()
     {
-        if (HPText is not null) HPText.text = HP.ToString();
+        if (HPText != null) HPText.text = HP.ToString();
     }
 
     private void ShowVFXBallBrick(Collision collision)
     {
-        if (VFX is null) return;
+        if (VFX == null) return;
 
         //Vector3 rotation = new Vector3(collision.transform.eulerAngles.x, 90, 0);
         try

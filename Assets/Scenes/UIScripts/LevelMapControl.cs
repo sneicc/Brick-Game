@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelMapControl : MonoBehaviour
@@ -42,5 +36,10 @@ public class LevelMapControl : MonoBehaviour
                 Buttons[i].interactable = false;
             }
         }
+    }
+
+    public void TestQuit()
+    {
+        Application.Quit();
     }
 }

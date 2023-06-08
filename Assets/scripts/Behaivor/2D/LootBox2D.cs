@@ -86,27 +86,27 @@ public class LootBox2D : MonoBehaviour
 
         int value = Random.Range(1, 101);
 
-        if (value <= 25)
+        if (value <= 25) //25
         {
             Instantiate(CoinPrefab, transform.position, new Quaternion());
         }
-        else if (value >= 26 && value <= 50)
+        else if (value >= 26 && value <= 50) //25
         {
             Explosion.Instance.Explode(transform.position, ExplosionDamage);
         }
-        else if (value >= 51 && value <= 75)
+        else if (value >= 51 && value <= 65) //15
         {
             Instantiate(SpeedPrefab, transform.position, new Quaternion());
         }
-        else if (value >= 76 && value <= 82)
+        else if (value >= 66 && value <= 80) //15
         {
             Instantiate(DoublingPrefab, transform.position, new Quaternion());
         }
-        else if (value >= 83 && value <= 94)
+        else if (value >= 81 && value <= 90) //10
         {
             Instantiate(HearthPrefab, transform.position, new Quaternion());
         }
-        else
+        else // 10
         {
             Instantiate(DaimondPrefab, transform.position, new Quaternion());
         }

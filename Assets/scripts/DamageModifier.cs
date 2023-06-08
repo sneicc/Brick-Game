@@ -29,7 +29,7 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
 
     void Awake()
     {
-        if(Instance is not null) Destroy(gameObject);
+        if(Instance != null) Destroy(gameObject);
 
         WorkingTime = DamageWorkingTime;
         Amount = DamageModifierAmount;

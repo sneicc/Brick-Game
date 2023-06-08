@@ -9,9 +9,7 @@ public class LevelManager : MonoBehaviour
     private string _name;
 
     public int LevelCoins { get; private set; }
-    private int _levelCoins;
     public int LevelDaimonds { get; private set; }
-
 
     public event Action CoinsChanged;
     public event Action DaimondsChanged;
@@ -25,11 +23,9 @@ public class LevelManager : MonoBehaviour
         set { _looseCoefficient = value; }
     }
 
-
-
     private void Awake()
     {
-        if (Instance is not null) Destroy(gameObject);
+        if (Instance != null) Destroy(gameObject);
         Instance = this;
 
         _name = SceneManager.GetActiveScene().name;
@@ -40,7 +36,6 @@ public class LevelManager : MonoBehaviour
         LevelNumber = GetCurrentLevelNumber();
 
         GameManager.GameWin += OnGameWin;
-        GameManager.GameLoose += OnGameLoose;
         GameManager.ResumeGame();
     }
 
@@ -49,7 +44,6 @@ public class LevelManager : MonoBehaviour
         if (cost >= 0)
         {
             LevelCoins += cost;
-            _levelCoins += cost;
             CoinsChanged?.Invoke();
         }
     }
@@ -67,22 +61,21 @@ public class LevelManager : MonoBehaviour
     /// Сохраняет только монеты
     /// </summary>
     /// <param name="coef"></param>
-    private void SaveChanges(float coef)
+    public void SaveChanges(float coef)
     {
-        int collectedCoins = (int)Math.Ceiling(_levelCoins * coef);
+        int collectedCoins = (int)Math.Ceiling(LevelCoins * coef);
         GameManager.AddCoins(collectedCoins);
-        _levelCoins = 0;
     }
 
     /// <summary>
     /// Сохраняет все ресурсы
     /// </summary>
     /// <param name="coef"></param>
-    private void SaveChanges(int coef)
+    public void SaveChanges(int coef)
     {
-        _levelCoins *= coef;
+        LevelCoins *= coef;
         LevelDaimonds *= coef;
-        GameManager.AddCoins(_levelCoins);
+        GameManager.AddCoins(LevelCoins);
         GameManager.AddDaimonds(LevelDaimonds);
     }
 
@@ -114,8 +107,9 @@ public class LevelManager : MonoBehaviour
         SaveChanges(1);
     }
 
-    private void OnGameLoose()
+    private void OnDestroy()
     {
-        SaveChanges(LooseCoefficient);
+        Instance = null;
+        GameManager.GameWin -= OnGameWin;
     }
 }

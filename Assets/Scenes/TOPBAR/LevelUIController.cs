@@ -34,7 +34,7 @@ public class LevelUIController : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance is not null) Destroy(gameObject);
+        if(Instance != null) Destroy(gameObject);
         Instance = this;
 
         _mainColor = Hearts[0].color;
@@ -131,9 +131,6 @@ public class LevelUIController : MonoBehaviour
         SpeedAndImmortalModifier.Instance.AmountChanged -= OnSpeedAmountChanged;
         DoublingAllBalls.Instance.AmountChanged -= OnDoublingAmountChanged;
         ExplosionModifier.Instance.AmountChanged -= OnExplosionAmountChanged;
-
-        LevelManager.Instance.CoinsChanged -= OnCoinsChanged;
-        LevelManager.Instance.DaimondsChanged -= OnDiamondChanged;
 
         GameManager.LivesChanged -= OnLivesChanged;
     }    

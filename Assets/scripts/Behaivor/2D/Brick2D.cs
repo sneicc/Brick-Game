@@ -98,18 +98,18 @@ public class Brick2D : MonoBehaviour
 
     private void ShowVFXBasic()
     {
-        if (BasicVFX is null) return;
+        if (BasicVFX == null) return;
         CreateVFX(BasicVFX);
     }
 
     private void SetHPText()
     {
-        if (HPText is not null) HPText.text = HP.ToString();
+        if (HPText != null) HPText.text = HP.ToString();
     }
 
     private void ShowVFXBallBrick(Vector2 direction)
     {
-        if (VFX is null) return;
+        if (VFX == null) return;
 
         //Vector3 rotation = new Vector3(collision.transform.eulerAngles.x, 90, 0);
 

@@ -45,7 +45,7 @@ public class Ball2D : MonoBehaviour
         Damage = BallDamageManager.Instance.Damage;
 		_rb2d = gameObject.GetComponent<Rigidbody2D>();
 
-        if (CustomSkin is not null) gameObject.GetComponent<Renderer>().material = CustomSkin;
+        if (CustomSkin != null) gameObject.GetComponent<Renderer>().material = CustomSkin;
         else gameObject.GetComponent<Renderer>().material = _defaultSkin;
 
         GameManager.Balls.Add(this);
@@ -97,14 +97,14 @@ public class Ball2D : MonoBehaviour
 		RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, HitLength, BrickMask);
 
 #if DEBUG
-		if(hit.collider is not null)
+		if(hit.collider != null)
 		{
             Debug.Log(hit.collider.gameObject.name);
             var color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
             Debug.DrawRay(ray.origin, ray.direction * HitLength, color, 5);
         }       
 #endif
-        if (hit.collider is not null)
+        if (hit.collider != null)
 		{
 			XCounterStuck = 0;
 			YCounterStuck = 0;

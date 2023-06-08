@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour
         Damage = BallDamageManager.Instance.Damage;
 		RB = gameObject.GetComponent<Rigidbody>();
 
-		if(CustomSkin is not null) gameObject.GetComponent<Renderer>().material = CustomSkin;
+		if(CustomSkin != null) gameObject.GetComponent<Renderer>().material = CustomSkin;
 		else gameObject.GetComponent<Renderer>().material = _defaultSkin;
 
 

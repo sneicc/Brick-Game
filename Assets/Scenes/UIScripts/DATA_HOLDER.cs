@@ -7,7 +7,7 @@ public class DATA_HOLDER : MonoBehaviour
     DATA_HOLDER instance;
     private void Awake()
     {
-        if (instance is not null) Destroy(gameObject);
+        if (instance != null) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
         instance = this;
     }

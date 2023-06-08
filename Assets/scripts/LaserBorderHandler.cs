@@ -16,7 +16,7 @@ public class LaserBorderHandler : MonoBehaviour
     {
         GameObject topbar = GameObject.Find("BackgroundTopBar");
 
-        if (topbar is not null)
+        if (topbar != null)
         {
             RectTransform rectTransform = topbar.GetComponent<RectTransform>();
             Vector3 backgroundBottomInWorldCoords = rectTransform.TransformPoint(new Vector3(0, rectTransform.rect.yMin, 0));
@@ -30,7 +30,7 @@ public class LaserBorderHandler : MonoBehaviour
     {
         GameObject bottombar = GameObject.Find("BackgroundBottomBar");
 
-        if (bottombar is not null)
+        if (bottombar != null)
         {
             RectTransform rectTransform = bottombar.GetComponent<RectTransform>();
             Vector3 backgroundTopInWorldCoords = rectTransform.TransformPoint(new Vector3(0, rectTransform.rect.yMax, 0));

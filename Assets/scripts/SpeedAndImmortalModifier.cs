@@ -23,7 +23,7 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
 
     void Awake()
     {
-        if (Instance is not null) Destroy(gameObject);
+        if (Instance != null) Destroy(gameObject);
 
         WorkingTime = SpeedWorkingTime;
         Amount = SpeedAmount;

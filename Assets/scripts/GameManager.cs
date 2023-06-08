@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public sealed class GameManager : MonoBehaviour
+public sealed class GameManager : MonoBehaviour, ISaveable
 {
     private const int NumberOfLevels = 99;
     public static GameManager Instance;
@@ -16,8 +15,6 @@ public sealed class GameManager : MonoBehaviour
     public static int Daimonds { get; private set; }
     public static float Luck { get; private set; }
     public static int Lives { get; private set; }
-    public static int Stars { get; private set; }
-
     
     public static float LevelStartTime { get; private set; }
     private static int[] _levelStars = new int[NumberOfLevels];
@@ -47,7 +44,7 @@ public sealed class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance is not null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
@@ -231,4 +228,21 @@ public sealed class GameManager : MonoBehaviour
         if (_levelStars[level] < stars && stars < 4) _levelStars[level] = stars;
     }
 
+    public void Save(SaveData saveData)
+    {
+        saveData.Coins = Coins;
+        saveData.Daimonds = Daimonds;
+
+        saveData.LevelStars = _levelStars;
+        saveData.CurrentOpenedLevel = CurrentOpenedLevel;
+    }
+
+    public void Load(SaveData saveData)
+    {
+        Coins = saveData.Coins;
+        Daimonds = saveData.Daimonds;
+
+        _levelStars = saveData.LevelStars;
+        CurrentOpenedLevel = saveData.CurrentOpenedLevel;       
+    }
 }

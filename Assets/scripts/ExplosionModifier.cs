@@ -34,7 +34,7 @@ public class ExplosionModifier : Modifier
 #endif
     void Awake()
     {
-        if (Instance is not null) Destroy(gameObject);
+        if (Instance != null) Destroy(gameObject);
 
         WorkingTime = ExplosionTime;
         Amount = ExplosionAmount;

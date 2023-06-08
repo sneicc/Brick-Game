@@ -15,7 +15,7 @@ public class BallDamageManager : Upgradable
     public int Damage { get; private set; }
     private void Awake()
     {
-        if (Instance is not null) Destroy(gameObject);
+        if (Instance != null) Destroy(gameObject);
         Instance = this;
 
         UpgradeBonus = DamageUpgrade;

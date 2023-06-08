@@ -61,6 +61,8 @@ public class GameLooseHandler : MonoBehaviour
 
     public void OnExit()
     {
+        LevelManager.Instance.SaveChanges(_looseCoefficient);
+
         GameManager.RemoveAllListeners();
         _isLevelEnd = true;
         GameManager.LoadMainMenu();
@@ -68,6 +70,8 @@ public class GameLooseHandler : MonoBehaviour
 
     public void OnRetry()
     {
+        LevelManager.Instance.SaveChanges(_looseCoefficient);
+
         GameManager.RemoveAllListeners();
         _isLevelEnd = true;
         LevelManager.Instance.Retry();

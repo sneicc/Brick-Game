@@ -23,7 +23,7 @@ public class GameUIController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if(Instance is not null) Destroy(gameObject);
+        if(Instance != null) Destroy(gameObject);
         Instance = this;
 
         MainButton.onClick.AddListener(MainClick);

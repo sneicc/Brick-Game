@@ -15,7 +15,7 @@ public class PlatformSpeedManager : Upgradable
     public int Speed { get; private set; }
     private void Awake()
     {
-        if (Instance is not null) Destroy(gameObject);
+        if (Instance != null) Destroy(gameObject);
         Instance = this;
 
         UpgradeBonus = PlatformSpeedUpgrade;
