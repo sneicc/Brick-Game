@@ -127,7 +127,16 @@ public class UpgradesManager : MonoBehaviour
             bonusText[i].text = bonuses[i + _bonusOffset].ToString();
         }
 
-        price.text = modifier.NextUpgradePrice.ToString();
+        int currentPrice = modifier.NextUpgradePrice;
+        if(currentPrice <= 0)
+        {
+            price.text = "MAX";
+        }
+        else
+        {
+            price.text = currentPrice.ToString();
+        }
+        
     }
 
     private static void SetSprites(Upgradable modifier, Image[] sprites)
