@@ -58,10 +58,12 @@ public class DoublingAllBalls : Modifier, IModifier, ISaveable
     public void Save(SaveData saveData)
     {
         saveData.DoublingModIndex = UpgradeIndex;
+        saveData.DoublingModAmount = Amount;
     }
 
     public void Load(SaveData saveData)
     {
         UpgradeIndex = saveData.DoublingModIndex;
+        Amount = saveData.DoublingModAmount;
     }
 }

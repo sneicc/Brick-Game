@@ -127,11 +127,13 @@ public class ExplosionModifier : Modifier, ISaveable
     public void Save(SaveData saveData)
     {
         saveData.ExplosionModIndex = UpgradeIndex;
+        saveData.ExplosionModAmount = Amount;
     }
 
     public void Load(SaveData saveData)
     {
         UpgradeIndex = saveData.ExplosionModIndex;
+        Amount = saveData.ExplosionModAmount;
     }
 #endif
 }

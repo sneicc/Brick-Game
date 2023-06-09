@@ -68,11 +68,13 @@ public class DamageModifier : Modifier, IModifier, ISaveable
     public void Save(SaveData saveData)
     {
         saveData.DamageModIndex = UpgradeIndex;
+        saveData.DamageModAmount = Amount;
     }
 
     public void Load(SaveData saveData)
     {
         UpgradeIndex = saveData.DamageModIndex;
+        Amount = saveData.DamageModAmount;
     }
 
     //public void Disable()

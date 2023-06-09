@@ -67,10 +67,12 @@ public class SpeedAndImmortalModifier : Modifier, IModifier, ISaveable // запрет
     public void Save(SaveData saveData)
     {
         saveData.SpeedModIndex = UpgradeIndex;
+        saveData.SpeedModAmount = Amount;
     }
 
     public void Load(SaveData saveData)
     {
         UpgradeIndex = saveData.SpeedModIndex;
+        Amount = saveData.SpeedModAmount;
     }
 }
