@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExplosionModifier : Modifier
+public class ExplosionModifier : Modifier, ISaveable
 {
     public static ExplosionModifier Instance;
     /// <summary>
@@ -122,6 +122,16 @@ public class ExplosionModifier : Modifier
         Gizmos.color = Color.yellow;
 
         Gizmos.DrawSphere(_RH.point, 0.7f);
+    }
+
+    public void Save(SaveData saveData)
+    {
+        saveData.ExplosionModIndex = UpgradeIndex;
+    }
+
+    public void Load(SaveData saveData)
+    {
+        UpgradeIndex = saveData.ExplosionModIndex;
     }
 #endif
 }

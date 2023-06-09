@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм менеджере или создать отедльный менеджер модов, получать необходимую кнопку из загруженной сцены по тегу или имени
+public class DamageModifier : Modifier, IModifier, ISaveable
 {  
     public static DamageModifier Instance;
 
@@ -63,6 +63,16 @@ public class DamageModifier : Modifier, IModifier  // Закрепить все на гейм мене
         {
             if (!ReferenceEquals(ball, null)) ball.Damage = BallDamageManager.Instance.Damage;
         }
+    }
+
+    public void Save(SaveData saveData)
+    {
+        saveData.DamageModIndex = UpgradeIndex;
+    }
+
+    public void Load(SaveData saveData)
+    {
+        UpgradeIndex = saveData.DamageModIndex;
     }
 
     //public void Disable()

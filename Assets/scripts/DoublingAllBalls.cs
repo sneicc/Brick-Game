@@ -1,5 +1,5 @@
 using UnityEngine;
-public class DoublingAllBalls : Modifier, IModifier
+public class DoublingAllBalls : Modifier, IModifier, ISaveable
 {
     public static DoublingAllBalls Instance;
 
@@ -53,5 +53,15 @@ public class DoublingAllBalls : Modifier, IModifier
         {
             if (!ReferenceEquals(ball, null)) Destroy(ball.gameObject);
         }
+    }
+
+    public void Save(SaveData saveData)
+    {
+        saveData.DoublingModIndex = UpgradeIndex;
+    }
+
+    public void Load(SaveData saveData)
+    {
+        UpgradeIndex = saveData.DoublingModIndex;
     }
 }

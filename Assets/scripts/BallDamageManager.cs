@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallDamageManager : Upgradable
+public class BallDamageManager : Upgradable, ISaveable
 {
     public static BallDamageManager Instance;
 
@@ -43,5 +43,15 @@ public class BallDamageManager : Upgradable
             }
         }
 
+    }
+
+    public void Save(SaveData saveData)
+    {
+        saveData.BallDamageIndex = UpgradeIndex;
+    }
+
+    public void Load(SaveData saveData)
+    {
+        UpgradeIndex = saveData.BallDamageIndex;
     }
 }

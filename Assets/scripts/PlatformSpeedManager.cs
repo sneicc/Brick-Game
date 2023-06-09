@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformSpeedManager : Upgradable
+public class PlatformSpeedManager : Upgradable, ISaveable
 {
     public static PlatformSpeedManager Instance;
 
@@ -43,5 +43,15 @@ public class PlatformSpeedManager : Upgradable
             }
         }
 
+    }
+
+    public void Save(SaveData saveData)
+    {
+        saveData.PlatformSpeedIndex = UpgradeIndex;
+    }
+
+    public void Load(SaveData saveData)
+    {
+        UpgradeIndex = saveData.PlatformSpeedIndex;
     }
 }

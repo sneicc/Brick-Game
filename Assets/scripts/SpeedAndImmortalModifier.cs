@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорения до запуска шара
+public class SpeedAndImmortalModifier : Modifier, IModifier, ISaveable // запретить ускорения до запуска шара
 {
     public static SpeedAndImmortalModifier Instance;
 
@@ -64,4 +64,13 @@ public class SpeedAndImmortalModifier : Modifier, IModifier // запретить ускорен
         }
     }
 
+    public void Save(SaveData saveData)
+    {
+        saveData.SpeedModIndex = UpgradeIndex;
+    }
+
+    public void Load(SaveData saveData)
+    {
+        UpgradeIndex = saveData.SpeedModIndex;
+    }
 }
