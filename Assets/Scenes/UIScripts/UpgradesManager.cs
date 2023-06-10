@@ -112,8 +112,7 @@ public class UpgradesManager : MonoBehaviour
     private void Upgrade(Upgradable modifier, Image[] sprites, TextMeshProUGUI price, IResourceRemovalStrategy removalStrategy)
     {
         modifier.Upgrade(removalStrategy);
-        price.text = modifier.NextUpgradePrice.ToString();
-
+        SetPrice(modifier, price);
         SetSprites(modifier, sprites);
     }
 
@@ -127,8 +126,14 @@ public class UpgradesManager : MonoBehaviour
             bonusText[i].text = bonuses[i + _bonusOffset].ToString();
         }
 
+        SetPrice(modifier, price);
+
+    }
+
+    private static void SetPrice(Upgradable modifier, TextMeshProUGUI price)
+    {
         int currentPrice = modifier.NextUpgradePrice;
-        if(currentPrice <= 0)
+        if (currentPrice <= 0)
         {
             price.text = "MAX";
         }
@@ -136,7 +141,6 @@ public class UpgradesManager : MonoBehaviour
         {
             price.text = currentPrice.ToString();
         }
-        
     }
 
     private static void SetSprites(Upgradable modifier, Image[] sprites)
