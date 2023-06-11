@@ -28,6 +28,8 @@ public class SaveData
     public int ExplosionModIndex;
     public int ExplosionModAmount;
 
+    public int SkinIndex;
+
     public SaveData()
     {
         Coins = 0;
@@ -51,5 +53,7 @@ public class SaveData
 
         LevelStars = new int[99];
         CurrentOpenedLevel = 0;
+
+        SkinIndex = 0;
     }
 }

@@ -72,7 +72,6 @@ public class Ball2D : MonoBehaviour
 		if (!IsClone) ResetBall();		
 
         PrevVelocity = new Vector2[2] { _rb2d.velocity, _rb2d.velocity };
-
     }
 
 	private void Update()
