@@ -420,8 +420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageUpgrade:
-  - 5
-  - 11
+  - 3
+  - 6
   - 24
   - 50
   - 100

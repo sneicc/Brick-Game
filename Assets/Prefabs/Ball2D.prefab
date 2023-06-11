@@ -140,6 +140,7 @@ MonoBehaviour:
   Damage: 0
   MaxSpeed: 50
   BounceSpeed: 0
+  _defaulfLevelLength: 0.9621478
   HitLength: 0.4
   Threashold: 0.7
   ReboundLimit: 4

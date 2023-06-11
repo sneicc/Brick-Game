@@ -27,11 +27,14 @@ EditorBuildSettings:
     path: Assets/Scenes/TOPBAR/TOPBAR.unity
     guid: d526a90b5dfa97a46ba5ff042d73c9d9
   - enabled: 1
-    path: Assets/Scenes/Level 0.unity
+    path: Assets/Scenes/Level 3.unity
     guid: 88afc45515a92174fad84d07a2f956c5
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: b1771207b115d1e498dda5ad8bd2db5d
+  - enabled: 1
+    path: Assets/Scenes/Level 0.unity
+    guid: b5b85129c89ced04db771e5d51796634
   - enabled: 1
     path: Assets/Scenes/Level Old.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab

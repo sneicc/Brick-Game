@@ -11,7 +11,7 @@ public class DoublingAllBalls : Modifier, IModifier, ISaveable
     private int DoublingPrice = 10;
 
     [SerializeField]
-    private float[] DoublingUpgrade = { 1, 2, 2.5f, 3, 3.5f, 4 };
+    private float[] DoublingUpgrade = { 5, 7, 10, 14, 20, 30 };
     [SerializeField]
     private int[] DoublingUpgradePrice = { 0 ,100, 350, 700, 1200, 1900 };
     [SerializeField]
@@ -44,7 +44,8 @@ public class DoublingAllBalls : Modifier, IModifier, ISaveable
             for (int i = 0; i < size; i++)
             {
                 _clones[i] = BallCloner.CreateClone(GameManager.Balls[i].gameObject);
-            }         
+            }
+            Invoke(nameof(Disable), CurrentUpgradeBonus);
         }
     }
     public void Disable()

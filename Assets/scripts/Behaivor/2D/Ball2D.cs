@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,6 +9,12 @@ public class Ball2D : MonoBehaviour
     public float MainSpeed { get; private set; }
     public float MaxSpeed = 50f;
     public float BounceSpeed;
+
+	//[Description("Ширина эталонного уровня")]
+	//[SerializeField]
+	//private float _defaulfLevelLength = 0.9621478f;
+	//private float _currentLevelLength;
+	//private float _scaleCoefficient;
 
 	[SerializeField]
 	private float HitLength = 0.5f;
@@ -41,7 +48,11 @@ public class Ball2D : MonoBehaviour
     private void Awake()
 	{
         _spawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
-        MainSpeed = BounceSpeed = GameManager.Speed;
+
+		//_currentLevelLength = GameObject.FindGameObjectWithTag("Background").transform.localScale.x;
+        //MainSpeed = BounceSpeed = (GameManager.Speed * _currentLevelLength) / _defaulfLevelLength;
+		MainSpeed = BounceSpeed = GameManager.Speed;
+
         Damage = BallDamageManager.Instance.Damage;
 		_rb2d = gameObject.GetComponent<Rigidbody2D>();
 
@@ -68,7 +79,7 @@ public class Ball2D : MonoBehaviour
 	{
 		PrevVelocity[1] = PrevVelocity[0];
 		PrevVelocity[0] = _rb2d.velocity;
-        SetMainSpeed();
+        SetBounceSpeed();
     }
 
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -120,10 +131,10 @@ public class Ball2D : MonoBehaviour
 	private void BallB_OnSpeedModEnd()
 	{
 		BounceSpeed = MainSpeed;
-		SetMainSpeed();
+		SetBounceSpeed();
 	}
 
-	private void SetMainSpeed()
+	private void SetBounceSpeed()
 	{
 		_rb2d.velocity = _rb2d.velocity.normalized * BounceSpeed;
 	}

@@ -20,8 +20,11 @@ public class BallDamageManager : Upgradable, ISaveable
 
         UpgradeBonus = DamageUpgrade;
         UpgradePrice = DamageUpgradePrice;
-        UpgradeIndex = DamageUpgradeIndex;
+        UpgradeIndex = DamageUpgradeIndex;       
+    }
 
+    private void Start()
+    {
         SetDamage(UpgradeIndex);
     }
 

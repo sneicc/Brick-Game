@@ -20,12 +20,15 @@ public class PlatformSpeedManager : Upgradable, ISaveable
 
         UpgradeBonus = PlatformSpeedUpgrade;
         UpgradePrice = PlatformSpeedUpgradePrice;
-        UpgradeIndex = PlatformSpeedUpgradeIndex;
-
-        SetDamage(UpgradeIndex);
+        UpgradeIndex = PlatformSpeedUpgradeIndex;      
     }
 
-    private void SetDamage(int upgradeIndex)
+    private void Start()
+    {
+        SetSpeed(UpgradeIndex);
+    }
+
+    private void SetSpeed(int upgradeIndex)
     {
         Speed = (int)UpgradeBonus[upgradeIndex];
     }
@@ -39,7 +42,7 @@ public class PlatformSpeedManager : Upgradable, ISaveable
             if (removalStrategy.RemoveResources(currentPrice))
             {
                 UpgradeIndex++;
-                SetDamage(UpgradeIndex);
+                SetSpeed(UpgradeIndex);
             }
         }
 
