@@ -102,13 +102,13 @@ public class LootBox : MonoBehaviour
         {
             Instantiate(DoublingPrefab, transform.position, new Quaternion());
         }
-        else if (value >= 83 && value <= 94)
+        else if (value >= 83 && value <= 99)
         {
-            Instantiate(HearthPrefab, transform.position, new Quaternion());
+            Instantiate(DaimondPrefab, transform.position, new Quaternion());
         }
         else
         {
-            Instantiate(DaimondPrefab, transform.position, new Quaternion());
+            Instantiate(HearthPrefab, transform.position, new Quaternion());
         }
     }
 }

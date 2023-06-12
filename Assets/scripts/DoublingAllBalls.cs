@@ -17,6 +17,9 @@ public class DoublingAllBalls : Modifier, IModifier, ISaveable
     [SerializeField]
     private int DoublingIndex = 0;
 
+    [SerializeField]
+    private Gradient TrailColor;
+
     private GameObject[] _clones;
 
     void Awake()
@@ -43,7 +46,7 @@ public class DoublingAllBalls : Modifier, IModifier, ISaveable
 
             for (int i = 0; i < size; i++)
             {
-                _clones[i] = BallCloner.CreateClone(GameManager.Balls[i].gameObject);
+                _clones[i] = BallCloner.CreateClone(GameManager.Balls[i].gameObject, TrailColor);
             }
             Invoke(nameof(Disable), CurrentUpgradeBonus);
         }

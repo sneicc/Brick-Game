@@ -140,12 +140,41 @@ MonoBehaviour:
   Damage: 0
   MaxSpeed: 50
   BounceSpeed: 0
-  _defaulfLevelLength: 0.9621478
   HitLength: 0.4
   Threashold: 0.7
   ReboundLimit: 4
   CloneMaterial: {fileID: 2100000, guid: a7a35a310f4bf234099e346d4c063b79, type: 2}
   _defaultSkin: {fileID: 2100000, guid: f99c2f606e487bd4ba7c619b09a10f39, type: 2}
+  Trail: {fileID: 6094609857145124494}
+  TrailColor:
+    serializedVersion: 2
+    key0: {r: 0.7647059, g: 0.17245412, b: 0.082352936, a: 1}
+    key1: {r: 0.8679245, g: 0.69372785, b: 0.50274116, a: 1}
+    key2: {r: 0.76470596, g: 0.43921572, b: 0.08235294, a: 0}
+    key3: {r: 0.76470596, g: 0.43921572, b: 0.08235294, a: 0}
+    key4: {r: 0.76470596, g: 0.43921572, b: 0.08235294, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 47995
+    ctime2: 65535
+    ctime3: 65535
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   PrevVelocity: []
   IsClone: 0
   IsImmortal: 0

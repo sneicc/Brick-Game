@@ -31,6 +31,10 @@ public class Ball2D : MonoBehaviour
     [SerializeField]
     private Material _defaultSkin;
 
+	[SerializeField]
+	private TrailRenderer Trail;
+	public Gradient TrailColor;
+
     public Vector2[] PrevVelocity;
 
 	public bool IsClone = false;
@@ -64,6 +68,8 @@ public class Ball2D : MonoBehaviour
 
 	void Start()
 	{
+		Trail.colorGradient = TrailColor;
+
         XCounterStuck = 0;
 		YCounterStuck = 0;
 		LastPos = transform.position;

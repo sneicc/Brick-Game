@@ -18,6 +18,13 @@ public static class BallCloner
         return clone;
     }
 
+    public static GameObject CreateClone(GameObject gameObject, Gradient trailColor)
+    {
+        var clone = CreateClone(gameObject);
+        clone.GetComponent<Ball2D>().TrailColor = trailColor;
+        return clone;
+    }
+
     private static Vector3 GetClonePosition(Vector3 originalPosition, float radius, Vector3 scale)
     {
         float offset = radius * scale.x * 2 + 0.05f;
