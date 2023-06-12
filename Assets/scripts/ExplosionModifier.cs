@@ -116,14 +116,6 @@ public class ExplosionModifier : Modifier, ISaveable
         button.onClick.AddListener(Activate);
     }
 
-#if DEBUG
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-
-        Gizmos.DrawSphere(_RH.point, 0.7f);
-    }
-
     public void Save(SaveData saveData)
     {
         saveData.ExplosionModIndex = UpgradeIndex;
@@ -134,6 +126,14 @@ public class ExplosionModifier : Modifier, ISaveable
     {
         UpgradeIndex = saveData.ExplosionModIndex;
         Amount = saveData.ExplosionModAmount;
+    }
+
+#if DEBUG
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
+        Gizmos.DrawSphere(_RH.point, 0.7f);
     }
 #endif
 }
