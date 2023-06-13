@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DoublingMod : MonoBehaviour
@@ -10,9 +8,9 @@ public class DoublingMod : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("GameBall"))
         {
-            gameObject.SetActive(false);
-
             BallCloner.CreateClone(collision.gameObject, TrailColor);
+
+            Destroy(gameObject);
         }
     }
 }

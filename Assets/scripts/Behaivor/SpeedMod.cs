@@ -8,16 +8,20 @@ public class SpeedMod : MonoBehaviour
 
     private Ball2D _ball;
 
+    private bool IsUsed;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("GameBall"))
-        {
-            _ball = collision.gameObject.GetComponent<Ball2D>();
+        if (collision.gameObject.CompareTag("GameBall") && !IsUsed)
+        {           
+            IsUsed = true;
 
+            _ball = collision.gameObject.GetComponent<Ball2D>();
             SpeedBooster.AddSpeed(_ball, Speed);
 
-            Invoke(nameof(RemoveMod), Duration);
             gameObject.SetActive(false);
+            Invoke(nameof(RemoveMod), Duration);
+            
         }
     }
 

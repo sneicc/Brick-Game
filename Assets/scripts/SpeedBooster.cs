@@ -13,8 +13,16 @@ public static class SpeedBooster
 
     public static void RemoveSpeed(Ball2D ball, float speed)
     {
-        if (ball.SpeedModCounter == 1) ball.IsImmortal = false;
-        ball.SpeedModCounter--;
         ball.BounceSpeed -= speed;
+        ball.SpeedModCounter--;
+
+        if (ball.SpeedModCounter == 0) ball.IsImmortal = false;
+        
+#if DEBUG
+        if(ball.SpeedModCounter < 0)
+        {
+            Debug.Log("Bug");
+        }
+#endif        
     }
 }

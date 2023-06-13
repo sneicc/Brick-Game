@@ -12,10 +12,6 @@ public class LootBox2D : MonoBehaviour
     [SerializeField]
     private int ExplosionDamage = 25;
     /// <summary>
-    /// Префаб монеты
-    /// </summary>
-    public GameObject CoinPrefab;
-    /// <summary>
     /// Префаб алмаза
     /// </summary>
     public GameObject DaimondPrefab;
@@ -86,11 +82,7 @@ public class LootBox2D : MonoBehaviour
 
         int value = Random.Range(1, 101);
 
-        if (value <= 25) //25
-        {
-            Instantiate(CoinPrefab, transform.position, new Quaternion());
-        }
-        else if (value >= 26 && value <= 50) //25
+        if (value <= 50) //50
         {
             Explosion.Instance.Explode(transform.position, ExplosionDamage);
         }
@@ -102,13 +94,13 @@ public class LootBox2D : MonoBehaviour
         {
             Instantiate(DoublingPrefab, transform.position, new Quaternion());
         }
-        else if (value >= 81 && value <= 90) //10
-        {
-            Instantiate(HearthPrefab, transform.position, new Quaternion());
-        }
-        else // 10
+        else if (value >= 83 && value <= 99)
         {
             Instantiate(DaimondPrefab, transform.position, new Quaternion());
+        }
+        else
+        {
+            Instantiate(HearthPrefab, transform.position, new Quaternion());
         }
     }
 }

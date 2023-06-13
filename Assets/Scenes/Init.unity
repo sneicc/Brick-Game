@@ -502,12 +502,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageUpgrade:
-  - 3
-  - 6
-  - 24
-  - 50
-  - 100
-  - 250
+  - 1
+  - 2
+  - 5
+  - 10
+  - 25
+  - 55
   DamageUpgradePrice: 00000000640000005e010000bc020000b00400006c070000
   DamageUpgradeIndex: 0
 --- !u!4 &2051250515

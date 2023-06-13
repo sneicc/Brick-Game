@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 185897462643715900, guid: 48f8d8ad77e0d0c4087e3f31047e60c5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5f066e334bb46c4419dc30954c27afd0, type: 2}
     - target: {fileID: 1359906893414896723, guid: 48f8d8ad77e0d0c4087e3f31047e60c5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -144,26 +148,6 @@ PolygonCollider2D:
       - {x: 0.5571421, y: -0.93301725}
       - {x: 0.55733454, y: -0.1029394}
       - {x: 0.5578525, y: -0.0013999448}
---- !u!114 &6709900390866700532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691674291823416020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a4cc0b26408cf46879eb89b650bef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Chance: 25
-  ExplosionDamage: 25
-  CoinPrefab: {fileID: 6900923454043349292, guid: 9aa1e8ea1b66b954b8dd3ddd2342f049, type: 3}
-  DaimondPrefab: {fileID: 8507318651328057593, guid: 45930336201342a4088d38631f503d53, type: 3}
-  SpeedPrefab: {fileID: 1813609196163289917, guid: 71a9e25b279c0ee4cb50f7c85b9fb19e, type: 3}
-  DoublingPrefab: {fileID: 75942448449788298, guid: 1f04533492af45f418c414ffdf0792ce, type: 3}
-  HearthPrefab: {fileID: 4995253152252545121, guid: 8ab13fe8ad1fc1b4ab0096b6327b097e, type: 3}
-  Shader: {fileID: -6465566751694194690, guid: e19e1d52696df7e4f9610197c0713970, type: 3}
 --- !u!114 &7691292584335757940
 MonoBehaviour:
   m_ObjectHideFlags: 0
