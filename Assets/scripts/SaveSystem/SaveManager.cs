@@ -43,6 +43,11 @@ public class SaveManager : MonoBehaviour
             NewGame();
         }
 
+#if DEBUG
+        Debug.Log(Application.persistentDataPath);
+        NewGame();
+#endif
+
         foreach (var item in _saveables)
         {
             item.Load(_saveData);

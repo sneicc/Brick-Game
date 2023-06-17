@@ -269,8 +269,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ' +4'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b0c5245a2a66564449c2c2db244c2080, type: 2}
-  m_sharedMaterial: {fileID: -4158172251092717248, guid: b0c5245a2a66564449c2c2db244c2080, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0ee902c59ae2d2a49bf08366e7886928, type: 2}
+  m_sharedMaterial: {fileID: -51365986632088732, guid: 0ee902c59ae2d2a49bf08366e7886928, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

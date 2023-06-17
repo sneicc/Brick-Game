@@ -40,7 +40,7 @@ public class GameLooseHandler : MonoBehaviour
         if (_needUpdateText)
         {
             int coins = LevelManager.Instance.LevelCoins;
-            CollectedCoins.text = '+' + coins.ToString();
+            CollectedCoins.text = coins.ToString();
             LooseCoefficientText.text = $"x {_looseCoefficient} =";
 
             int collectedCoins = (int)Math.Ceiling(coins * _looseCoefficient);

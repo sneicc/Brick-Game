@@ -345,7 +345,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Chance: 7
   ExplosionDamage: 100
-  CoinPrefab: {fileID: 6900923454043349292, guid: 9aa1e8ea1b66b954b8dd3ddd2342f049, type: 3}
   DaimondPrefab: {fileID: 8507318651328057593, guid: 45930336201342a4088d38631f503d53, type: 3}
   SpeedPrefab: {fileID: 1813609196163289917, guid: 71a9e25b279c0ee4cb50f7c85b9fb19e, type: 3}
   DoublingPrefab: {fileID: 75942448449788298, guid: 1f04533492af45f418c414ffdf0792ce, type: 3}
