@@ -29,6 +29,7 @@ public class SaveData
     public int ExplosionModAmount;
 
     public int SkinIndex;
+    public bool[] BoughtSkins;
 
     public SaveData()
     {
@@ -55,5 +56,6 @@ public class SaveData
         CurrentOpenedLevel = 0;
 
         SkinIndex = 0;
+        BoughtSkins = null;
     }
 }

@@ -6,7 +6,7 @@ public class SkinManager : MonoBehaviour, ISaveable
 
     [SerializeField]
     private Material[] Skins;
-    private int _skinIndex;
+    public int SkinIndex { get; private set; }
 
     private void Awake()
     {
@@ -18,9 +18,9 @@ public class SkinManager : MonoBehaviour, ISaveable
 
     private void Start()
     {
-        if(_skinIndex >= 0)
+        if(SkinIndex >= 0 && SkinIndex < Skins.Length)
         {
-            Ball2D.CustomSkin = Skins[_skinIndex];
+            Ball2D.CustomSkin = Skins[SkinIndex];
         }
         else
         {
@@ -32,18 +32,18 @@ public class SkinManager : MonoBehaviour, ISaveable
     {
         if(i >= 0 && i < Skins.Length)
         {
-            _skinIndex = i;
-            Ball2D.CustomSkin = Skins[_skinIndex];
+            SkinIndex = i;
+            Ball2D.CustomSkin = Skins[SkinIndex];
         }
     }
 
     public void Save(SaveData saveData)
     {
-        saveData.SkinIndex = _skinIndex;
+        saveData.SkinIndex = SkinIndex;
     }
 
     public void Load(SaveData saveData)
     {
-        _skinIndex = saveData.SkinIndex;
+        SkinIndex = saveData.SkinIndex;
     }
 }
