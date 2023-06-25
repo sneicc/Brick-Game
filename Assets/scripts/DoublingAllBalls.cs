@@ -39,6 +39,8 @@ public class DoublingAllBalls : Modifier, IModifier, ISaveable
 
     public override void Activate()
     {
+        WorkingTime = (int)CurrentUpgradeBonus;
+
         if (Spend())
         {
             int size = GameManager.Balls.Count;
@@ -47,7 +49,7 @@ public class DoublingAllBalls : Modifier, IModifier, ISaveable
             for (int i = 0; i < size; i++)
             {
                 _clones[i] = BallCloner.CreateClone(GameManager.Balls[i].gameObject, TrailColor);
-            }
+            }         
             Invoke(nameof(Disable), CurrentUpgradeBonus);
         }
     }

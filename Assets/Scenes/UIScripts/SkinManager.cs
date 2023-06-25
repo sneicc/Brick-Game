@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SkinManager : MonoBehaviour, ISaveable
@@ -7,6 +8,7 @@ public class SkinManager : MonoBehaviour, ISaveable
     [SerializeField]
     private Material[] Skins;
     public int SkinIndex { get; private set; }
+    public bool[] IsBought;
 
     private void Awake()
     {
@@ -40,10 +42,12 @@ public class SkinManager : MonoBehaviour, ISaveable
     public void Save(SaveData saveData)
     {
         saveData.SkinIndex = SkinIndex;
+        saveData.BoughtSkins = IsBought;
     }
 
     public void Load(SaveData saveData)
     {
         SkinIndex = saveData.SkinIndex;
+        IsBought = saveData.BoughtSkins;
     }
 }

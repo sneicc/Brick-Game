@@ -2,55 +2,64 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkinShopManager : MonoBehaviour, ISaveable
+public class SkinShopManager : MonoBehaviour
 {
     [SerializeField]
     private Button[] _buttons;
     [SerializeField]
     private int[] _prices;
-    private bool[] _isBought;
 
     private void Start()
     {
-        if (_isBought == null || _isBought.Length != _buttons.Length)
+        var isBought = SkinManager.Instance.IsBought;
+
+        if (isBought == null || isBought.Length != _buttons.Length)
         {
-            _isBought = new bool[_buttons.Length];
+            isBought = new bool[_buttons.Length];
+            isBought[0] = true;
+            SkinManager.Instance.IsBought = isBought;
         }
 
-        for (int i = 0; i < _isBought.Length; i++)
+        for (int i = 0; i < isBought.Length; i++)
         {
-            if (_isBought[i] == true)
-            {
-                Button button = _buttons[i];
-                int skinIndex = i;
+            Button button = _buttons[i];
+            int skinIndex = i;
+
+            if (isBought[i] == true)
+            {               
                 button.onClick.AddListener(() => EquipSkin(skinIndex, button));
-                SetEquipedStatus(button);
+                RemoveEquipedStatus(button);
             }
             else
             {
-                BuySkin(i);
+                button.onClick.AddListener(() => BuySkin(skinIndex));                
             }
         }
+
+        int currentIndex = SkinManager.Instance.SkinIndex;
+        Button currentEquipedButton = _buttons[currentIndex];
+        SetEquipedStatus(currentEquipedButton);
     }
 
     private void EquipSkin(int skinIndex, Button button)
     {
         int currentIndex = SkinManager.Instance.SkinIndex;
-        RemoveEquipedStatus(currentIndex);
+        Button currentEquipedButton = _buttons[currentIndex];
+        RemoveEquipedStatus(currentEquipedButton);
 
         SetEquipedStatus(button);
         SkinManager.Instance.SetSkin(skinIndex);
     }
 
-    private void RemoveEquipedStatus(int currentIndex)
+    private void RemoveEquipedStatus(Button button)
     {
-        _buttons[currentIndex].enabled = true;
-        _buttons[currentIndex].GetComponentInChildren<TextMeshProUGUI>().text = "Equip";
+        button.interactable = true;
+        button.GetComponentInChildren<TextMeshProUGUI>().text = "Equip";
     }
 
     private static void SetEquipedStatus(Button button)
     {
-        button.enabled = false;
+        button.interactable = false;
         button.GetComponentInChildren<TextMeshProUGUI>().text = "Equiped";
     }
 
@@ -61,20 +70,10 @@ public class SkinShopManager : MonoBehaviour, ISaveable
             Button button = _buttons[skinIndex];
 
             EquipSkin(skinIndex, button);
-            _isBought[skinIndex] = true;
+            SkinManager.Instance.IsBought[skinIndex] = true;
 
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => EquipSkin(skinIndex, button));
         }
-    }
-
-    public void Save(SaveData saveData)
-    {
-        saveData.BoughtSkins = _isBought;
-    }
-
-    public void Load(SaveData saveData)
-    {
-        _isBought = saveData.BoughtSkins;
     }
 }
