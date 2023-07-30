@@ -73,7 +73,7 @@ public class MagazineManager : MonoBehaviour
         Skins.gameObject.SetActive(false);
         Settings.gameObject.SetActive(false);
         Skills.gameObject.SetActive(false);
-        CurrencyShop.gameObject.SetActive(false);
+        //CurrencyShop.gameObject.SetActive(false);
         // ButtonMAIN.image.sprite = MainButtonSpriteMENU;
         DATA_HOLDER.IsMagazineMain = true;
     }
