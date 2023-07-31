@@ -246,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4875548665239139309}
   - component: {fileID: 8628200252699077308}
+  - component: {fileID: -8929676299737613673}
   - component: {fileID: 8215922507434520671}
   m_Layer: 0
   m_Name: Daimond
@@ -286,6 +287,19 @@ MonoBehaviour:
   Cost: 1
   Text: {fileID: 2981649516664765547}
   Model: {fileID: 1596873525736661287}
+--- !u!114 &-8929676299737613673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507318651328057593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6175d895d6a73842b90e6bba0f2f041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
 --- !u!61 &8215922507434520671
 BoxCollider2D:
   m_ObjectHideFlags: 0

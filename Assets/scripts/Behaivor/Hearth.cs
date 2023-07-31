@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Hearth : MonoBehaviour
+public class Hearth : MonoBehaviour, IPickable
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void PickUp()
     {
-        if (collision.CompareTag("GameBall"))
-        {
-            GameManager.AddLive();
-            Destroy(gameObject);
-        }
+        GameManager.AddLive();
+        Destroy(gameObject);
     }
 }

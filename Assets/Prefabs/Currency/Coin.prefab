@@ -346,6 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6401597949475751248}
   - component: {fileID: 116638361704942128}
+  - component: {fileID: 9041824091093678481}
   - component: {fileID: 4502577206809287979}
   m_Layer: 0
   m_Name: Coin
@@ -386,6 +387,19 @@ MonoBehaviour:
   Cost: 6
   Text: {fileID: 5451244298768370436}
   Model: {fileID: 5766912915273604736}
+--- !u!114 &9041824091093678481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6900923454043349292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6175d895d6a73842b90e6bba0f2f041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
 --- !u!58 &4502577206809287979
 CircleCollider2D:
   m_ObjectHideFlags: 0

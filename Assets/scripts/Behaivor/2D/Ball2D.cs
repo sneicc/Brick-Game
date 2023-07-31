@@ -1,5 +1,3 @@
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -89,7 +87,7 @@ public class Ball2D : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.name == "ball_deadzone" && !IsImmortal)
+		if (collision.gameObject.CompareTag("DeadZone") && !IsImmortal)
 		{
 			if (IsClone)
 			{

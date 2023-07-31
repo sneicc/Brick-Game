@@ -1,13 +1,10 @@
 using UnityEngine;
 
-public class Coin : Currency
+public class Coin : Currency, IPickable
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void PickUp()
     {
-        if (collision.gameObject.CompareTag("GameBall"))
-        {
-            LevelManager.Instance.AddCoins(Cost);
-            DesplayCostAndDisable();
-        }
-    }
+        LevelManager.Instance.AddCoins(Cost);
+        DesplayCostAndDisable();
+    }    
 }

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LootBox2D : MonoBehaviour
+public class LootBox2D : MonoBehaviour // полный ребаланс дропа, расширение вариантов дропа, ?выпадение звёз и механика сгорающих звёзд?
 {
     /// <summary>
     /// Шанс появления
@@ -96,11 +94,27 @@ public class LootBox2D : MonoBehaviour
         }
         else if (value >= 83 && value <= 99)
         {
-            Instantiate(DaimondPrefab, transform.position, new Quaternion());
+            InstantiateLoot(DaimondPrefab);
         }
         else
         {
-            Instantiate(HearthPrefab, transform.position, new Quaternion());
+            InstantiateLoot(HearthPrefab);
         }
+    }
+
+    private void InstantiateLoot(GameObject gameObject)
+    {
+        if (gameObject.GetComponent<IPickable>() == null) return;
+
+        var loot = Instantiate(gameObject, transform.position, new Quaternion());
+
+        var picker = loot.GetComponent<Picker>();
+        if(picker != null)
+        {
+            Destroy(picker);
+        }
+
+        var loot2D = loot.AddComponent<Loot2D>();
+        loot2D.ObjectType = Picker.PickableType.Platform;
     }
 }

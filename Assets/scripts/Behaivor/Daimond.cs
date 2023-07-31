@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Daimond : Currency
+public class Daimond : Currency, IPickable
 {
     public bool IsCollected { get; private set; }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    public void PickUp()
     {
-        if (collision.gameObject.CompareTag("GameBall"))
-        {
-            LevelManager.Instance.AddDaimonds(Cost);
-            IsCollected = true;
-            DesplayCostAndDisable();
-        }
+        LevelManager.Instance.AddDaimonds(Cost);
+        IsCollected = true;
+        DesplayCostAndDisable();
     }
 }

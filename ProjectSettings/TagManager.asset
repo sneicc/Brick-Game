@@ -15,6 +15,7 @@ TagManager:
   - StartTimer
   - Laser
   - Background
+  - DeadZone
   layers:
   - Default
   - TransparentFX

@@ -2453,6 +2453,10 @@ PrefabInstance:
       propertyPath: SecondColor.r
       value: 0.33601353
       objectReference: {fileID: 0}
+    - target: {fileID: 9185512076618490702, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
+      propertyPath: Chance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
 --- !u!1 &391443285
@@ -3704,6 +3708,10 @@ PrefabInstance:
       propertyPath: SecondColor.r
       value: 0.33601353
       objectReference: {fileID: 0}
+    - target: {fileID: 9185512076618490702, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
+      propertyPath: Chance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
 --- !u!1001 &611475156
@@ -4766,9 +4774,10 @@ GameObject:
   m_Component:
   - component: {fileID: 755712188}
   - component: {fileID: 755712189}
+  - component: {fileID: 755712190}
   m_Layer: 0
   m_Name: ball_deadzone
-  m_TagString: Untagged
+  m_TagString: DeadZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4801,7 +4810,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.3975654, y: -0.24572557}
+  m_Offset: {x: 1.4254732, y: -0.24572557}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4812,8 +4821,29 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.402488, y: 0.50854886}
+  m_Size: {x: 8.458304, y: 0.50854886}
   m_EdgeRadius: 0
+--- !u!50 &755712190
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755712186}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1001 &764857343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5751,6 +5781,10 @@ PrefabInstance:
     - target: {fileID: 6789525595527808530, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
       propertyPath: SecondColor.r
       value: 0.33601353
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185512076618490702, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
+      propertyPath: Chance
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
@@ -9043,6 +9077,10 @@ PrefabInstance:
       propertyPath: SecondColor.r
       value: 0.33601353
       objectReference: {fileID: 0}
+    - target: {fileID: 9185512076618490702, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
+      propertyPath: Chance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
 --- !u!1001 &1437517639
@@ -9645,6 +9683,10 @@ PrefabInstance:
     - target: {fileID: 6789525595527808530, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
       propertyPath: SecondColor.r
       value: 0.33601353
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185512076618490702, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
+      propertyPath: Chance
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
@@ -10527,6 +10569,10 @@ PrefabInstance:
       propertyPath: SecondColor.r
       value: 0.33601353
       objectReference: {fileID: 0}
+    - target: {fileID: 9185512076618490702, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
+      propertyPath: Chance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
 --- !u!1001 &1824158842
@@ -10978,6 +11024,10 @@ PrefabInstance:
     - target: {fileID: 6789525595527808530, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
       propertyPath: SecondColor.r
       value: 0.33601353
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185512076618490702, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
+      propertyPath: Chance
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
@@ -11592,6 +11642,10 @@ PrefabInstance:
     - target: {fileID: 6789525595527808530, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
       propertyPath: SecondColor.r
       value: 0.33601353
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185512076618490702, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
+      propertyPath: Chance
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c6cbbdcd772d446a58b19619ee2272, type: 3}
