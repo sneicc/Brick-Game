@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 9185512076618490702}
   m_Layer: 10
   m_Name: MainBrick2D
-  m_TagString: Untagged
+  m_TagString: ExternalBrick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

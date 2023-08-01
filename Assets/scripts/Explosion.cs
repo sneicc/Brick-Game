@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
@@ -30,8 +28,7 @@ public class Explosion : MonoBehaviour
         {
             if (collider.CompareTag("Brick"))
             {
-                if (collider.transform.parent != null) collider.transform.parent.GetComponent<Brick2D>().Hit(damage);
-                else collider.GetComponent<Brick2D>().Hit(damage);
+                DamageDealer.DealDamage(damage, collider);
             }
         }
     }

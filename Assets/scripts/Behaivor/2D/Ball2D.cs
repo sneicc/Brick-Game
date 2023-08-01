@@ -17,8 +17,8 @@ public class Ball2D : MonoBehaviour
 	[SerializeField]
 	private float HitLength = 0.5f;
 
-    Vector3 LastPos;
-	public float Threashold = 1.0f;
+    Vector3 LastPosition;
+	public float StuckThreashold = 1.0f;
 	private int XCounterStuck;
 	private int YCounterStuck;
 	public int ReboundLimit = 5;
@@ -33,7 +33,21 @@ public class Ball2D : MonoBehaviour
 	private TrailRenderer Trail;
 	public Gradient TrailColor;
 
-    public Vector2[] PrevVelocity;
+	private Vector2[] _prevVelocity;
+
+	public Vector2 PrevVelocity
+    {
+		get { return _prevVelocity[1]; }
+		private set { _prevVelocity[1] = value; }
+	}
+	public Vector2 CurrentVelocity
+    {
+		get { return _prevVelocity[0];}
+		set { _prevVelocity[0] = value; }
+	}
+
+
+
 
 	public bool IsClone = false;
 	public bool IsImmortal = false;
@@ -70,18 +84,18 @@ public class Ball2D : MonoBehaviour
 
         XCounterStuck = 0;
 		YCounterStuck = 0;
-		LastPos = transform.position;
+		LastPosition = transform.position;
 
         _rb2d = GetComponent<Rigidbody2D>();
-		if (!IsClone) ResetBall();		
+		if (!IsClone) ResetBall();
 
-        PrevVelocity = new Vector2[2] { _rb2d.velocity, _rb2d.velocity };
+        _prevVelocity = new Vector2[2] { _rb2d.velocity, _rb2d.velocity };
     }
 
 	private void Update()
 	{
-		PrevVelocity[1] = PrevVelocity[0];
-		PrevVelocity[0] = _rb2d.velocity;
+        _prevVelocity[1] = _prevVelocity[0];
+        _prevVelocity[0] = _rb2d.velocity;
         SetBounceSpeed();
     }
 
@@ -123,11 +137,7 @@ public class Ball2D : MonoBehaviour
 			XCounterStuck = 0;
 			YCounterStuck = 0;
 
-			Brick2D brick;
-            if(hit.collider.transform.parent != null) brick = hit.collider.transform.parent.gameObject.GetComponent<Brick2D>();
-			else brick = hit.collider.GetComponent<Brick2D>();
-
-            brick.Hit(Damage, PrevVelocity[1]);
+			DamageDealer.DealDamage(Damage, hit.collider, PrevVelocity);
 		}
 	}
 
@@ -157,16 +167,16 @@ public class Ball2D : MonoBehaviour
 			YCounterStuck = 0;
 		}
 
-		Vector3 offset = transform.position - LastPos;
+		Vector3 offset = transform.position - LastPosition;
 		float xOffset = Mathf.Abs(offset.x);
 		float yOffset = Mathf.Abs(offset.y);
 
-		if (xOffset > Threashold) XCounterStuck = 0;
-		if (yOffset > Threashold) YCounterStuck = 0;
-		if (xOffset <= Threashold) XCounterStuck++;
-		if (yOffset <= Threashold) YCounterStuck++;
+		if (xOffset > StuckThreashold) XCounterStuck = 0;
+		if (yOffset > StuckThreashold) YCounterStuck = 0;
+		if (xOffset <= StuckThreashold) XCounterStuck++;
+		if (yOffset <= StuckThreashold) YCounterStuck++;
 
-		LastPos = transform.position;
+		LastPosition = transform.position;
 	}
 
 	private void ResetBall()

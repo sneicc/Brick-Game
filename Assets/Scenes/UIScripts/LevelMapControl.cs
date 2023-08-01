@@ -50,13 +50,28 @@ public class LevelMapControl : MonoBehaviour
 
     private void OnDestroy()
     {
-        //PlayerPrefs.SetFloat("ButtonsContainerX", _buttonsContainer.localPosition.x);
+        SaveMenuPosition();
+    }
+
+    private void SaveMenuPosition()
+    {
         PlayerPrefs.SetFloat("ButtonsContainerY", _yPosition);
         PlayerPrefs.Save();
     }
 
-    public void TestQuit()
+    private void OnApplicationPause(bool pause)
     {
-        Application.Quit();
+        if (pause)
+        {
+            SaveMenuPosition();
+        }
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+        {
+            SaveMenuPosition();
+        }
     }
 }
